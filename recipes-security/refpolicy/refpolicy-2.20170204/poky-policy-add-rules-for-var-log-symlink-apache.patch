@@ -17,15 +17,11 @@ Signed-off-by: Joe MacDonald <joe_macdonald@mentor.com>
 
 --- a/policy/modules/contrib/apache.te
 +++ b/policy/modules/contrib/apache.te
-@@ -407,10 +407,11 @@ allow httpd_t httpd_lock_t:file manage_f
- files_lock_filetrans(httpd_t, httpd_lock_t, { file dir })
- 
- manage_dirs_pattern(httpd_t, httpd_log_t, httpd_log_t)
- manage_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+@@ -411,6 +411,7 @@ create_files_pattern(httpd_t, httpd_log_
+ append_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
+ read_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
  read_lnk_files_pattern(httpd_t, httpd_log_t, httpd_log_t)
 +read_lnk_files_pattern(httpd_t, var_log_t, var_log_t)
  logging_log_filetrans(httpd_t, httpd_log_t, file)
  
  allow httpd_t httpd_modules_t:dir list_dir_perms;
- mmap_files_pattern(httpd_t, httpd_modules_t, httpd_modules_t)
- read_files_pattern(httpd_t, httpd_modules_t, httpd_modules_t)

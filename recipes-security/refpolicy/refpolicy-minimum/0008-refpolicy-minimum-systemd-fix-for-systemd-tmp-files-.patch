@@ -37,11 +37,9 @@ Signed-off-by: Shrikant Bobade <shrikant_bobade@mentor.com>
  policy/modules/system/systemd.te |  3 +++
  3 files changed, 45 insertions(+)
 
-diff --git a/policy/modules/kernel/files.if b/policy/modules/kernel/files.if
-index 1cedea2..4ea7d55 100644
 --- a/policy/modules/kernel/files.if
 +++ b/policy/modules/kernel/files.if
-@@ -6729,3 +6729,22 @@ interface(`files_unconfined',`
+@@ -6906,3 +6906,22 @@ interface(`files_unconfined',`
  
  	typeattribute $1 files_unconfined_type;
  ')
@@ -64,13 +62,11 @@ index 1cedea2..4ea7d55 100644
 +
 +	allow $1 tmp_t:lnk_file getattr;
 +')
-diff --git a/policy/modules/kernel/kernel.if b/policy/modules/kernel/kernel.if
-index f1130d1..4604441 100644
 --- a/policy/modules/kernel/kernel.if
 +++ b/policy/modules/kernel/kernel.if
-@@ -3323,3 +3323,26 @@ interface(`kernel_unconfined',`
- 	typeattribute $1 kern_unconfined;
- 	kernel_load_module($1)
+@@ -3418,3 +3418,26 @@ interface(`kernel_rw_vm_overcommit_sysct
+ 	kernel_search_vm_sysctl($1)
+ 	allow $1 sysctl_vm_overcommit_t:file rw_file_perms;
  ')
 +
 +########################################
@@ -95,17 +91,12 @@ index f1130d1..4604441 100644
 +
 +')
 +
-diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 22021eb..8813664 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -269,3 +269,6 @@ allow systemd_tmpfiles_t initrc_t:unix_dgram_socket sendto;
+@@ -374,3 +374,6 @@ allow systemd_tmpfiles_t initrc_t:unix_d
  allow systemd_tmpfiles_t self:capability net_admin;
  
  allow systemd_tmpfiles_t init_t:file { open getattr read };
 +
 +systemd_service_allow_kernel_domain_access_to_sysctl_kernel_t(systemd_tmpfiles_t)
 +systemd_service_allow_kernel_files_domain_to_tmp_t(systemd_tmpfiles_t)
--- 
-1.9.1
-
