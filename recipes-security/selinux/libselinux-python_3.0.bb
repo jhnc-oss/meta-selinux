@@ -4,6 +4,8 @@ SRC_URI = "https://github.com/SELinuxProject/selinux/releases/download/${SELINUX
 
 require ${BPN}.inc
 
+inherit python3targetconfig
+
 LIC_FILES_CHKSUM = "file://LICENSE;md5=84b4d2c6ef954a2d4081e775a270d0d0"
 
 SRC_URI[md5sum] = "b387a66f087b6d97713570e85ec89d89"
