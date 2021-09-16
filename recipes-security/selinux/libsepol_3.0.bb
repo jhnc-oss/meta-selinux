@@ -10,4 +10,5 @@ SRC_URI += "\
         file://0001-libsepol-fix-CIL_KEY_-build-errors-with-fno-common.patch \
         file://0001-libsepol-remove-leftovers-of-cil_mem_error_handler.patch \
         file://CVE-2021-36084.patch \
+        file://CVE-2021-36085.patch \
         "
