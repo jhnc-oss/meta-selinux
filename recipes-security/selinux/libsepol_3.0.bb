@@ -9,4 +9,5 @@ SRC_URI[sha256sum] = "5b7ae1881909f1048b06f7a0c364c5c8a86ec12e0ec76e740fe9595a60
 SRC_URI += "\
         file://0001-libsepol-fix-CIL_KEY_-build-errors-with-fno-common.patch \
         file://0001-libsepol-remove-leftovers-of-cil_mem_error_handler.patch \
+        file://CVE-2021-36084.patch \
         "
