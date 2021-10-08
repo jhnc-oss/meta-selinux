@@ -12,4 +12,5 @@ SRC_URI += "\
         file://libselinux-make-SOCK_CLOEXEC-optional.patch \
         file://libselinux-define-FD_CLOEXEC-as-necessary.patch \
         file://0001-Fix-building-against-musl-and-uClibc-libc-libraries.patch \
+        file://0001-Fix-NULL-pointer-use-in-selinux_restorecon_set_sehandle.patch \
         "
