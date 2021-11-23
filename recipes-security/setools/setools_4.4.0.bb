@@ -9,7 +9,7 @@ SECTION = "base"
 LICENSE = "GPLv2 & LGPLv2.1"
 
 S = "${WORKDIR}/git"
-SRC_URI = "git://github.com/SELinuxProject/${BPN}.git;branch=4.4;protocol=https \
+SRC_URI = "git://github.com/SELinuxProject/${BPN}.git;branch=4.4 \
            file://setools4-fixes-for-cross-compiling.patch \
 "
 
