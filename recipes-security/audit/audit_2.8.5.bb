@@ -7,7 +7,7 @@ SECTION = "base"
 LICENSE = "GPLv2+ & LGPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
-SRC_URI = "git://github.com/linux-audit/${BPN}-userspace.git;branch=2.8_maintenance \
+SRC_URI = "git://github.com/linux-audit/${BPN}-userspace.git;branch=2.8_maintenance;protocol=https \
            file://Add-substitue-functions-for-strndupa-rawmemchr.patch \
            file://Fixed-swig-host-contamination-issue.patch \
            file://0001-lib-i386_table.h-add-new-syscall.patch \
