@@ -53,8 +53,10 @@ RDEPENDS:${PN}-semanage = "\
         audit-python \
         ${PN} \
 "
+PACKAGECONFIG ??= "sepolicy-generate"
+PACKAGECONFIG[sepolicy-generate] = ",,,"
 RDEPENDS:${PN}-sepolicy = "\
-        binutils \
+        ${@bb.utils.contains('PACKAGECONFIG', 'sepolicy-generate', 'binutils', '', d)} \
         python3-core \
         python3-codecs \
         python3-distro \
