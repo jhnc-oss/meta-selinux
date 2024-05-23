@@ -17,8 +17,8 @@ Descriptions of section entries:
 	M: Mail patches to: FullName <address@domain>
 	F: Files and directories with wildcard patterns.
 	   A trailing slash includes all files and subdirectory files.
-	   F:	recipes-devtools/	all files in and below meta-crownbay
-	   F:	recipes-selinux/*	all files in meta-crownbay, but not below
+	   F:	recipes-devtools/	all files in and below recipes-devtools
+	   F:	recipes-selinux/*	all files in recipes-selinux, but not below
 	   One pattern per line.  Multiple F: lines acceptable.
 
 Please keep this list in alphabetical order.
