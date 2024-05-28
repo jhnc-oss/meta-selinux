@@ -166,9 +166,9 @@ do_install:class-native() {
 }
 
 do_install:append:class-target() {
-    if [ -e ${WORKDIR}/pam.d ]; then
+    if [ -e ${UNPACKDIR}/pam.d ]; then
         install -d ${D}${sysconfdir}/pam.d/
-        install -m 0644 ${WORKDIR}/pam.d/* ${D}${sysconfdir}/pam.d/
+        install -m 0644 ${UNPACKDIR}/pam.d/* ${D}${sysconfdir}/pam.d/
     fi
 
     # /var/lib/selinux is involved by seobject.py:

@@ -214,12 +214,12 @@ EOF
 }
 
 install_misc_files() {
-    cat ${WORKDIR}/customizable_types >> \
+    cat ${UNPACKDIR}/customizable_types >> \
         ${D}${sysconfdir}/selinux/${POLICY_NAME}/contexts/customizable_types
 
     # Install setrans.conf for mls/mcs policy
-    if [ -f ${WORKDIR}/setrans-${POLICY_TYPE}.conf ]; then
-        install -m 0644 ${WORKDIR}/setrans-${POLICY_TYPE}.conf \
+    if [ -f ${UNPACKDIR}/setrans-${POLICY_TYPE}.conf ]; then
+        install -m 0644 ${UNPACKDIR}/setrans-${POLICY_TYPE}.conf \
             ${D}${sysconfdir}/selinux/${POLICY_NAME}/setrans.conf
     fi
 
