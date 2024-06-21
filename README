@@ -53,10 +53,7 @@ By default selinux enabled images coming up with "sysvinit" as init manager,
 we can use "systemd" as an init manager using below changes to local.conf
 
 * enable systemd as init manager changes to local.conf
-DISTRO_FEATURES:remove = " sysvinit"
-DISTRO_FEATURES:append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = ""
+INIT_MANAGER = "systemd"
 
 
 Enable labeling on first boot
