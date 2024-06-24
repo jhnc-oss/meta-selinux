@@ -1,3 +1,9 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+
+SRC_URI:append = " file://selinux.cfg"
+
+DEPENDS:append  = " libselinux"
+
 PTEST_BINDIR = "0"
 
 FILES:${PN} += "${libdir}/${PN}"
