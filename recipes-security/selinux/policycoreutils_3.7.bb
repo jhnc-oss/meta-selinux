@@ -92,6 +92,7 @@ FILES:${PN}-secon = "${bindir}/secon"
 FILES:${PN}-semodule = "${base_sbindir}/semodule"
 FILES:${PN}-hll = "${prefix}/libexec/selinux/hll/*"
 FILES:${PN}-sestatus = "\
+    ${bindir}/sestatus \
     ${base_sbindir}/sestatus \
     ${sysconfdir}/sestatus.conf \
 "
