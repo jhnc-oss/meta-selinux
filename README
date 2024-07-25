@@ -47,22 +47,6 @@ to be tailored for your environment.
 e.g. PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
 
 
-Using different versions of refpolicy
--------------------------------------
-To prepare selinux enabled images using different ver. of refpolicy,
-we can choose supported releases of refpolicy
-refer to available versions under recipes-security/refpolicy
-
-We can use the refpolicy directly from git repository instead of release tarballs.
-By default refpolicy from git builds head commit of master branch, we can update
-SRCREV for refpolicy and refpolicy-contrib as appropriate at refpolicy_git.inc
-to check refpolicy as per required commits.
-
-* enable the preferred refpolicy-minimum:
-PREFERRED_VERSION_refpolicy-minimum = "2.20151208"
-PREFERRED_VERSION_refpolicy = "2.20151208"
-
-
 Using different init manager
 ----------------------------
 By default selinux enabled images coming up with "sysvinit" as init manager,
