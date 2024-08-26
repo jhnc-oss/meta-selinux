@@ -18,19 +18,18 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "python3-cython-native libsepol libselinux"
 
-RDEPENDS:${PN} = "python3-networkx python3-setuptools \
-                  python3-logging libselinux-python"
+RDEPENDS:${PN} = "python3-networkx python3-logging libselinux-python"
 
 RPROVIDES:${PN} = "${PN}-console"
 
-inherit setuptools3
+inherit python_setuptools_build_meta
 
 do_install:prepend() {
     sed -i -e 's:${RECIPE_SYSROOT}::g' ${S}/setools/policyrep.c
 }
 
 do_install:append() {
-    # Need PyQt5 support, disable gui tools
+    # Need PyQt6 support, disable gui tools
     rm -f ${D}${bindir}/apol
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/setoolsgui
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/setools/__pycache__
