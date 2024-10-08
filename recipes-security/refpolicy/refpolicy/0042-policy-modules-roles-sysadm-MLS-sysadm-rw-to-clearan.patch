@@ -1,4 +1,4 @@
-From 93225203c2a3a767cd1319d6620da1fd1f91b25f Mon Sep 17 00:00:00 2001
+From 7a0339aeba7cfe38b62c81ee4074446bba60e801 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Mon, 28 Jan 2019 14:05:18 +0800
 Subject: [PATCH] policy/modules/roles/sysadm: MLS - sysadm rw to clearance
@@ -23,7 +23,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/policy/modules/roles/sysadm.te b/policy/modules/roles/sysadm.te
-index c08226dc3..4f3207d52 100644
+index af5ccca9d..10cebdc53 100644
 --- a/policy/modules/roles/sysadm.te
 +++ b/policy/modules/roles/sysadm.te
 @@ -48,6 +48,8 @@ logging_watch_all_logs(sysadm_t)

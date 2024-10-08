@@ -1,7 +1,8 @@
-From be681d155c6c62a2ec4939dedc921921fe73e277 Mon Sep 17 00:00:00 2001
+From 33bc8d28c406ffd7a6aef2f390734b3f5bdfc5a3 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 30 Aug 2024 12:39:48 +0800
-Subject: [PATCH] Allow services to read tmpfs under /run/credentials/
+Subject: [PATCH] policy/modules/system: allow services to read tmpfs under
+ /run/credentials/
 
 $ mount | grep credentials
 tmpfs on /run/credentials/systemd-journald.service type tmpfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,seclabel,size=1024k,nr_inodes=1024,mode=700,noswap)
@@ -66,10 +67,10 @@ index a900226bf..75b94785b 100644
  mcs_process_set_categories(getty_t)
  
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index fc73825fa..d5878876b 100644
+index 086498936..dca46f105 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
-@@ -495,6 +495,7 @@ files_read_kernel_symbol_table(syslogd_t)
+@@ -491,6 +491,7 @@ files_read_kernel_symbol_table(syslogd_t)
  files_var_lib_filetrans(syslogd_t, syslogd_var_lib_t, { file dir })
  
  fs_getattr_all_fs(syslogd_t)
@@ -78,10 +79,10 @@ index fc73825fa..d5878876b 100644
  
  mls_file_write_all_levels(syslogd_t) # Need to be able to write to /var/run/ and /var/log directories
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 22a319c36..0440b4795 100644
+index 9375e8926..24fc90838 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1303,6 +1303,7 @@ files_watch_root_dirs(systemd_networkd_t)
+@@ -1294,6 +1294,7 @@ files_watch_root_dirs(systemd_networkd_t)
  files_list_runtime(systemd_networkd_t)
  
  fs_getattr_all_fs(systemd_networkd_t)

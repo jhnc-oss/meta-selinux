@@ -1,4 +1,4 @@
-From 9d4f8d201dbdea28a38b5faaef9abc016bcbaab3 Mon Sep 17 00:00:00 2001
+From 9bd0c30476615fd4af29a9dd5b3b664398a9845a Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 29 Mar 2019 10:33:18 -0400
 Subject: [PATCH] policy/modules/system/logging: add rules for syslogd symlink
@@ -18,7 +18,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index 9d9a01fcc..45584dba6 100644
+index eea78ffc5..5f06428f1 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -425,6 +425,7 @@ files_search_spool(syslogd_t)

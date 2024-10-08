@@ -48,12 +48,14 @@ SRC_URI += " \
         file://0030-policy-modules-kernel-files-add-rules-for-the-symlin.patch \
         file://0031-policy-modules-system-logging-fix-auditd-startup-fai.patch \
         file://0032-policy-modules-kernel-terminal-don-t-audit-tty_devic.patch \
-        file://0034-policy-modules-system-systemd-enable-support-for-sys.patch \
-        file://0035-policy-modules-system-logging-allow-systemd-tmpfiles.patch \
-        file://0036-policy-modules-system-systemd-allow-systemd_logind_t.patch \
-        file://0037-policy-modules-roles-sysadm-allow-sysadm-to-use-init.patch \
-        file://0038-policy-modules-system-systemd-systemd-user-fixes.patch \
-        file://0040-policy-modules-system-logging-grant-getpcap-capabili.patch \
+        file://0033-policy-modules-system-systemd-enable-support-for-sys.patch \
+        file://0034-policy-modules-system-logging-allow-systemd-tmpfiles.patch \
+        file://0035-policy-modules-system-systemd-allow-systemd_logind_t.patch \
+        file://0036-policy-modules-roles-sysadm-allow-sysadm-to-use-init.patch \
+        file://0037-policy-modules-system-systemd-systemd-user-fixes.patch \
+        file://0038-policy-modules-system-logging-grant-getpcap-capabili.patch \
+        file://0039-policy-modules-system-allow-services-to-read-tmpfs-u.patch \
+        file://0040-policy-modules-kernel-domain-allow-all-domains-to-co.patch \
         file://0041-policy-modules-system-mount-make-mount_t-domain-MLS-.patch \
         file://0042-policy-modules-roles-sysadm-MLS-sysadm-rw-to-clearan.patch \
         file://0043-policy-modules-services-rpc-make-nfsd_t-domain-MLS-t.patch \
@@ -70,7 +72,6 @@ SRC_URI += " \
         file://0054-policy-modules-system-setrans-allow-setrans_t-use-fd.patch \
         file://0055-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
         file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
-        file://0057-Allow-services-to-read-tmpfs-under-run-credentials.patch \
         "
 
 S = "${WORKDIR}/refpolicy"

@@ -1,0 +1,47 @@
+From 9494c078e1aea2ab6ecdf0c3ca01e2d3941b11a7 Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Fri, 26 Feb 2021 09:13:23 +0800
+Subject: [PATCH] refpolicy-minimum: enable nscd_use_shm
+
+Fixes:
+avc:  denied  { listen } for  pid=340 comm="systemd-network"
+path="/run/systemd/netif/io.systemd.Network"
+scontext=system_u:system_r:systemd_networkd_t:s0
+tcontext=system_u:system_r:systemd_networkd_t:s0
+tclass=unix_stream_socket permissive=1
+
+avc:  denied  { accept } for  pid=312 comm="systemd-nsresou"
+path="/run/systemd/io.systemd.NamespaceResource"
+scontext=system_u:system_r:systemd_nsresourced_t:s0
+tcontext=system_u:system_r:systemd_nsresourced_t:s0
+tclass=unix_stream_socket permissive=1
+
+avc:  denied  { accept } for  pid=309 comm="systemd-nsresou"
+path="/run/systemd/io.systemd.NamespaceResource"
+scontext=system_u:system_r:systemd_nsresourced_t:s0
+tcontext=system_u:system_r:systemd_nsresourced_t:s0
+tclass=unix_stream_socket permissive=1
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/services/nscd.te | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy/modules/services/nscd.te b/policy/modules/services/nscd.te
+index ffc60497c..d226f1145 100644
+--- a/policy/modules/services/nscd.te
++++ b/policy/modules/services/nscd.te
+@@ -15,7 +15,7 @@ gen_require(`
+ ##	can use nscd shared memory.
+ ##	</p>
+ ## </desc>
+-gen_tunable(nscd_use_shm, false)
++gen_tunable(nscd_use_shm, true)
+ 
+ attribute_role nscd_roles;
+ 
+-- 
+2.25.1
+

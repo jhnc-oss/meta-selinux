@@ -1,4 +1,4 @@
-From 57c6a0e69aa9d308ec23dc60dc2420ee5c62bf7f Mon Sep 17 00:00:00 2001
+From fb72a7ca4963a7537bcb98a730025f6f8941d146 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 11:15:33 +0800
 Subject: [PATCH] fc/screen: apply policy to screen alternatives

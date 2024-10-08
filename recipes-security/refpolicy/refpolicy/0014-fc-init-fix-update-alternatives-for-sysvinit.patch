@@ -1,4 +1,4 @@
-From a733674bb530f070ce5363c0b50848d3cb4e113b Mon Sep 17 00:00:00 2001
+From eecf36ae218ee0d85fd07a14bfbcb6636ab84095 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] fc/init: fix update-alternatives for sysvinit

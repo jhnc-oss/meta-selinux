@@ -1,4 +1,4 @@
-From 762b0bd9cc26627f7361d5db92ae1cb366c0858b Mon Sep 17 00:00:00 2001
+From 48b69b97a52cf782fbc54f5e55e92ee81466d0bc Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:21:51 +0800
 Subject: [PATCH] fc/corecommands: apply policy to nologin alternatives

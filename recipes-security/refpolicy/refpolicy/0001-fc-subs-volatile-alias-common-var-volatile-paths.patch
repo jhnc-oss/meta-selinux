@@ -1,4 +1,4 @@
-From 9fdb576862d6a373b4a50e149fcfd4571e01dd1a Mon Sep 17 00:00:00 2001
+From 2627c403bb84d710a2469e501e6a0ccf5c7fb438 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 16:14:09 -0400
 Subject: [PATCH] fc/subs/volatile: alias common /var/volatile paths

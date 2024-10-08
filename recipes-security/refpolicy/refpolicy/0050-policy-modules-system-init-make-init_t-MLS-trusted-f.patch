@@ -1,4 +1,4 @@
-From a9ceec99a527007a91ba6685d0b86c327fbb6443 Mon Sep 17 00:00:00 2001
+From c49b89d2a6cfc33c0e6fe6347609fea09ae7fe2e Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 28 May 2019 16:41:37 +0800
 Subject: [PATCH] policy/modules/system/init: make init_t MLS trusted for
@@ -17,7 +17,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/init.te b/policy/modules/system/init.te
-index be9c75155..458906ac5 100644
+index 6ffdb547f..8bd8e2f63 100644
 --- a/policy/modules/system/init.te
 +++ b/policy/modules/system/init.te
 @@ -237,6 +237,7 @@ mls_file_write_all_levels(init_t)

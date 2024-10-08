@@ -1,4 +1,4 @@
-From 4eaa766ef11cb053f010bcde5121e76031aae799 Mon Sep 17 00:00:00 2001
+From ec080f2b0b18b29e46bded08a0880624e5380026 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Thu, 18 Jun 2020 09:59:58 +0800
 Subject: [PATCH] policy/modules/system/systemd: systemd-*: make systemd_*_t
@@ -43,10 +43,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index e483d8aea..a0e6bb405 100644
+index dc3badece..0440b4795 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -391,6 +391,9 @@ files_search_var_lib(systemd_backlight_t)
+@@ -430,6 +430,9 @@ files_search_var_lib(systemd_backlight_t)
  fs_getattr_all_fs(systemd_backlight_t)
  fs_search_cgroup_dirs(systemd_backlight_t)
  
@@ -56,7 +56,7 @@ index e483d8aea..a0e6bb405 100644
  #######################################
  #
  # Binfmt local policy
-@@ -560,6 +563,9 @@ term_use_unallocated_ttys(systemd_generator_t)
+@@ -603,6 +606,9 @@ term_use_unallocated_ttys(systemd_generator_t)
  
  udev_read_runtime_files(systemd_generator_t)
  
@@ -66,7 +66,7 @@ index e483d8aea..a0e6bb405 100644
  ifdef(`distro_gentoo',`
  	corecmd_shell_entry_type(systemd_generator_t)
  ')
-@@ -1009,6 +1015,9 @@ userdom_setattr_user_ttys(systemd_logind_t)
+@@ -1058,6 +1064,9 @@ userdom_setattr_user_ttys(systemd_logind_t)
  userdom_use_user_ttys(systemd_logind_t)
  domain_read_all_domains_state(systemd_logind_t)
  
@@ -76,7 +76,7 @@ index e483d8aea..a0e6bb405 100644
  # Needed to work around patch not yet merged into the systemd-logind supported on RHEL 7.x
  # The change in systemd by Nicolas Iooss on 02-Feb-2016 with hash 4b51966cf6c06250036e428608da92f8640beb96
  # should fix the problem where user directories in /run/user/$UID/ are not getting the proper context
-@@ -1591,6 +1600,9 @@ udev_read_runtime_files(systemd_rfkill_t)
+@@ -1681,6 +1690,9 @@ udev_read_runtime_files(systemd_rfkill_t)
  
  systemd_log_parse_environment(systemd_rfkill_t)
  

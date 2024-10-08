@@ -1,4 +1,4 @@
-From 3b260a0dc07f61b9bf873a8ac976430c80a653c3 Mon Sep 17 00:00:00 2001
+From a563f59fe223aa9c74df7a482b5da80ce05fbbf5 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Fri, 23 Aug 2013 12:01:53 +0800
 Subject: [PATCH] policy/modules/services/rpc: make nfsd_t domain MLS trusted
@@ -15,10 +15,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 7 insertions(+)
 
 diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
-index 887ca3332..f6ca775e6 100644
+index 8fd1875d3..6c35a2374 100644
 --- a/policy/modules/kernel/kernel.te
 +++ b/policy/modules/kernel/kernel.te
-@@ -380,6 +380,8 @@ mls_process_read_all_levels(kernel_t)
+@@ -381,6 +381,8 @@ mls_process_read_all_levels(kernel_t)
  mls_process_write_all_levels(kernel_t)
  mls_file_write_all_levels(kernel_t)
  mls_file_read_all_levels(kernel_t)
@@ -28,7 +28,7 @@ index 887ca3332..f6ca775e6 100644
  ifdef(`distro_redhat',`
  	# Bugzilla 222337
 diff --git a/policy/modules/services/rpcbind.te b/policy/modules/services/rpcbind.te
-index 2a712192b..923e48db7 100644
+index 137c21ece..d2ee1edcf 100644
 --- a/policy/modules/services/rpcbind.te
 +++ b/policy/modules/services/rpcbind.te
 @@ -73,6 +73,11 @@ logging_send_syslog_msg(rpcbind_t)

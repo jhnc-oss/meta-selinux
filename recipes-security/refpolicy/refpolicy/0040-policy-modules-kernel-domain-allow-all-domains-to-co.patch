@@ -1,0 +1,39 @@
+From 58adf54a5ef927cda85c11e2c73151d6e91e8294 Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Thu, 3 Oct 2024 21:12:33 +0800
+Subject: [PATCH] policy/modules/kernel/domain: allow all domains to connect to
+ systemd-nsresourced over a unix socket
+
+Refer to Fedora selinux policy[1], allow all domains to connect to
+systemd-nsresourced over a unix socket.
+
+As said in [2]: Each subsystem that needs to define users and groups on
+the local system is supposed to implement this API, and offer its
+interfaces on a Varlink AF_UNIX/SOCK_STREAM file system socket bound
+into the /run/systemd/userdb/ directory.
+
+[1] https://github.com/fedora-selinux/selinux-policy/commit/8c784a48c0833a83de9d2d120f4cb76f0d87895c
+[2] https://systemd.io/USER_GROUP_API/
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/kernel/domain.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/kernel/domain.te b/policy/modules/kernel/domain.te
+index 0f38015b6..e3eee0590 100644
+--- a/policy/modules/kernel/domain.te
++++ b/policy/modules/kernel/domain.te
+@@ -131,6 +131,7 @@ files_list_root(domain)
+ ifdef(`init_systemd',`
+ 	optional_policy(`
+ 		shutdown_sigchld(domain)
++		systemd_stream_connect_nsresourced(domain)
+ 	')
+ ')
+ 
+-- 
+2.25.1
+
