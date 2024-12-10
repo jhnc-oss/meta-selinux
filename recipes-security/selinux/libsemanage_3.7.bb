@@ -14,6 +14,7 @@ inherit lib_package python3native
 SRC_URI += "file://libsemanage-Fix-execve-segfaults-on-Ubuntu.patch \
             file://libsemanage-allow-to-disable-audit-support.patch \
             file://libsemanage-disable-expand-check-on-policy-load.patch \
+            file://0001-libsemanage-fix-swig-bindings-for-4.3.0.patch \
            "
 
 DEPENDS = "libsepol libselinux python3 bison-native swig-native"
