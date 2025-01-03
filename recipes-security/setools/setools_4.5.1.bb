@@ -16,17 +16,13 @@ LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=69a7b68f0a4a570d7c0c43465333ecbc \
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "python3-cython-native libsepol libselinux"
+DEPENDS = "libsepol libselinux"
 
 RDEPENDS:${PN} = "python3-networkx python3-logging libselinux-python"
 
 RPROVIDES:${PN} = "${PN}-console"
 
-inherit python_setuptools_build_meta
-
-do_install:prepend() {
-    sed -i -e 's:${RECIPE_SYSROOT}::g' ${S}/setools/policyrep.c
-}
+inherit python_setuptools_build_meta cython
 
 do_install:append() {
     # Need PyQt6 support, disable gui tools
