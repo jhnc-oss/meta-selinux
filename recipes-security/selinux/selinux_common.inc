@@ -19,3 +19,5 @@ do_install() {
 }
 
 CVE_PRODUCT ?= "kernel:selinux"
+
+CVE_STATUS[CVE-2020-10751] = "fixed-version: Fix is present in the current kernel version."
