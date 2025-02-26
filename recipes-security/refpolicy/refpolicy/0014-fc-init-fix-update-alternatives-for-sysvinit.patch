@@ -1,4 +1,4 @@
-From eecf36ae218ee0d85fd07a14bfbcb6636ab84095 Mon Sep 17 00:00:00 2001
+From a76963ea8a74c818bd03acae75ae86db59c366e7 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] fc/init: fix update-alternatives for sysvinit
@@ -27,7 +27,7 @@ index 2e47783c2..e359539be 100644
  /run/shutdown\.pid	--	gen_context(system_u:object_r:shutdown_runtime_t,s0)
  
 diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
-index 7d2efef0a..9a5711a83 100644
+index b1163fdbb..1c2553d21 100644
 --- a/policy/modules/kernel/corecommands.fc
 +++ b/policy/modules/kernel/corecommands.fc
 @@ -156,6 +156,8 @@ ifdef(`distro_gentoo',`

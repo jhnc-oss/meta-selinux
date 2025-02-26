@@ -1,4 +1,4 @@
-From 29e16342861e11d6463ec63ffbe55d1665d05e7d Mon Sep 17 00:00:00 2001
+From 07657262d8ac7304f8dd0224e3daaecc925d4392 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:43:28 +0800
 Subject: [PATCH] fc/locallogin: apply policy to sulogin alternatives

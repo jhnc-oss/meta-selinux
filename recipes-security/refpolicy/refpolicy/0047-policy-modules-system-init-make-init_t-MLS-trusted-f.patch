@@ -1,4 +1,4 @@
-From 777e396d61c3af7b847fcc9ebc490f1e5f3969b9 Mon Sep 17 00:00:00 2001
+From 93936c7a0cf671f463b5d3360c6c906df4028e33 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Fri, 15 Jan 2016 03:47:05 -0500
 Subject: [PATCH] policy/modules/system/init: make init_t MLS trusted for
@@ -27,10 +27,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/policy/modules/system/init.te b/policy/modules/system/init.te
-index e724c295e..6ffdb547f 100644
+index 43d62b2e1..039272004 100644
 --- a/policy/modules/system/init.te
 +++ b/policy/modules/system/init.te
-@@ -238,6 +238,10 @@ mls_process_write_all_levels(init_t)
+@@ -239,6 +239,10 @@ mls_process_write_all_levels(init_t)
  mls_fd_use_all_levels(init_t)
  mls_process_set_level(init_t)
  

@@ -1,4 +1,4 @@
-From fcfd91661ea05b5967f75927116056924e972214 Mon Sep 17 00:00:00 2001
+From 53c2af24e86b3ab9be5a982958bb0e5c9e8c1360 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Tue, 9 Jun 2015 21:22:52 +0530
 Subject: [PATCH] fc/sysnetwork: apply policy to network commands alternatives

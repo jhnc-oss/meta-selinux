@@ -1,4 +1,4 @@
-From 8586fbe84abd716a425e13e8b48179a08e210db2 Mon Sep 17 00:00:00 2001
+From 7f58d61471a45851dd162c2b4bd9733a5311c0b9 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 30 Jun 2020 10:45:57 +0800
 Subject: [PATCH] fc: add fcontext for init scripts and systemd service files
@@ -14,7 +14,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  4 files changed, 5 insertions(+)
 
 diff --git a/policy/modules/services/cron.fc b/policy/modules/services/cron.fc
-index 827363d88..e8412396d 100644
+index e71ad22c1..bb1351732 100644
 --- a/policy/modules/services/cron.fc
 +++ b/policy/modules/services/cron.fc
 @@ -1,4 +1,5 @@
@@ -34,7 +34,7 @@ index 382c067f9..0ecc5acc4 100644
  /usr/bin/rngd	--	gen_context(system_u:object_r:rngd_exec_t,s0)
  
 diff --git a/policy/modules/services/rpc.fc b/policy/modules/services/rpc.fc
-index 7edc09fac..7416fa39f 100644
+index 3b6d1c930..4949d995a 100644
 --- a/policy/modules/services/rpc.fc
 +++ b/policy/modules/services/rpc.fc
 @@ -2,7 +2,9 @@
@@ -46,7 +46,7 @@ index 7edc09fac..7416fa39f 100644
 +/etc/rc\.d/init\.d/nfscommon	--	gen_context(system_u:object_r:rpcd_initrc_exec_t,s0)
  /etc/rc\.d/init\.d/rpcidmapd	--	gen_context(system_u:object_r:rpcd_initrc_exec_t,s0)
  
- /usr/bin/nfsdcld	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+ /usr/bin/blkmapd	--	gen_context(system_u:object_r:blkmapd_exec_t,s0)
 diff --git a/policy/modules/system/logging.fc b/policy/modules/system/logging.fc
 index 3b0dea51b..0ce2bec4b 100644
 --- a/policy/modules/system/logging.fc

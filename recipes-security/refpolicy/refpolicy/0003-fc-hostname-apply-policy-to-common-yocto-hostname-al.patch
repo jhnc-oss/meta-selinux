@@ -1,4 +1,4 @@
-From b8ec557e6aa310c65d9183ae741e649eae1c3619 Mon Sep 17 00:00:00 2001
+From db25a33d356c7c273c1bcee33bd1f5df80bf29b0 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] fc/hostname: apply policy to common yocto hostname

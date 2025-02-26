@@ -1,4 +1,4 @@
-From d6573102f922b0e08d49cb5582612dfbaae10600 Mon Sep 17 00:00:00 2001
+From dfc4e8ef225a6ce97ef4862b608228440d099863 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Thu, 25 Feb 2016 04:25:08 -0500
 Subject: [PATCH] policy/modules/system/logging: allow auditd_t to write socket
@@ -22,7 +22,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index cedcaeb36..1b181f7cc 100644
+index 9659937fe..2c733c0f2 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -236,6 +236,8 @@ miscfiles_read_localization(auditd_t)

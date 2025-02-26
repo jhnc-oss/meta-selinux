@@ -50,28 +50,29 @@ SRC_URI += " \
         file://0032-policy-modules-kernel-terminal-don-t-audit-tty_devic.patch \
         file://0033-policy-modules-system-systemd-enable-support-for-sys.patch \
         file://0034-policy-modules-system-logging-allow-systemd-tmpfiles.patch \
-        file://0035-policy-modules-system-systemd-allow-systemd_logind_t.patch \
-        file://0036-policy-modules-roles-sysadm-allow-sysadm-to-use-init.patch \
-        file://0037-policy-modules-system-systemd-systemd-user-fixes.patch \
-        file://0038-policy-modules-system-logging-grant-getpcap-capabili.patch \
-        file://0039-policy-modules-system-allow-services-to-read-tmpfs-u.patch \
-        file://0040-policy-modules-kernel-domain-allow-all-domains-to-co.patch \
-        file://0041-policy-modules-system-mount-make-mount_t-domain-MLS-.patch \
-        file://0042-policy-modules-roles-sysadm-MLS-sysadm-rw-to-clearan.patch \
-        file://0043-policy-modules-services-rpc-make-nfsd_t-domain-MLS-t.patch \
-        file://0044-policy-modules-admin-dmesg-make-dmesg_t-MLS-trusted-.patch \
-        file://0045-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
-        file://0046-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
-        file://0047-policy-modules-system-systemd-make-systemd-tmpfiles_.patch \
-        file://0048-policy-modules-system-systemd-systemd-make-systemd_-.patch \
-        file://0049-policy-modules-system-logging-add-the-syslogd_t-to-t.patch \
-        file://0050-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
-        file://0051-policy-modules-system-init-all-init_t-to-read-any-le.patch \
-        file://0052-policy-modules-system-logging-allow-auditd_t-to-writ.patch \
-        file://0053-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
-        file://0054-policy-modules-system-setrans-allow-setrans_t-use-fd.patch \
-        file://0055-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
-        file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
+        file://0035-policy-modules-roles-sysadm-allow-sysadm-to-use-init.patch \
+        file://0036-policy-modules-system-systemd-systemd-user-fixes.patch \
+        file://0037-policy-modules-system-logging-grant-getpcap-capabili.patch \
+        file://0038-policy-modules-system-allow-services-to-read-tmpfs-u.patch \
+        file://0039-policy-modules-kernel-domain-allow-all-domains-to-co.patch \
+        file://0040-systemd-allow-systemd-logind-to-inherit-fds.patch \
+        file://0041-systemd-allow-systemd-tmpfiles-to-read-bin_t-symlink.patch \
+        file://0042-policy-modules-system-mount-make-mount_t-domain-MLS-.patch \
+        file://0043-policy-modules-roles-sysadm-MLS-sysadm-rw-to-clearan.patch \
+        file://0044-policy-modules-services-rpc-make-nfsd_t-domain-MLS-t.patch \
+        file://0045-policy-modules-admin-dmesg-make-dmesg_t-MLS-trusted-.patch \
+        file://0046-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
+        file://0047-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
+        file://0048-policy-modules-system-systemd-make-systemd-tmpfiles_.patch \
+        file://0049-policy-modules-system-systemd-systemd-make-systemd_-.patch \
+        file://0050-policy-modules-system-logging-add-the-syslogd_t-to-t.patch \
+        file://0051-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
+        file://0052-policy-modules-system-init-all-init_t-to-read-any-le.patch \
+        file://0053-policy-modules-system-logging-allow-auditd_t-to-writ.patch \
+        file://0054-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
+        file://0055-policy-modules-system-setrans-allow-setrans_t-use-fd.patch \
+        file://0056-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
+        file://0057-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         "
 
 S = "${WORKDIR}/refpolicy"

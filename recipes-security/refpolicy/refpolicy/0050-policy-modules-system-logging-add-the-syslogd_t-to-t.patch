@@ -1,4 +1,4 @@
-From 564d43016ed6dcbadb7a7203d8d639d0c782d4e7 Mon Sep 17 00:00:00 2001
+From 25be898844c76cba143de013c05966258e0ec98d Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] policy/modules/system/logging: add the syslogd_t to trusted
@@ -18,7 +18,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index dca46f105..cedcaeb36 100644
+index dbb9c62c9..9659937fe 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -495,6 +495,9 @@ fs_list_tmpfs(syslogd_t)

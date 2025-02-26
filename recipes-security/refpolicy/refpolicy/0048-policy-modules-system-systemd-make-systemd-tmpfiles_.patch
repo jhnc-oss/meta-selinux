@@ -1,4 +1,4 @@
-From f87ab013d4dffe5b588376b73c51fbfc5e9b1205 Mon Sep 17 00:00:00 2001
+From a698845641cf86d0cdcab4b014b14757fbc0a605 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Thu, 4 Feb 2016 06:03:19 -0500
 Subject: [PATCH] policy/modules/system/systemd: make systemd-tmpfiles_t domain
@@ -43,10 +43,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 24fc90838..dc3badece 100644
+index c605d58de..fb75c2f45 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1970,6 +1970,11 @@ sysnet_relabel_config(systemd_tmpfiles_t)
+@@ -2024,6 +2024,11 @@ sysnet_relabel_config(systemd_tmpfiles_t)
  
  systemd_log_parse_environment(systemd_tmpfiles_t)
  

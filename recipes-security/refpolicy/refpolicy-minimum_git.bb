@@ -13,7 +13,7 @@ domains are unconfined. \
 
 SRC_URI += " \
         file://0001-refpolicy-minimum-make-sysadmin-module-optional.patch \
-        file://0002-refpolicy-minimum-enable-nscd_use_shm.patch \
+        file://0002-refpolicy-minimum-allow-systemd-networkd-to-accept-a.patch \
         "
 
 POLICY_NAME = "minimum"
@@ -33,9 +33,10 @@ CORE_POLICY_MODULES = "unconfined \
     getty \
     authlogin \
     locallogin \
+    dbus \
     "
 # systemd dependent policy modules
-CORE_POLICY_MODULES += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'clock systemd udev fstools dbus', '', d)}"
+CORE_POLICY_MODULES += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'clock systemd udev fstools', '', d)}"
 
 # nscd caches libc-issued requests to the name service.
 # Without nscd.pp, commands want to use these caches will be blocked.

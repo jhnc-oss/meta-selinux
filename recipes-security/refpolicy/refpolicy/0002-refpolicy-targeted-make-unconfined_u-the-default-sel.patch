@@ -1,4 +1,4 @@
-From 38cac8a2f2ec94bbc9b6d04ffcc35b7459c05b11 Mon Sep 17 00:00:00 2001
+From 0b299c6f8950cbba592a366e93f9ecb0605ffe9a Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Mon, 20 Apr 2020 11:50:03 +0800
 Subject: [PATCH] refpolicy-targeted: make unconfined_u the default selinux

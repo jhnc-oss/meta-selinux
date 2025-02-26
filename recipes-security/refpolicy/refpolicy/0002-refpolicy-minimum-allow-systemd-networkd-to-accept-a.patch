@@ -1,0 +1,47 @@
+From 805d55ae146a21575b013e041cec7f97899d39ae Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Fri, 26 Feb 2021 09:13:23 +0800
+Subject: [PATCH] refpolicy-minimum: allow systemd-networkd to accept and
+ listen socket
+
+Fixes:
+avc:  denied  { listen } for  pid=340 comm="systemd-network"
+path="/run/systemd/netif/io.systemd.Network"
+scontext=system_u:system_r:systemd_networkd_t:s0
+tcontext=system_u:system_r:systemd_networkd_t:s0
+tclass=unix_stream_socket permissive=1
+
+avc:  denied  { accept } for  pid=312 comm="systemd-nsresou"
+path="/run/systemd/io.systemd.NamespaceResource"
+scontext=system_u:system_r:systemd_nsresourced_t:s0
+tcontext=system_u:system_r:systemd_nsresourced_t:s0
+tclass=unix_stream_socket permissive=1
+
+avc:  denied  { accept } for  pid=309 comm="systemd-nsresou"
+path="/run/systemd/io.systemd.NamespaceResource"
+scontext=system_u:system_r:systemd_nsresourced_t:s0
+tcontext=system_u:system_r:systemd_nsresourced_t:s0
+tclass=unix_stream_socket permissive=1
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/system/systemd.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 45d4db784..af0e05e9d 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -1305,6 +1305,7 @@ allow systemd_networkd_t self:rawip_socket create_socket_perms;
+ allow systemd_networkd_t self:tun_socket { create_socket_perms relabelfrom relabelto };
+ allow systemd_networkd_t self:udp_socket create_socket_perms;
+ allow systemd_networkd_t self:unix_dgram_socket create_socket_perms;
++allow systemd_networkd_t self:unix_stream_socket { accept listen };
+ 
+ manage_dirs_pattern(systemd_networkd_t, systemd_networkd_runtime_t, systemd_networkd_runtime_t)
+ manage_files_pattern(systemd_networkd_t, systemd_networkd_runtime_t, systemd_networkd_runtime_t)
+-- 
+2.25.1
+

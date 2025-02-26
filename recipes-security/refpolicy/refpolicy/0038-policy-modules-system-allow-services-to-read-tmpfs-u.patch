@@ -1,4 +1,4 @@
-From 33bc8d28c406ffd7a6aef2f390734b3f5bdfc5a3 Mon Sep 17 00:00:00 2001
+From 0047cbb8997d9d36613dcee9b60430fa44025713 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 30 Aug 2024 12:39:48 +0800
 Subject: [PATCH] policy/modules/system: allow services to read tmpfs under
@@ -67,7 +67,7 @@ index a900226bf..75b94785b 100644
  mcs_process_set_categories(getty_t)
  
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index 086498936..dca46f105 100644
+index be602fc7f..dbb9c62c9 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -491,6 +491,7 @@ files_read_kernel_symbol_table(syslogd_t)
@@ -79,10 +79,10 @@ index 086498936..dca46f105 100644
  
  mls_file_write_all_levels(syslogd_t) # Need to be able to write to /var/run/ and /var/log directories
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 9375e8926..24fc90838 100644
+index e48a8c26f..23f7a6027 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1294,6 +1294,7 @@ files_watch_root_dirs(systemd_networkd_t)
+@@ -1332,6 +1332,7 @@ files_watch_root_dirs(systemd_networkd_t)
  files_list_runtime(systemd_networkd_t)
  
  fs_getattr_all_fs(systemd_networkd_t)
@@ -91,7 +91,7 @@ index 9375e8926..24fc90838 100644
  fs_read_nsfs_files(systemd_networkd_t)
  fs_watch_memory_pressure(systemd_networkd_t)
 diff --git a/policy/modules/system/udev.te b/policy/modules/system/udev.te
-index b2e43aa7d..f543a48d2 100644
+index 620de7e2e..ccb073351 100644
 --- a/policy/modules/system/udev.te
 +++ b/policy/modules/system/udev.te
 @@ -142,6 +142,7 @@ files_dontaudit_getattr_tmp_dirs(udev_t)

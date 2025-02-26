@@ -1,4 +1,4 @@
-From d15ee4e3684c52af2caa3af2c24af73ab7ceb677 Mon Sep 17 00:00:00 2001
+From c67674b38368f5d584fd3013f0193b6e6e733a66 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 29 Mar 2019 08:26:55 -0400
 Subject: [PATCH] fc/dmesg: apply policy to dmesg alternatives

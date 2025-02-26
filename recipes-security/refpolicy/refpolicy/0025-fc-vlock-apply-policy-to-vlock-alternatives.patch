@@ -1,4 +1,4 @@
-From 32988df0a389ef480334dffce4d5cc96b0f1012e Mon Sep 17 00:00:00 2001
+From 6e72fd53bbadf600c06c3f25dfd502e6a9c502fb Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Wed, 18 Dec 2019 15:04:41 +0800
 Subject: [PATCH] fc/vlock: apply policy to vlock alternatives

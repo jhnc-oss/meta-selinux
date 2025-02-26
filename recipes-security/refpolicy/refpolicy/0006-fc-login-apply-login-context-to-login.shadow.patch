@@ -1,4 +1,4 @@
-From b318d4d8feb1a021e63d38ac2bea4abe834c4e3b Mon Sep 17 00:00:00 2001
+From 59b9c22802488a693d40e7570536cca89bdc58ee Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 21:43:53 -0400
 Subject: [PATCH] fc/login: apply login context to login.shadow
@@ -12,7 +12,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/authlogin.fc b/policy/modules/system/authlogin.fc
-index fcdd38d6d..c7e7b64a9 100644
+index eca178a2e..ddf5ecec2 100644
 --- a/policy/modules/system/authlogin.fc
 +++ b/policy/modules/system/authlogin.fc
 @@ -8,6 +8,7 @@

@@ -1,4 +1,4 @@
-From ec080f2b0b18b29e46bded08a0880624e5380026 Mon Sep 17 00:00:00 2001
+From f70cd58e286d417f9024b23056234038629bb75f Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Thu, 18 Jun 2020 09:59:58 +0800
 Subject: [PATCH] policy/modules/system/systemd: systemd-*: make systemd_*_t
@@ -43,10 +43,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index dc3badece..0440b4795 100644
+index fb75c2f45..45d4db784 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -430,6 +430,9 @@ files_search_var_lib(systemd_backlight_t)
+@@ -439,6 +439,9 @@ files_search_var_lib(systemd_backlight_t)
  fs_getattr_all_fs(systemd_backlight_t)
  fs_search_cgroup_dirs(systemd_backlight_t)
  
@@ -56,7 +56,7 @@ index dc3badece..0440b4795 100644
  #######################################
  #
  # Binfmt local policy
-@@ -603,6 +606,9 @@ term_use_unallocated_ttys(systemd_generator_t)
+@@ -616,6 +619,9 @@ term_use_unallocated_ttys(systemd_generator_t)
  
  udev_read_runtime_files(systemd_generator_t)
  
@@ -66,9 +66,9 @@ index dc3badece..0440b4795 100644
  ifdef(`distro_gentoo',`
  	corecmd_shell_entry_type(systemd_generator_t)
  ')
-@@ -1058,6 +1064,9 @@ userdom_setattr_user_ttys(systemd_logind_t)
+@@ -1093,6 +1099,9 @@ userdom_relabelto_user_runtime_dirs(systemd_logind_t)
+ userdom_setattr_user_ttys(systemd_logind_t)
  userdom_use_user_ttys(systemd_logind_t)
- domain_read_all_domains_state(systemd_logind_t)
  
 +mls_file_read_all_levels(systemd_logind_t)
 +mls_file_write_all_levels(systemd_logind_t)
@@ -76,7 +76,7 @@ index dc3badece..0440b4795 100644
  # Needed to work around patch not yet merged into the systemd-logind supported on RHEL 7.x
  # The change in systemd by Nicolas Iooss on 02-Feb-2016 with hash 4b51966cf6c06250036e428608da92f8640beb96
  # should fix the problem where user directories in /run/user/$UID/ are not getting the proper context
-@@ -1681,6 +1690,9 @@ udev_read_runtime_files(systemd_rfkill_t)
+@@ -1722,6 +1731,9 @@ udev_read_runtime_files(systemd_rfkill_t)
  
  systemd_log_parse_environment(systemd_rfkill_t)
  

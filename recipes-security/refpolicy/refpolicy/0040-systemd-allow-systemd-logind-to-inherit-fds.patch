@@ -1,0 +1,68 @@
+From 9627b5cad0230bc937ba1f2901985afbbc8fcff6 Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Tue, 18 Feb 2025 09:54:06 +0800
+Subject: [PATCH] systemd: allow systemd-logind to inherit fds
+
+Fix the timeout issue after exiting su environment:
+root@qemux86-64:~# su - user1
+qemux86-64:~$ exit
+logout
+root@qemux86-64:~# reboot
+Failed to set wall message, ignoring: Connection timed out
+Call to Reboot failed: Connection timed out
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/admin/su.if       |  4 ++++
+ policy/modules/system/systemd.if | 18 ++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/policy/modules/admin/su.if b/policy/modules/admin/su.if
+index ebb7ef0e0..0398ce6fd 100644
+--- a/policy/modules/admin/su.if
++++ b/policy/modules/admin/su.if
+@@ -232,6 +232,10 @@ template(`su_role_template',`
+ 		auth_use_pam_systemd($1_su_t)
+ 	')
+ 
++	ifdef(`init_systemd',`
++		systemd_inherit_logind_fds($1_su_t)
++	')
++
+ 	tunable_policy(`su_allow_user_exec_domains',`
+ 		allow $3 $1_su_t:process signal;
+ 
+diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
+index 1ae6195a1..99318a3c2 100644
+--- a/policy/modules/system/systemd.if
++++ b/policy/modules/system/systemd.if
+@@ -1439,6 +1439,24 @@ interface(`systemd_use_logind_fds',`
+ 	allow $1 systemd_logind_t:fd use;
+ ')
+ 
++######################################
++## <summary>
++##   Allow systemd logind to inherit fds
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`systemd_inherit_logind_fds',`
++	gen_require(`
++		type systemd_logind_t;
++	')
++
++	allow systemd_logind_t $1:fd use;
++')
++
+ ######################################
+ ## <summary>
+ ##      Watch logind sessions dirs.
+-- 
+2.25.1
+

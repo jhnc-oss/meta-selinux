@@ -1,4 +1,4 @@
-From 1400afd28f2cd886bae487fb17811a5fd98b86b9 Mon Sep 17 00:00:00 2001
+From b23752c14edcda3a5d25c386986cb2a53f68df71 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:55:05 +0800
 Subject: [PATCH] fc/kerberos: apply policy to kerberos alternatives

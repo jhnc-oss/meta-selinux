@@ -1,4 +1,4 @@
-From c54c53f8765c4401aa4c1b4a6204c8b538c008ad Mon Sep 17 00:00:00 2001
+From 74f4dd3dfdd0356171a7ce08c5d5c797c57dbe4a Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 28 May 2024 11:21:48 +0800
 Subject: [PATCH] policy/modules/system/logging: grant getpcap capability to
@@ -21,7 +21,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index df6095805..086498936 100644
+index 481ae9d14..be602fc7f 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -402,6 +402,8 @@ optional_policy(`

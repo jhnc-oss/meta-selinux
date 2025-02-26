@@ -13,5 +13,6 @@ POLICY_MLS_SENS = "0"
 include refpolicy_${PV}.inc
 
 SRC_URI += " \
-        file://0001-refpolicy-targeted-make-unconfined_u-the-default-sel.patch \
+        file://0001-refpolicy-targeted-Revert-users-Move-unconfined_u-definition-to-unconfi.patch \
+        file://0002-refpolicy-targeted-make-unconfined_u-the-default-sel.patch \
         "
