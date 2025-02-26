@@ -1,4 +1,4 @@
-From dff260851ccecf9723a6ddfce0103e09f3ba4613 Mon Sep 17 00:00:00 2001
+From 626d07afcb8e8b3a68158e8a3ea1654620769644 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Mon, 13 Apr 2020 12:44:23 +0800
 Subject: [PATCH] Makefile: fix python modules install path for multilib
@@ -11,10 +11,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/Makefile b/src/Makefile
-index d3b981f..265f1be 100644
+index 213c7d3..92227cb 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -191,7 +191,7 @@ install: all
+@@ -193,7 +193,7 @@ install: all
  	ln -sf --relative $(DESTDIR)$(SHLIBDIR)/$(LIBSO) $(DESTDIR)$(LIBDIR)/$(TARGET)
  
  install-pywrap: pywrap

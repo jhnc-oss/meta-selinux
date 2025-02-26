@@ -1,4 +1,4 @@
-From 7af73c1684ce0e30ce0cd58b51708bde1e3a1984 Mon Sep 17 00:00:00 2001
+From af4948d5a1cfb41338a7539dcd80735b5c250e58 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe@deserted.net>
 Date: Wed, 7 May 2014 11:36:27 -0400
 Subject: [PATCH] libsemanage: disable expand-check on policy load

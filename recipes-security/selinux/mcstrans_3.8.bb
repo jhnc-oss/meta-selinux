@@ -31,7 +31,7 @@ do_install:append() {
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -d ${D}${sysconfdir}/tmpfiles.d
-        echo "d ${localstatedir}/run/setrans - - - -" \
+        echo "d ${runtimedir}/setrans - - - -" \
             > ${D}${sysconfdir}/tmpfiles.d/setrans.conf
     else
         install -d ${D}${sysconfdir}/default/volatiles
