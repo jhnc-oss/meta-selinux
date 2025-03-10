@@ -1,0 +1,30 @@
+From 390fc1607c9c9f7e79adc74386d8503a7c9bf9cf Mon Sep 17 00:00:00 2001
+From: Tianjia Zhang <tianjia.zhang@linux.alibaba.com>
+Date: Mon, 30 Dec 2024 15:58:17 +0800
+Subject: authlogin: allow unix_chkpwd to run
+
+denied  { dac_read_search } for  pid=27506 comm="unix_chkpwd" capability=2  scontext=system_u:system_r:chkpwd_t:s0-s15:c0.c1023 tcontext=system_u:system_r:chkpwd_t:s0-s15:c0.c1023 tclass=capability permissive=1
+
+Signed-off-by: Tianjia Zhang <tianjia.zhang@linux.alibaba.com>
+
+Upstream-Status: Backport [https://github.com/SELinuxProject/refpolicy/commit/796d0335f6b975c9d075525d62ec8e854ce5beef]
+
+Signed-off-by: Clayton Casciato <majortomtosourcecontrol@gmail.com>
+
+---
+ policy/modules/system/authlogin.te | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy/modules/system/authlogin.te b/policy/modules/system/authlogin.te
+index f33a8095f..3c3740dc4 100644
+--- a/policy/modules/system/authlogin.te
++++ b/policy/modules/system/authlogin.te
+@@ -109,7 +109,7 @@ optional_policy(`
+ # Check password local policy
+ #
+ 
+-allow chkpwd_t self:capability { dac_override setuid };
++allow chkpwd_t self:capability { dac_override dac_read_search setuid };
+ dontaudit chkpwd_t self:capability sys_tty_config;
+ allow chkpwd_t self:process { getattr signal };
+ dontaudit chkpwd_t self:process getcap;
