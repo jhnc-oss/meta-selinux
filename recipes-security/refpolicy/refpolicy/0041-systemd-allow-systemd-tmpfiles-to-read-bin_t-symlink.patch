@@ -1,4 +1,4 @@
-From a39879ca482b525ae2b48bf8708615c923df0575 Mon Sep 17 00:00:00 2001
+From f3f3623bf112dee989cae09a5b9842c78655f220 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 18 Feb 2025 15:26:19 +0800
 Subject: [PATCH] systemd: allow systemd-tmpfiles to read bin_t symlink
@@ -19,8 +19,8 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  policy/modules/kernel/corecommands.fc |  1 +
  policy/modules/kernel/corecommands.if | 18 ++++++++++++++++++
  policy/modules/system/systemd.if      |  1 +
- policy/modules/system/systemd.te      |  5 +++++
- 4 files changed, 25 insertions(+)
+ policy/modules/system/systemd.te      |  3 +++
+ 4 files changed, 23 insertions(+)
 
 diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
 index 65178ba32..c7e3d2dae 100644
@@ -73,26 +73,10 @@ index 99318a3c2..7654d1076 100644
  	domtrans_pattern($1_systemd_t, systemd_tmpfiles_exec_t, $1_systemd_tmpfiles_t)
  	read_files_pattern($1_systemd_t, $1_systemd_tmpfiles_t, $1_systemd_tmpfiles_t)
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 23f7a6027..c605d58de 100644
+index 64f13e247..c605d58de 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -817,6 +817,7 @@ files_read_etc_files(systemd_hostnamed_t)
- files_read_etc_runtime_files(systemd_hostnamed_t)
- 
- fs_getattr_all_fs(systemd_hostnamed_t)
-+fs_getattr_nsfs_files(systemd_hostnamed_t)
- 
- init_delete_runtime_files(systemd_hostnamed_t)
- init_read_runtime_files(systemd_hostnamed_t)
-@@ -1705,6 +1706,7 @@ manage_files_pattern(systemd_rfkill_t, systemd_rfkill_var_lib_t, systemd_rfkill_
- init_var_lib_filetrans(systemd_rfkill_t, systemd_rfkill_var_lib_t, dir)
- 
- fs_getattr_all_fs(systemd_rfkill_t)
-+fs_getattr_nsfs_files(systemd_rfkill_t)
- 
- kernel_getattr_proc(systemd_rfkill_t)
- kernel_read_kernel_sysctls(systemd_rfkill_t)
-@@ -1930,6 +1932,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
+@@ -1932,6 +1932,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
  kernel_read_kernel_sysctls(systemd_tmpfiles_t)
  kernel_read_network_state(systemd_tmpfiles_t)
  
