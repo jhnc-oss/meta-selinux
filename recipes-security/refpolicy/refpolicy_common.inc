@@ -74,6 +74,7 @@ SRC_URI += " \
         file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         file://0057-policy-modules-system-authlogin-chkpwd_t-dac_read_se.patch \
         file://0058-policy-modules-services-chronyd-allow_dac_read_searc.patch \
+        file://0059-policy-modules-system-unconfined-fix-oddjob-security.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
