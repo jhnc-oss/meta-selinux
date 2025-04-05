@@ -75,6 +75,7 @@ SRC_URI += " \
         file://0057-policy-modules-system-authlogin-chkpwd_t-dac_read_se.patch \
         file://0058-policy-modules-services-chronyd-allow_dac_read_searc.patch \
         file://0059-policy-modules-system-unconfined-fix-oddjob-security.patch \
+        file://0060-policy-modules-services-firewalld-fix-lib_t-python_c.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
