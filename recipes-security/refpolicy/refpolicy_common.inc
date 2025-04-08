@@ -78,6 +78,7 @@ SRC_URI += " \
         file://0060-policy-modules-services-firewalld-fix-lib_t-python_c.patch \
         file://0061-policy-modules-services-firewalld-fix-firewalld_t-fi.patch \
         file://0062-policy-modules-multiple-filetrans-run_machine_id-etc.patch \
+        file://0063-policy-modules-system-locallogin-dontaudit-sulogin_t.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
