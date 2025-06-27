@@ -14,7 +14,7 @@ SRC_URI += "file://fix-sepolicy-install-path.patch \
             file://0001-sepolicy-set-conf.substitutions-releasever-to-empty-.patch \
            "
 
-S = "${WORKDIR}/git/python"
+S = "${UNPACKDIR}/${BP}/python"
 
 DEPENDS = "libsepol libselinux gettext-native python3-setuptools-scm-native"
 

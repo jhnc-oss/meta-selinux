@@ -1,5 +1,4 @@
-S ?= "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 SECTION ?= "base"
 

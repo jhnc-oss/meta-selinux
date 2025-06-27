@@ -17,7 +17,7 @@ SRC_URI += "\
         file://0003-libselinux-restore-drop-the-obsolete-LSF-transitiona.patch \
         "
 
-S = "${WORKDIR}/git/libselinux"
+S = "${UNPACKDIR}/${BP}/libselinux"
 
 DEPENDS = "libsepol libpcre2 swig-native python3-setuptools-scm-native"
 DEPENDS:append:libc-musl = " fts"

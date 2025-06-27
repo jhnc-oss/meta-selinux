@@ -12,7 +12,7 @@ require selinux_common.inc
 SRC_URI += "file://sandbox-de-bashify.patch \
            "
 
-S = "${WORKDIR}/git/sandbox"
+S = "${UNPACKDIR}/${BP}/sandbox"
 
 DEPENDS = "libselinux libcap-ng gettext-native"
 

@@ -20,8 +20,6 @@ DEPENDS = "libsepol libselinux python3 bison-native swig-native"
 
 DEPENDS:append:class-target = " audit"
 
-S = "${WORKDIR}/git/libsemanage"
-
 EXTRA_OEMAKE:class-native = "DISABLE_AUDIT=y"
 
 PACKAGES =+ "${PN}-python"

@@ -11,8 +11,6 @@ require selinux_common.inc
 
 inherit lib_package
 
-S = "${WORKDIR}/git/libsepol"
-
 DEPENDS = "flex-native"
 
 BBCLASSEXTEND = "native"

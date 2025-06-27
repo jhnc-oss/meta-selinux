@@ -13,8 +13,6 @@ require selinux_common.inc
 
 DEPENDS = "libsepol bison-native"
 
-S = "${WORKDIR}/git/checkpolicy"
-
 do_install:append() {
     install test/dismod ${D}/${bindir}/sedismod
     install test/dispol ${D}/${bindir}/sedispol

@@ -15,8 +15,6 @@ SRC_URI += "\
         file://0003-libselinux-restore-drop-the-obsolete-LSF-transitiona.patch \
         "
 
-S = "${WORKDIR}/git/libselinux"
-
 DEPENDS = "libsepol libpcre2"
 DEPENDS:append:libc-musl = " fts"
 

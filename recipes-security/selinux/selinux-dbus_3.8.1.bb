@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=393a5ca445f6965873eca0259a17f833"
 
 require selinux_common.inc
 
-S = "${WORKDIR}/git/dbus"
+S = "${UNPACKDIR}/${BP}/dbus"
 
 RDEPENDS:${PN} = "python3-core selinux-python-sepolicy"
 

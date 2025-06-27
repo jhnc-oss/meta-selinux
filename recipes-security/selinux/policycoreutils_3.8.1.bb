@@ -21,8 +21,6 @@ PAM_SRC_URI = "file://pam.d/newrole \
 DEPENDS = "libsepol libselinux libsemanage gettext-native"
 DEPENDS:append:class-target = " libcap-ng"
 
-S = "${WORKDIR}/git/policycoreutils"
-
 inherit selinux python3native
 
 RDEPENDS:${PN}-fixfiles = "\

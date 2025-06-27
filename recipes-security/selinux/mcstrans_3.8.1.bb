@@ -22,8 +22,6 @@ EXTRA_OEMAKE = "SBINDIR=${base_sbindir} \
                 SYSTEMDDIR=${systemd_unitdir} \
                "
 
-S = "${WORKDIR}/git/mcstrans"
-
 do_install:append() {
     install -d ${D}${sbindir}
     install -m 755 utils/untranscon ${D}${sbindir}/
