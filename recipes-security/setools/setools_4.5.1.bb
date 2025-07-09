@@ -29,3 +29,5 @@ do_install:append() {
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/setools/__pycache__
     rm -rf ${D}${libdir}/${PYTHON_DIR}/site-packages/setools/*/__pycache__
 }
+
+BBCLASSEXTEND += "native"
