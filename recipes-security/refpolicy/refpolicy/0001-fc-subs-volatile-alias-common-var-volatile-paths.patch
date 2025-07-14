@@ -1,4 +1,4 @@
-From c36ccb73201949df2e4e01dc12e36c77bc42e099 Mon Sep 17 00:00:00 2001
+From e27062c7d2845b421374b390bb300f60793316b5 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 16:14:09 -0400
 Subject: [PATCH] fc/subs/volatile: alias common /var/volatile paths
@@ -29,5 +29,5 @@ index ba22ce7e7..23d4328f7 100644
 +/var/volatile/log /var/log
 +/var/volatile/tmp /var/tmp
 -- 
-2.25.1
+2.34.1
 

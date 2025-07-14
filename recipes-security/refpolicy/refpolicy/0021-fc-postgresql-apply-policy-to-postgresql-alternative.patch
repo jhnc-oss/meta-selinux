@@ -1,4 +1,4 @@
-From e237a9acdb30805eec7f7baea6265a4595f93b9d Mon Sep 17 00:00:00 2001
+From a6057afaeedbc4ed148f3554746aeecc6ee31e3a Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 11:13:16 +0800
 Subject: [PATCH] fc/postgresql: apply policy to postgresql alternatives
@@ -33,5 +33,5 @@ index f31a52cf8..f9bf46870 100644
  /usr/share/jonas/pgsql(/.*)?		gen_context(system_u:object_r:postgresql_db_t,s0)
  ')
 -- 
-2.25.1
+2.34.1
 

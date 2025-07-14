@@ -1,4 +1,4 @@
-From 2df4a4620b74973ceafde3732273234de9668fe3 Mon Sep 17 00:00:00 2001
+From 05cfce6462a9b669d0e9c19e5054eed6eaee929b Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 29 Mar 2019 09:54:07 -0400
 Subject: [PATCH] fc/rpm: apply rpm_exec policy to cpio binaries
@@ -23,5 +23,5 @@ index 7efcf71de..2f83019f0 100644
 +/usr/bin/cpio\.cpio	--	gen_context(system_u:object_r:rpm_exec_t,s0)
  ')
 -- 
-2.25.1
+2.34.1
 

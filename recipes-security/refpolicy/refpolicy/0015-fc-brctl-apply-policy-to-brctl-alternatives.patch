@@ -1,4 +1,4 @@
-From 19c91699eda904d2c377a29c62bdf6be1ebf59f7 Mon Sep 17 00:00:00 2001
+From d19a7e3c74f84b482612fc523eeea0d9d9263594 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:19:54 +0800
 Subject: [PATCH] fc/brctl: apply policy to brctl alternatives
@@ -20,5 +20,5 @@ index ed472f095..2a852b0fd 100644
  /usr/sbin/brctl	--	gen_context(system_u:object_r:brctl_exec_t,s0)
 +/usr/sbin/brctl\.bridge-utils	--	gen_context(system_u:object_r:brctl_exec_t,s0)
 -- 
-2.25.1
+2.34.1
 

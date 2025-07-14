@@ -1,4 +1,4 @@
-From b23752c14edcda3a5d25c386986cb2a53f68df71 Mon Sep 17 00:00:00 2001
+From 0707b5c142915d994b8cbc08d4d9659697c40ed7 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:55:05 +0800
 Subject: [PATCH] fc/kerberos: apply policy to kerberos alternatives
@@ -46,5 +46,5 @@ index df21fcc78..ce0166edd 100644
  /var/log/kadmin\.log.*	--	gen_context(system_u:object_r:kadmind_log_t,s0)
  /var/log/kadmind\.log.*	--	gen_context(system_u:object_r:kadmind_log_t,s0)
 -- 
-2.25.1
+2.34.1
 

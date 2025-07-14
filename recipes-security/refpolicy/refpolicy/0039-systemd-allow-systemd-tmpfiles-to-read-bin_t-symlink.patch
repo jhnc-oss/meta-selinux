@@ -1,0 +1,91 @@
+From ed34e4e062a23f11708c023b2daba4b83b74e23e Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Tue, 18 Feb 2025 15:26:19 +0800
+Subject: [PATCH] systemd: allow systemd-tmpfiles to read bin_t symlink
+
+Fixes:
+avc:  denied  { getattr } for  pid=279 comm="systemd-tmpfile"
+path="/etc/profile.d/70-systemd-shell-extra.sh" dev="vda" ino=172
+scontext=system_u:system_r:systemd_tmpfiles_t
+tcontext=system_u:object_r:bin_t tclass=lnk_file permissive=0
+
+Feb 17 10:16:25 qemux86-64 systemd-tmpfiles[279]: Failed to
+fstat(/etc/profile.d/70-systemd-shell-extra.sh): Permission denied
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/kernel/corecommands.fc |  1 +
+ policy/modules/kernel/corecommands.if | 18 ++++++++++++++++++
+ policy/modules/system/systemd.if      |  1 +
+ policy/modules/system/systemd.te      |  3 +++
+ 4 files changed, 23 insertions(+)
+
+diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
+index 5fd532202..d51f266e5 100644
+--- a/policy/modules/kernel/corecommands.fc
++++ b/policy/modules/kernel/corecommands.fc
+@@ -249,6 +249,7 @@ ifdef(`distro_gentoo',`
+ /usr/lib/sftp-server		--	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/ssh(/.*)?			gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/sudo/sesh		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/usr/lib/systemd/profile\.d(/.*)?	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/systemd/systemd.*	--	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/systemd/system-shutdown(/.*)?	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/systemd/system-sleep(/.*)?	gen_context(system_u:object_r:bin_t,s0)
+diff --git a/policy/modules/kernel/corecommands.if b/policy/modules/kernel/corecommands.if
+index 08ed91f19..0fa4cbf7d 100644
+--- a/policy/modules/kernel/corecommands.if
++++ b/policy/modules/kernel/corecommands.if
+@@ -842,3 +842,21 @@ interface(`corecmd_mmap_all_executables',`
+ 	corecmd_search_bin($1)
+ 	mmap_exec_files_pattern($1, bin_t, exec_type)
+ ')
++
++########################################
++## <summary>
++##	Read symbolic links of bin_t files.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`fs_read_bin_symlinks',`
++	gen_require(`
++		type bin_t;
++	')
++
++	read_lnk_files_pattern($1, bin_t, bin_t)
++')
+diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
+index e6aa112c0..3f3426ebd 100644
+--- a/policy/modules/system/systemd.if
++++ b/policy/modules/system/systemd.if
+@@ -155,6 +155,7 @@ template(`systemd_role_template',`
+ 	userdom_exec_user_bin_files($1_systemd_t)
+ 
+ 	# user systemd-tmpfiles rules
++	allow $1_systemd_tmpfiles_t self:capability net_admin;
+ 	allow $1_systemd_tmpfiles_t $1_systemd_t:unix_stream_socket rw_socket_perms;
+ 	domtrans_pattern($1_systemd_t, systemd_tmpfiles_exec_t, $1_systemd_tmpfiles_t)
+ 	read_files_pattern($1_systemd_t, $1_systemd_tmpfiles_t, $1_systemd_tmpfiles_t)
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index cbae29894..7e39556b7 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -2142,6 +2142,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
+ kernel_read_kernel_sysctls(systemd_tmpfiles_t)
+ kernel_read_network_state(systemd_tmpfiles_t)
+ 
++# Allow to read bin_t symlink under /etc/profile.d/
++fs_read_bin_symlinks(systemd_tmpfiles_t)
++
+ dev_getattr_fs(systemd_tmpfiles_t)
+ dev_manage_all_dev_nodes(systemd_tmpfiles_t)
+ dev_read_urand(systemd_tmpfiles_t)
+-- 
+2.34.1
+

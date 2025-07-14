@@ -1,4 +1,4 @@
-From 9a551208b7e1ebd451115ea36cde1536f34f3866 Mon Sep 17 00:00:00 2001
+From b01a876ff4dd5c8030e8239cff5278753de824a4 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 21:59:18 -0400
 Subject: [PATCH] fc/hwclock: add hwclock alternatives
@@ -21,5 +21,5 @@ index 301965892..139485835 100644
  /usr/sbin/hwclock	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
 +/usr/sbin/hwclock\.util-linux	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
 -- 
-2.25.1
+2.34.1
 

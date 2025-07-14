@@ -1,4 +1,4 @@
-From 53c2af24e86b3ab9be5a982958bb0e5c9e8c1360 Mon Sep 17 00:00:00 2001
+From f66c77baa8d7cae2e71421554ce9fec52a666c3a Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Tue, 9 Jun 2015 21:22:52 +0530
 Subject: [PATCH] fc/sysnetwork: apply policy to network commands alternatives
@@ -14,10 +14,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/policy/modules/system/sysnetwork.fc b/policy/modules/system/sysnetwork.fc
-index a20f74820..6f2e3f8f0 100644
+index 5551ef07f..18707c702 100644
 --- a/policy/modules/system/sysnetwork.fc
 +++ b/policy/modules/system/sysnetwork.fc
-@@ -45,6 +45,7 @@ ifdef(`distro_redhat',`
+@@ -46,6 +46,7 @@ ifdef(`distro_redhat',`
  /usr/bin/dhcpcd		        --	gen_context(system_u:object_r:dhcpc_exec_t,s0)
  /usr/bin/ethtool		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ifconfig		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
@@ -25,7 +25,7 @@ index a20f74820..6f2e3f8f0 100644
  /usr/bin/ip			        --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ipx_configure		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ipx_interface		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
-@@ -61,13 +62,16 @@ ifdef(`distro_redhat',`
+@@ -62,13 +63,16 @@ ifdef(`distro_redhat',`
  /usr/sbin/dhcpcd		--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
  /usr/sbin/ethtool		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/sbin/ifconfig		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
@@ -43,5 +43,5 @@ index a20f74820..6f2e3f8f0 100644
  /usr/sbin/tc			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  
 -- 
-2.25.1
+2.34.1
 

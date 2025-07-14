@@ -1,4 +1,4 @@
-From abcc9a219a57c4cdc60f72cd91372204f3fcfa38 Mon Sep 17 00:00:00 2001
+From c2203debb7315bdbb0262a29e00477f8acc4e0d1 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 5 Apr 2019 11:53:28 -0400
 Subject: [PATCH] refpolicy-minimum: make sysadmin module optional
@@ -22,10 +22,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/policy/modules/system/init.te b/policy/modules/system/init.te
-index bde3d5944..cff62daa0 100644
+index c4c1a5323..956c5679d 100644
 --- a/policy/modules/system/init.te
 +++ b/policy/modules/system/init.te
-@@ -653,13 +653,15 @@ ifdef(`init_systemd',`
+@@ -677,13 +677,15 @@ ifdef(`init_systemd',`
  		unconfined_write_keys(init_t)
  	')
  ',`
@@ -48,10 +48,10 @@ index bde3d5944..cff62daa0 100644
  	')
  ')
 diff --git a/policy/modules/system/locallogin.te b/policy/modules/system/locallogin.te
-index 59bcc78c8..f25168e3b 100644
+index 75ee52efd..74593c55b 100644
 --- a/policy/modules/system/locallogin.te
 +++ b/policy/modules/system/locallogin.te
-@@ -280,7 +280,9 @@ userdom_use_unpriv_users_fds(sulogin_t)
+@@ -285,7 +285,9 @@ userdom_use_unpriv_users_fds(sulogin_t)
  userdom_search_user_home_dirs(sulogin_t)
  userdom_use_user_terminals(sulogin_t)
  
@@ -63,5 +63,5 @@ index 59bcc78c8..f25168e3b 100644
  # by default, sulogin does not use pam...
  # sulogin_pam might need to be defined otherwise
 -- 
-2.25.1
+2.34.1
 

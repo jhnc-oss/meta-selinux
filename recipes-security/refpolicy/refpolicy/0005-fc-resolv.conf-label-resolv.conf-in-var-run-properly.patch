@@ -1,4 +1,4 @@
-From e2a5ddc7235c9cf248a9d860ab8d0d71ec42e7a7 Mon Sep 17 00:00:00 2001
+From 62f52190b1ff3beac1b48e657484f6307b70b238 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 4 Apr 2019 10:45:03 -0400
 Subject: [PATCH] fc/resolv.conf: label resolv.conf in var/run/ properly
@@ -13,10 +13,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/sysnetwork.fc b/policy/modules/system/sysnetwork.fc
-index d792422f5..a20f74820 100644
+index 5dfd6cd6b..5551ef07f 100644
 --- a/policy/modules/system/sysnetwork.fc
 +++ b/policy/modules/system/sysnetwork.fc
-@@ -85,6 +85,7 @@ ifdef(`distro_redhat',`
+@@ -86,6 +86,7 @@ ifdef(`distro_redhat',`
  /run/dhcpcd(/.*)?		gen_context(system_u:object_r:dhcpc_runtime_t,s0)
  /run/netns	-d		gen_context(system_u:object_r:ifconfig_runtime_t,s0)
  /run/netns/[^/]+	--	<<none>>
@@ -25,5 +25,5 @@ index d792422f5..a20f74820 100644
  ifdef(`distro_gentoo',`
  /var/lib/dhcpc(/.*)?		gen_context(system_u:object_r:dhcpc_state_t,s0)
 -- 
-2.25.1
+2.34.1
 

@@ -1,4 +1,4 @@
-From db25a33d356c7c273c1bcee33bd1f5df80bf29b0 Mon Sep 17 00:00:00 2001
+From 2febe93c54945827d753bb2df9e85341d2086a36 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] fc/hostname: apply policy to common yocto hostname
@@ -22,5 +22,5 @@ index 83ddeb573..cf523bc4c 100644
 +/usr/bin/hostname\.net-tools	--	gen_context(system_u:object_r:hostname_exec_t,s0)
 +/usr/bin/hostname\.coreutils	--	gen_context(system_u:object_r:hostname_exec_t,s0)
 -- 
-2.25.1
+2.34.1
 

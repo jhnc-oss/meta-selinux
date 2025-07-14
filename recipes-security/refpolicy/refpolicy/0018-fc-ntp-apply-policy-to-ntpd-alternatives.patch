@@ -1,4 +1,4 @@
-From 85f3abe44a579ddff62fa3ef774c9d53c3bb35e4 Mon Sep 17 00:00:00 2001
+From 25ede8d1c8ac8618d10130957bfd9ca7029f7f88 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:45:23 +0800
 Subject: [PATCH] fc/ntp: apply policy to ntpd alternatives
@@ -11,10 +11,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/services/ntp.fc b/policy/modules/services/ntp.fc
-index 9243f3304..e13cf6a9b 100644
+index 7b55699ee..b55d5fb86 100644
 --- a/policy/modules/services/ntp.fc
 +++ b/policy/modules/services/ntp.fc
-@@ -25,6 +25,7 @@
+@@ -26,6 +26,7 @@
  /usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:ntpd_exec_t,s0)
  
  /usr/sbin/ntpd				--	gen_context(system_u:object_r:ntpd_exec_t,s0)
@@ -23,5 +23,5 @@ index 9243f3304..e13cf6a9b 100644
  /usr/sbin/sntp				--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
  
 -- 
-2.25.1
+2.34.1
 

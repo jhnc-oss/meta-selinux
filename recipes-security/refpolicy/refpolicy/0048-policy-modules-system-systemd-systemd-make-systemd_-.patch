@@ -1,0 +1,91 @@
+From d0a659f27ef2877a3d282fc90fe2e8035efa7d92 Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Thu, 18 Jun 2020 09:59:58 +0800
+Subject: [PATCH] policy/modules/system/systemd: systemd-*: make systemd_*_t
+ MLS trusted for writing/reading from files up to its clearance
+
+Fixes:
+audit: type=1400 audit(1592892455.376:3): avc:  denied  { write } for
+pid=120 comm="systemd-gpt-aut" name="kmsg" dev="devtmpfs" ino=10032
+scontext=system_u:system_r:systemd_generator_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:kmsg_device_t:s15:c0.c1023 tclass=chr_file
+permissive=0
+
+audit: type=1400 audit(1592892455.381:4): avc:  denied  { write } for
+pid=119 comm="systemd-getty-g" name="kmsg" dev="devtmpfs" ino=10032
+scontext=system_u:system_r:systemd_generator_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:kmsg_device_t:s15:c0.c1023 tclass=chr_file
+permissive=0
+
+avc:  denied  { read } for  pid=125 comm="systemd-gpt-aut" name="sdb"
+dev="devtmpfs" ino=42
+scontext=system_u:system_r:systemd_generator_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:fixed_disk_device_t:s15:c0.c1023
+tclass=blk_file permissive=0
+
+avc:  denied  { write } for  pid=233 comm="systemd-rfkill" name="kmsg"
+dev="devtmpfs" ino=2060
+scontext=system_u:system_r:systemd_rfkill_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:kmsg_device_t:s15:c0.c1023 tclass=chr_file
+permissive=0
+
+avc:  denied  { write } for  pid=354 comm="systemd-backlig" name="kmsg"
+dev="devtmpfs" ino=3081
+scontext=system_u:system_r:systemd_backlight_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:kmsg_device_t:s15:c0.c1023 tclass=chr_file
+permissive=0
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/system/systemd.te | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 2595abc8b..e4f53fe66 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -463,6 +463,9 @@ optional_policy(`
+ 	unconfined_dbus_send(systemd_backlight_t)
+ ')
+ 
++mls_file_read_to_clearance(systemd_backlight_t)
++mls_file_write_to_clearance(systemd_backlight_t)
++
+ #######################################
+ #
+ # Binfmt local policy
+@@ -676,6 +679,9 @@ udev_read_runtime_files(systemd_generator_t)
+ # for systemd-getty-generator
+ userdom_use_user_ttys(systemd_generator_t)
+ 
++mls_file_read_to_clearance(systemd_generator_t)
++mls_file_write_to_clearance(systemd_generator_t)
++
+ ifdef(`distro_gentoo',`
+ 	corecmd_shell_entry_type(systemd_generator_t)
+ ')
+@@ -1196,6 +1202,9 @@ userdom_relabelto_user_runtime_dirs(systemd_logind_t)
+ userdom_setattr_user_ttys(systemd_logind_t)
+ userdom_use_user_terminals(systemd_logind_t)
+ 
++mls_file_read_all_levels(systemd_logind_t)
++mls_file_write_all_levels(systemd_logind_t)
++
+ # Needed to work around patch not yet merged into the systemd-logind supported on RHEL 7.x
+ # The change in systemd by Nicolas Iooss on 02-Feb-2016 with hash 4b51966cf6c06250036e428608da92f8640beb96
+ # should fix the problem where user directories in /run/user/$UID/ are not getting the proper context
+@@ -1920,6 +1929,9 @@ udev_read_runtime_files(systemd_rfkill_t)
+ 
+ systemd_log_parse_environment(systemd_rfkill_t)
+ 
++mls_file_read_to_clearance(systemd_rfkill_t)
++mls_file_write_to_clearance(systemd_rfkill_t)
++
+ #########################################
+ #
+ # Resolved local policy
+-- 
+2.34.1
+

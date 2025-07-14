@@ -1,4 +1,4 @@
-From 59b9c22802488a693d40e7570536cca89bdc58ee Mon Sep 17 00:00:00 2001
+From d26183bfc1fa9b9e93ac22707ef7b9b2f7df3238 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 21:43:53 -0400
 Subject: [PATCH] fc/login: apply login context to login.shadow
@@ -12,7 +12,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/authlogin.fc b/policy/modules/system/authlogin.fc
-index eca178a2e..ddf5ecec2 100644
+index 9712f0f87..b3c2f56b4 100644
 --- a/policy/modules/system/authlogin.fc
 +++ b/policy/modules/system/authlogin.fc
 @@ -8,6 +8,7 @@
@@ -24,5 +24,5 @@ index eca178a2e..ddf5ecec2 100644
  /usr/bin/pam_timestamp_check	--	gen_context(system_u:object_r:pam_exec_t,s0)
  /usr/bin/tcb_convert		--	gen_context(system_u:object_r:updpwd_exec_t,s0)
 -- 
-2.25.1
+2.34.1
 

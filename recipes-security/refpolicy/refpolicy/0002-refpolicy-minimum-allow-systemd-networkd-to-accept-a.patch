@@ -1,4 +1,4 @@
-From 805d55ae146a21575b013e041cec7f97899d39ae Mon Sep 17 00:00:00 2001
+From 0a0de54c7a95e959bcf9c34dffc1fc21291d994b Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 26 Feb 2021 09:13:23 +0800
 Subject: [PATCH] refpolicy-minimum: allow systemd-networkd to accept and
@@ -31,10 +31,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 45d4db784..af0e05e9d 100644
+index e4f53fe66..19f8368a8 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1305,6 +1305,7 @@ allow systemd_networkd_t self:rawip_socket create_socket_perms;
+@@ -1439,6 +1439,7 @@ allow systemd_networkd_t self:rawip_socket create_socket_perms;
  allow systemd_networkd_t self:tun_socket { create_socket_perms relabelfrom relabelto };
  allow systemd_networkd_t self:udp_socket create_socket_perms;
  allow systemd_networkd_t self:unix_dgram_socket create_socket_perms;
@@ -43,5 +43,5 @@ index 45d4db784..af0e05e9d 100644
  manage_dirs_pattern(systemd_networkd_t, systemd_networkd_runtime_t, systemd_networkd_runtime_t)
  manage_files_pattern(systemd_networkd_t, systemd_networkd_runtime_t, systemd_networkd_runtime_t)
 -- 
-2.25.1
+2.34.1
 

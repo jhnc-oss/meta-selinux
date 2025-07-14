@@ -1,0 +1,76 @@
+From 7049caea5b0a37084d144c37212f6da57b16e7df Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Fri, 26 Sep 2025 15:15:44 +0800
+Subject: [PATCH] systemd: fix for systemd-networkd and systemd-rfkill
+
+Fixes:
+avc:  denied  { sys_admin } for  pid=391 comm="systemd-network"
+capability=21
+scontext=system_u:system_r:systemd_networkd_t:s0-s15:c0.c1023
+tcontext=system_u:system_r:systemd_networkd_t:s0-s15:c0.c1023
+tclass=capability permissive=0
+
+avc:  denied  { getattr } for  pid=396 comm="systemd-network"
+path="/dev/sda2" dev="devtmpfs" ino=181
+scontext=system_u:system_r:systemd_networkd_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:fixed_disk_device_t:s15:c0.c1023
+tclass=blk_file permissive=0
+
+avc:  denied  { search } for  pid=396 comm="systemd-network"
+name="mount" dev="tmpfs" ino=58
+scontext=system_u:system_r:systemd_networkd_t:s0-s15:c0.c1023
+tcontext=system_u:object_r:mount_runtime_t:s0 tclass=dir permissive=0
+
+avc:  denied  { sys_admin } for  pid=284 comm="systemd-rfkill"
+capability=21
+scontext=system_u:system_r:systemd_rfkill_t:s0-s15:c0.c1023
+tcontext=system_u:system_r:systemd_rfkill_t:s0-s15:c0.c1023
+tclass=capability permissive=0
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/system/systemd.te | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 7e39556b7..adcd931b7 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -1419,7 +1419,7 @@ systemd_log_parse_environment(systemd_modules_load_t)
+ # networkd local policy
+ #
+ 
+-allow systemd_networkd_t self:capability { chown dac_override fowner net_admin net_raw setgid setpcap setuid };
++allow systemd_networkd_t self:capability { chown dac_override fowner net_admin net_raw setgid setpcap setuid sys_admin };
+ allow systemd_networkd_t self:netlink_generic_socket create_socket_perms;
+ allow systemd_networkd_t self:netlink_kobject_uevent_socket create_socket_perms;
+ allow systemd_networkd_t self:netlink_netfilter_socket create_socket_perms;
+@@ -1459,12 +1459,15 @@ corenet_udp_bind_generic_node(systemd_networkd_t)
+ dev_read_urand(systemd_networkd_t)
+ dev_read_sysfs(systemd_networkd_t)
+ dev_write_kmsg(systemd_networkd_t)
++dev_dontaudit_getattr_all_chr_files(systemd_networkd_t)
++dev_dontaudit_getattr_all_blk_files(systemd_networkd_t)
+ 
+ files_read_etc_files(systemd_networkd_t)
+ files_read_etc_runtime_files(systemd_networkd_t)
+ files_watch_runtime_dirs(systemd_networkd_t)
+ files_watch_root_dirs(systemd_networkd_t)
+ files_list_runtime(systemd_networkd_t)
++files_dontaudit_search_all_dirs(systemd_networkd_t)
+ 
+ fs_getattr_all_fs(systemd_networkd_t)
+ fs_list_tmpfs(systemd_networkd_t)
+@@ -1893,6 +1896,7 @@ logging_send_syslog_msg(systemd_pstore_t)
+ # Rfkill local policy
+ #
+ 
++allow systemd_rfkill_t self:capability sys_admin;
+ allow systemd_rfkill_t self:netlink_kobject_uevent_socket create_socket_perms;
+ 
+ manage_dirs_pattern(systemd_rfkill_t, systemd_rfkill_var_lib_t, systemd_rfkill_var_lib_t)
+-- 
+2.34.1
+
