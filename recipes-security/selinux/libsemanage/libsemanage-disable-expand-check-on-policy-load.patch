@@ -1,4 +1,4 @@
-From af4948d5a1cfb41338a7539dcd80735b5c250e58 Mon Sep 17 00:00:00 2001
+From deeb4536309e53478650a2b4d1c01f01422fa75f Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe@deserted.net>
 Date: Wed, 7 May 2014 11:36:27 -0400
 Subject: [PATCH] libsemanage: disable expand-check on policy load
@@ -13,13 +13,13 @@ Upstream-Status: Denied [upstream developers want to preserve the default
 
 Signed-off-by: Joe MacDonald <joe@deserted.net>
 ---
- src/semanage.conf | 4 ++++
+ libsemanage/src/semanage.conf | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/src/semanage.conf b/src/semanage.conf
-index 98d769b..708fa8c 100644
---- a/src/semanage.conf
-+++ b/src/semanage.conf
+diff --git a/libsemanage/src/semanage.conf b/libsemanage/src/semanage.conf
+index 98d769b5..708fa8cb 100644
+--- a/libsemanage/src/semanage.conf
++++ b/libsemanage/src/semanage.conf
 @@ -40,3 +40,7 @@ module-store = direct
  # By default, semanage will generate policies for the SELinux target.
  # To build policies for Xen, uncomment the following line.
@@ -29,5 +29,5 @@ index 98d769b..708fa8c 100644
 +# module.  This results in a significant speed-up in policy loading.
 +expand-check=0
 -- 
-2.25.1
+2.34.1
 

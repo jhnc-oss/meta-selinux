@@ -1,4 +1,4 @@
-From d592d59eb4e7dbf8ce6dc84b3f4c0026fd7cc60c Mon Sep 17 00:00:00 2001
+From 1bfa95fac4e32cecec452d0c48c191ab05d7d038 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 20 Feb 2015 21:07:47 -0500
 Subject: [PATCH] sandbox: de-bashify
@@ -12,24 +12,24 @@ Signed-off-by: Joe MacDonald <joe_macdonald@mentor.com>
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- sandbox.init | 2 +-
- sandboxX.sh  | 2 +-
+ sandbox/sandbox.init | 2 +-
+ sandbox/sandboxX.sh  | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sandbox.init b/sandbox.init
-index b3979bf..1893dc8 100644
---- a/sandbox.init
-+++ b/sandbox.init
+diff --git a/sandbox/sandbox.init b/sandbox/sandbox.init
+index b3979bf5..1893dc87 100644
+--- a/sandbox/sandbox.init
++++ b/sandbox/sandbox.init
 @@ -1,4 +1,4 @@
 -#!/bin/bash
 +#!/bin/sh
  ## BEGIN INIT INFO
  # Provides: sandbox
  # Default-Start: 3 4 5
-diff --git a/sandboxX.sh b/sandboxX.sh
-index eaa500d..8755d75 100644
---- a/sandboxX.sh
-+++ b/sandboxX.sh
+diff --git a/sandbox/sandboxX.sh b/sandbox/sandboxX.sh
+index 28169182..1af61824 100644
+--- a/sandbox/sandboxX.sh
++++ b/sandbox/sandboxX.sh
 @@ -1,4 +1,4 @@
 -#!/bin/bash
 +#!/bin/sh
@@ -37,5 +37,5 @@ index eaa500d..8755d75 100644
  context=`id -Z | secon -t -l -P`
  export TITLE="Sandbox $context -- `grep ^#TITLE: ~/.sandboxrc | /usr/bin/cut -b8-80`"
 -- 
-2.25.1
+2.34.1
 

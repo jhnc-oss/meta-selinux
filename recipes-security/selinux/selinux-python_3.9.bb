@@ -10,8 +10,8 @@ require selinux_common.inc
 
 inherit python3targetconfig
 
-SRC_URI += "file://fix-sepolicy-install-path.patch \
-            file://0001-sepolicy-set-conf.substitutions-releasever-to-empty-.patch \
+SRC_URI += "file://0001-sepolicy-fix-install-path-for-new-pymodule-sepolicy.patch;patchdir=.. \
+            file://0002-sepolicy-set-conf.substitutions-releasever-to-empty-.patch;patchdir=.. \
            "
 
 S = "${UNPACKDIR}/${BP}/python"

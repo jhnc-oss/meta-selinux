@@ -1,4 +1,4 @@
-From 1048b80be8fe800fa343f26db833a6e89b5ba9ab Mon Sep 17 00:00:00 2001
+From 1bb35bc277129c976bb480a05de91dab346c84c9 Mon Sep 17 00:00:00 2001
 From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 Date: Fri, 25 Oct 2019 13:37:14 +0200
 Subject: [PATCH] Do not use PYCEXT, and rely on the installed file name
@@ -23,13 +23,13 @@ Upstream-Status: Denied [https://patchwork.kernel.org/patch/11212405/]
 [Refreshed for 3.0]
 Signed-off-by: Changqing Li <changqing.li@windriver.com>
 ---
- src/Makefile | 3 +--
+ libselinux/src/Makefile | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/src/Makefile b/src/Makefile
-index 92227cb..7c71c65 100644
---- a/src/Makefile
-+++ b/src/Makefile
+diff --git a/libselinux/src/Makefile b/libselinux/src/Makefile
+index edb3ca06..8da3f542 100644
+--- a/libselinux/src/Makefile
++++ b/libselinux/src/Makefile
 @@ -15,7 +15,6 @@ INCLUDEDIR ?= $(PREFIX)/include
  PYINC ?= $(shell $(PKG_CONFIG) --cflags $(PYPREFIX))
  PYLIBS ?= $(shell $(PKG_CONFIG) --libs $(PYPREFIX))
@@ -38,7 +38,7 @@ index 92227cb..7c71c65 100644
  RUBYINC ?= $(shell $(RUBY) -e 'puts "-I" + RbConfig::CONFIG["rubyarchhdrdir"] + " -I" + RbConfig::CONFIG["rubyhdrdir"]')
  RUBYLIBS ?= $(shell $(RUBY) -e 'puts "-L" + RbConfig::CONFIG["libdir"] + " -L" + RbConfig::CONFIG["archlibdir"] + " " + RbConfig::CONFIG["LIBRUBYARG_SHARED"]')
  RUBYINSTALL ?= $(shell $(RUBY) -e 'puts RbConfig::CONFIG["vendorarchdir"]')
-@@ -195,7 +194,7 @@ install: all
+@@ -200,7 +199,7 @@ endif
  install-pywrap: pywrap
  	CFLAGS="$(CPPFLAGS) $(CFLAGS) $(SWIG_CFLAGS)" $(PYTHON) -m pip install --prefix=$(PREFIX) --root $(DESTDIR) --ignore-installed --no-deps $(PYTHON_SETUP_ARGS) .
  	install -m 644 $(SWIGPYOUT) $(DESTDIR)$(PYTHONLIBDIR)/selinux/__init__.py
@@ -48,5 +48,5 @@ index 92227cb..7c71c65 100644
  install-rubywrap: rubywrap
  	test -d $(DESTDIR)$(RUBYINSTALL) || install -m 755 -d $(DESTDIR)$(RUBYINSTALL) 
 -- 
-2.25.1
+2.34.1
 

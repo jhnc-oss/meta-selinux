@@ -1,4 +1,4 @@
-From fb449373ae92a05c324895cd7daee1461a0f0349 Mon Sep 17 00:00:00 2001
+From d7e063d1a41d45cd76a242377b0ee15df37e2520 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Mon, 23 Sep 2013 21:17:59 +0800
 Subject: [PATCH] sepolicy: fix install path for new pymodule sepolicy
@@ -9,13 +9,13 @@ Signed-off-by: Xin Ouyang <Xin.Ouyang@windriver.com>
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- sepolicy/Makefile | 2 +-
+ python/sepolicy/Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sepolicy/Makefile b/sepolicy/Makefile
-index 1a26cfd..6e40691 100644
---- a/sepolicy/Makefile
-+++ b/sepolicy/Makefile
+diff --git a/python/sepolicy/Makefile b/python/sepolicy/Makefile
+index 1a26cfdc..6e40691d 100644
+--- a/python/sepolicy/Makefile
++++ b/python/sepolicy/Makefile
 @@ -27,7 +27,7 @@ test:
  	@$(PYTHON) test_sepolicy.py -v
  
@@ -26,5 +26,5 @@ index 1a26cfd..6e40691 100644
  	install -m 755 sepolicy.py $(DESTDIR)$(BINDIR)/sepolicy
  	(cd $(DESTDIR)$(BINDIR); ln -sf sepolicy sepolgen)
 -- 
-2.25.1
+2.34.1
 

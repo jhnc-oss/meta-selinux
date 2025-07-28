@@ -11,8 +11,8 @@ require selinux_common.inc
 
 inherit pkgconfig systemd update-rc.d
 
-SRC_URI += "file://mcstrans-de-bashify.patch \
-            file://mcstrans-fix-the-init-script.patch \
+SRC_URI += "file://mcstrans-de-bashify.patch;patchdir=.. \
+            file://mcstrans-fix-the-init-script.patch;patchdir=.. \
            "
 
 DEPENDS = "libsepol libselinux libcap"

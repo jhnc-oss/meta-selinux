@@ -1,4 +1,4 @@
-From 624d6231ca9daf494e33352d562ff97cb0219f2d Mon Sep 17 00:00:00 2001
+From c0675c5dc7e59b345cbd62fd134ef950f3474c22 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 20 Feb 2015 17:00:19 -0500
 Subject: [PATCH] fixfiles: de-bashify
@@ -15,13 +15,13 @@ Upstream-Status: Inappropriate [embedded specific]
 Signed-off-by: Joe MacDonald <joe_macdonald@mentor.com>
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
 ---
- scripts/fixfiles | 23 ++++++++++++++---------
+ policycoreutils/scripts/fixfiles | 23 ++++++++++++++---------
  1 file changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/scripts/fixfiles b/scripts/fixfiles
-index 166af6f..a23cdc6 100755
---- a/scripts/fixfiles
-+++ b/scripts/fixfiles
+diff --git a/policycoreutils/scripts/fixfiles b/policycoreutils/scripts/fixfiles
+index b7cd765c..38497765 100755
+--- a/policycoreutils/scripts/fixfiles
++++ b/policycoreutils/scripts/fixfiles
 @@ -1,4 +1,4 @@
 -#!/bin/bash
 +#!/bin/sh
@@ -85,5 +85,5 @@ index 166af6f..a23cdc6 100755
  	return
      fi
 -- 
-2.25.1
+2.34.1
 

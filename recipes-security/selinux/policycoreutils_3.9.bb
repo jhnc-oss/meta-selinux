@@ -11,7 +11,7 @@ LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=393a5ca445f6965873eca0259a17f833"
 require selinux_common.inc
 
 SRC_URI += "${@bb.utils.contains('DISTRO_FEATURES', 'pam', '${PAM_SRC_URI}', '', d)} \
-            file://policycoreutils-fixfiles-de-bashify.patch \
+            file://policycoreutils-fixfiles-de-bashify.patch;patchdir=.. \
            "
 
 PAM_SRC_URI = "file://pam.d/newrole \
@@ -21,7 +21,7 @@ PAM_SRC_URI = "file://pam.d/newrole \
 DEPENDS = "libsepol libselinux libsemanage gettext-native"
 DEPENDS:append:class-target = " libcap-ng"
 
-inherit selinux python3native
+inherit selinux python3native pkgconfig
 
 RDEPENDS:${PN}-fixfiles = "\
     ${PN}-setfiles \
@@ -139,6 +139,8 @@ do_compile:prepend() {
 }
 
 do_compile:class-native() {
+    export LIBSELINUX_LDLIBS="-lselinux"
+    export LIBSEMANAGE_LDLIBS="-lsemanage"
     for PCU_CMD in ${PCU_NATIVE_CMDS} ; do
         oe_runmake -C $PCU_CMD \
             INCLUDEDIR='${STAGING_INCDIR}' \

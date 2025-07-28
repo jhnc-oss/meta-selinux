@@ -11,9 +11,9 @@ require selinux_common.inc
 
 inherit lib_package python3native
 
-SRC_URI += "file://libsemanage-Fix-execve-segfaults-on-Ubuntu.patch \
-            file://libsemanage-allow-to-disable-audit-support.patch \
-            file://libsemanage-disable-expand-check-on-policy-load.patch \
+SRC_URI += "file://libsemanage-Fix-execve-segfaults-on-Ubuntu.patch;patchdir=.. \
+            file://libsemanage-allow-to-disable-audit-support.patch;patchdir=.. \
+            file://libsemanage-disable-expand-check-on-policy-load.patch;patchdir=.. \
            "
 
 DEPENDS = "libsepol libselinux python3 bison-native swig-native"

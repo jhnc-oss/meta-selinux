@@ -1,4 +1,4 @@
-From 626d07afcb8e8b3a68158e8a3ea1654620769644 Mon Sep 17 00:00:00 2001
+From 985a3e50fe2f80f47e3ee71ad74b72f3b4ecf7c6 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Mon, 13 Apr 2020 12:44:23 +0800
 Subject: [PATCH] Makefile: fix python modules install path for multilib
@@ -7,15 +7,15 @@ Upstream-Status: Inappropriate [embedded specific]
 
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- src/Makefile | 2 +-
+ libselinux/src/Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/Makefile b/src/Makefile
-index 213c7d3..92227cb 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -193,7 +193,7 @@ install: all
- 	ln -sf --relative $(DESTDIR)$(SHLIBDIR)/$(LIBSO) $(DESTDIR)$(LIBDIR)/$(TARGET)
+diff --git a/libselinux/src/Makefile b/libselinux/src/Makefile
+index 261c22d4..edb3ca06 100644
+--- a/libselinux/src/Makefile
++++ b/libselinux/src/Makefile
+@@ -198,7 +198,7 @@ ifneq ($(DISABLE_SHARED),y)
+ endif
  
  install-pywrap: pywrap
 -	CFLAGS="$(CPPFLAGS) $(CFLAGS) $(SWIG_CFLAGS)" $(PYTHON) -m pip install --prefix=$(PREFIX) `test -n "$(DESTDIR)" && echo --root $(DESTDIR) --ignore-installed --no-deps` $(PYTHON_SETUP_ARGS) .
@@ -24,5 +24,5 @@ index 213c7d3..92227cb 100644
  	ln -sf --relative $(DESTDIR)$(PYTHONLIBDIR)/selinux/_selinux$(PYCEXT) $(DESTDIR)$(PYTHONLIBDIR)/_selinux$(PYCEXT)
  
 -- 
-2.25.1
+2.34.1
 

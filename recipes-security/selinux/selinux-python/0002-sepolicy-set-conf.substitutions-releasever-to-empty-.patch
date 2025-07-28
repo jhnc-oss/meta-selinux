@@ -1,4 +1,4 @@
-From 70187651a2239d5d8d70130e82c6f108eee77aa1 Mon Sep 17 00:00:00 2001
+From 845f081ba3dab6c27aeac12ab20a45250fd9a8e6 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 24 Sep 2024 14:07:41 +0800
 Subject: [PATCH] sepolicy: set conf.substitutions['releasever'] to empty str
@@ -39,13 +39,13 @@ Upstream-Status: Submitted [https://github.com/SELinuxProject/selinux/pull/444]
 
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- sepolicy/sepolicy/generate.py | 3 +++
+ python/sepolicy/sepolicy/generate.py | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/sepolicy/sepolicy/generate.py b/sepolicy/sepolicy/generate.py
-index adf65f2..56923dc 100644
---- a/sepolicy/sepolicy/generate.py
-+++ b/sepolicy/sepolicy/generate.py
+diff --git a/python/sepolicy/sepolicy/generate.py b/python/sepolicy/sepolicy/generate.py
+index adf65f27..56923dc4 100644
+--- a/python/sepolicy/sepolicy/generate.py
++++ b/python/sepolicy/sepolicy/generate.py
 @@ -1265,6 +1265,9 @@ allow %s_t %s_t:%s_socket name_%s;
          import dnf
  
@@ -57,5 +57,5 @@ index adf65f2..56923dc 100644
              base.fill_sack(load_system_repo=True)
  
 -- 
-2.25.1
+2.34.1
 

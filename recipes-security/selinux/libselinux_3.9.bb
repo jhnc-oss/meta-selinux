@@ -12,7 +12,7 @@ inherit lib_package pkgconfig
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/libselinux:"
 SRC_URI += "\
-        file://0003-libselinux-restore-drop-the-obsolete-LSF-transitiona.patch \
+        file://0003-libselinux-restore-drop-the-obsolete-LSF-transitiona.patch;patchdir=.. \
         "
 
 DEPENDS = "libsepol libpcre2"

@@ -1,4 +1,4 @@
-From 580a625e9e1266d92c248a5e3f471d12d42c149b Mon Sep 17 00:00:00 2001
+From fb739bb565978ec896739daf758c2f6328e48b75 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 7 Aug 2015 15:16:45 -0400
 Subject: [PATCH] mcstrans: remove dependency on bash in initscript
@@ -13,13 +13,13 @@ Upstream-Status: Inappropriate [embedded specific]
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- src/mcstrans.init | 2 +-
+ mcstrans/src/mcstrans.init | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/mcstrans.init b/src/mcstrans.init
-index 2804ec0..8b4737d 100644
---- a/src/mcstrans.init
-+++ b/src/mcstrans.init
+diff --git a/mcstrans/src/mcstrans.init b/mcstrans/src/mcstrans.init
+index 2804ec0a..8b4737d0 100644
+--- a/mcstrans/src/mcstrans.init
++++ b/mcstrans/src/mcstrans.init
 @@ -1,4 +1,4 @@
 -#!/bin/bash
 +#!/bin/sh
@@ -27,5 +27,5 @@ index 2804ec0..8b4737d 100644
  # mcstransd        This starts and stops mcstransd
  #
 -- 
-2.25.1
+2.34.1
 

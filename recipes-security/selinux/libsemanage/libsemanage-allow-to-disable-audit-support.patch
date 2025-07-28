@@ -1,4 +1,4 @@
-From 0fddb654b4193e91b8534cbbeaa5fd9b6aa1ead2 Mon Sep 17 00:00:00 2001
+From beb674e585126fbcc803299ff14feec9bf736873 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Mon, 20 Jan 2014 03:53:48 -0500
 Subject: [PATCH] libsemanage: allow to disable audit support
@@ -7,15 +7,15 @@ Upstream-Status: Inappropriate [embedded specific]
 
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
 ---
- src/Makefile        | 10 +++++++++-
- src/seusers_local.c | 13 +++++++++++++
- tests/Makefile      | 10 +++++++++-
+ libsemanage/src/Makefile        | 10 +++++++++-
+ libsemanage/src/seusers_local.c | 13 +++++++++++++
+ libsemanage/tests/Makefile      | 10 +++++++++-
  3 files changed, 31 insertions(+), 2 deletions(-)
 
-diff --git a/src/Makefile b/src/Makefile
-index 8dfbd76..4012f28 100644
---- a/src/Makefile
-+++ b/src/Makefile
+diff --git a/libsemanage/src/Makefile b/libsemanage/src/Makefile
+index fa3449fb..66c3010f 100644
+--- a/libsemanage/src/Makefile
++++ b/libsemanage/src/Makefile
 @@ -27,6 +27,14 @@ ifeq ($(DEBUG),1)
  	export LDFLAGS ?= -g
  endif
@@ -31,19 +31,19 @@ index 8dfbd76..4012f28 100644
  LEX = flex
  LFLAGS = -s
  YACC = bison
-@@ -90,7 +98,7 @@ $(LIBA): $(OBJS)
+@@ -93,7 +101,7 @@ $(LIBA): $(OBJS)
  	$(RANLIB) $@
  
  $(LIBSO): $(LOBJS)
--	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -lsepol -laudit -lselinux -lbz2 -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
-+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -lsepol $(LIBAUDIT) -lselinux -lbz2 -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L../../libselinux/src -lsepol -laudit -lselinux -lbz2 -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L../../libselinux/src -lsepol $(LIBAUDIT) -lselinux -lbz2 -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
  	ln -sf $@ $(TARGET)
  
  $(LIBPC): $(LIBPC).in ../VERSION
-diff --git a/src/seusers_local.c b/src/seusers_local.c
-index eb3f82b..45da825 100644
---- a/src/seusers_local.c
-+++ b/src/seusers_local.c
+diff --git a/libsemanage/src/seusers_local.c b/libsemanage/src/seusers_local.c
+index eb3f82bc..45da8257 100644
+--- a/libsemanage/src/seusers_local.c
++++ b/libsemanage/src/seusers_local.c
 @@ -8,7 +8,11 @@ typedef struct semanage_seuser record_t;
  
  #include <sepol/policydb.h>
@@ -97,10 +97,10 @@ index eb3f82b..45da825 100644
  	if (seuser)
  		semanage_seuser_free(seuser);
  	return rc;
-diff --git a/tests/Makefile b/tests/Makefile
-index 241ff17..fa03fb6 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
+diff --git a/libsemanage/tests/Makefile b/libsemanage/tests/Makefile
+index 241ff17a..fa03fb66 100644
+--- a/libsemanage/tests/Makefile
++++ b/libsemanage/tests/Makefile
 @@ -4,10 +4,18 @@ CILS = $(sort $(wildcard *.cil))
  
  ###########################################################################
@@ -122,5 +122,5 @@ index 241ff17..fa03fb6 100644
  OBJECTS = $(SOURCES:.c=.o)
  POLICIES = $(CILS:.cil=.policy)
 -- 
-2.25.1
+2.34.1
 
