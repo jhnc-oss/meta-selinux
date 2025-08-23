@@ -16,7 +16,7 @@ SRC_URI += "file://0001-sepolicy-fix-install-path-for-new-pymodule-sepolicy.patc
 
 S = "${UNPACKDIR}/${BP}/python"
 
-DEPENDS = "libsepol libselinux gettext-native python3-setuptools-scm-native"
+DEPENDS = "libsepol libselinux gettext-native python3-setuptools-scm-native python3-pip-native"
 
 RDEPENDS:${PN} = "\
         python3-core \
@@ -111,7 +111,9 @@ FILES:${PN} += "\
 "
 
 do_install() {
-    oe_runmake DESTDIR="${D}" \
+    oe_runmake \
+        DESTDIR="${D}" \
+        PREFIX=${prefix} \
         PYLIBVER='python${PYTHON_BASEVERSION}' \
         PYTHONLIBDIR='${PYTHON_SITEPACKAGES_DIR}' \
         install
