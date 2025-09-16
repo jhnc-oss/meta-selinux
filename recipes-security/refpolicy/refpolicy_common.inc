@@ -82,6 +82,8 @@ SRC_URI += " \
         file://0064-policy-modules-system-locallogin-allow-sulogin_t-unc.patch \
         file://0065-policy-modules-system-locallogin-allow-sulogin_t-use.patch \
         file://0066-policy-modules-services-oddjob-allow-oddjob_mkhomedi.patch \
+        file://0067-fixdep-dbus.patch \
+        file://0068-fix-building-when-dbus-module-is-not-enabled.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
