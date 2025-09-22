@@ -1,4 +1,4 @@
-From 673bac44ce13f475845e0b69dc73bfaa5a0866aa Mon Sep 17 00:00:00 2001
+From fedbd32adb2a9ef2ce3cf9424791f6ca3dd84d88 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Tue, 14 Feb 2017 06:32:35 +0000
 Subject: [PATCH] setools4: fixes for cross compiling
@@ -15,18 +15,18 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/setup.py b/setup.py
-index 5584e55..057bbb5 100644
+index 0b8e3e9..a1ce872 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -79,7 +79,7 @@ class QtHelpCommand(Command):
+@@ -10,7 +10,7 @@ from Cython.Build import cythonize
  
  
  # Library linkage
--lib_dirs = ['.', '/usr/lib64', '/usr/lib', '/usr/local/lib']
-+lib_dirs = [os.environ["STAGING_LIBDIR"]]
- include_dirs = []
+-lib_dirs: list[str] = ['.', '/usr/lib64', '/usr/lib', '/usr/local/lib']
++lib_dirs: list[str] = [os.environ["STAGING_LIBDIR"]]
+ include_dirs: list[str] = []
  
- with suppress(KeyError):
+ userspace_src = os.getenv("USERSPACE_SRC", "")
 -- 
-2.25.1
+2.34.1
 
