@@ -74,6 +74,7 @@ SRC_URI += " \
         file://0056-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
         file://0057-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         file://0058-policy-modules-services-oddjob-allow-oddjob_mkhomedi.patch \
+        file://0059-policy-modules-system-systemd-allow-systemd_generato.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
