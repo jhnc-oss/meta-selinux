@@ -85,6 +85,7 @@ SRC_URI += " \
         file://0067-fixdep-dbus.patch \
         file://0068-fix-building-when-dbus-module-is-not-enabled.patch \
         file://0069-policy-modules-services-oddjob-allow-oddjob_mkhomedi.patch \
+        file://0070-policy-modules-system-systemd-allow-systemd_generato.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
