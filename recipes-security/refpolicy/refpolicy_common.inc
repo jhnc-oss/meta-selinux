@@ -87,6 +87,7 @@ SRC_URI += " \
         file://0069-policy-modules-services-oddjob-allow-oddjob_mkhomedi.patch \
         file://0070-policy-modules-system-systemd-allow-systemd_generato.patch \
         file://0071-policy-modules-system-unconfined-allow-firewalld_t-u.patch \
+        file://0072-policy-modules-services-chronyd-allow-chronyd_t-kern.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
