@@ -78,20 +78,22 @@ prepare_policy_store() {
     HLL_TYPE=$(echo ${POL_SRC}/base.* | awk -F . '{if (NF>1) {print $NF}}')
     HLL_BIN=${STAGING_DIR_NATIVE}${prefix}/libexec/selinux/hll/${HLL_TYPE}
 
-    for i in base ${POLICY_MODULES_MIN}; do
-        MOD_FILE=${POL_SRC}/${i}.${HLL_TYPE}
-        MOD_DIR=${POL_ACTIVE_MODS}/${i}
-        mkdir -p ${MOD_DIR}
-        echo -n "${HLL_TYPE}" > ${MOD_DIR}/lang_ext
+    if [ "${POLICY_MONOLITHIC}" != "y" ]; then
+        for i in base ${POLICY_MODULES_MIN}; do
+            MOD_FILE=${POL_SRC}/${i}.${HLL_TYPE}
+            MOD_DIR=${POL_ACTIVE_MODS}/${i}
+            mkdir -p ${MOD_DIR}
+            echo -n "${HLL_TYPE}" > ${MOD_DIR}/lang_ext
 
-        if ! bzip2 -t ${MOD_FILE} >/dev/null 2>&1; then
-            ${HLL_BIN} ${MOD_FILE} | bzip2 --stdout > ${MOD_DIR}/cil
-            bzip2 -f ${MOD_FILE} && mv -f ${MOD_FILE}.bz2 ${MOD_FILE}
-        else
-            bunzip2 --stdout ${MOD_FILE} | \
-                ${HLL_BIN} | \
-                bzip2 --stdout > ${MOD_DIR}/cil
-        fi
-        cp ${MOD_FILE} ${MOD_DIR}/hll
-    done
+            if ! bzip2 -t ${MOD_FILE} >/dev/null 2>&1; then
+                ${HLL_BIN} ${MOD_FILE} | bzip2 --stdout > ${MOD_DIR}/cil
+                bzip2 -f ${MOD_FILE} && mv -f ${MOD_FILE}.bz2 ${MOD_FILE}
+            else
+                bunzip2 --stdout ${MOD_FILE} | \
+                    ${HLL_BIN} | \
+                    bzip2 --stdout > ${MOD_DIR}/cil
+            fi
+            cp ${MOD_FILE} ${MOD_DIR}/hll
+        done
+    fi
 }
