@@ -260,6 +260,8 @@ do_install() {
 do_install:append() {
     # While building policies on target, Makefile will be searched from SELINUX_DEVEL_PATH
     echo "SELINUX_DEVEL_PATH=${datadir}/selinux/${POLICY_NAME}/include" > ${D}${sysconfdir}/selinux/sepolgen.conf
+
+    sed -i -e 's|${D}||' ${D}${sysconfdir}/selinux/${POLICY_NAME}/contexts/files/file_contexts.homedirs
 }
 
 sysroot_stage_all:append() {
