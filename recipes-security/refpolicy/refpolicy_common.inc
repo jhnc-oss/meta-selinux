@@ -89,6 +89,7 @@ SRC_URI += " \
         file://0071-policy-modules-system-unconfined-allow-firewalld_t-u.patch \
         file://0072-policy-modules-services-chronyd-allow-chronyd_t-kern.patch \
         file://0073-policy-modules-services-ssh-allow-sshd_t-kernel_t-sy.patch \
+        file://0074-policy-modules-services-ssh-allow-sshd_t-userdomain-.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
