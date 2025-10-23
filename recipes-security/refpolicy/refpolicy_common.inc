@@ -81,6 +81,7 @@ SRC_URI += " \
         file://0063-policy-modules-services-ssh-allow-sshd_t-userdomain-.patch \
         file://0064-policy-modules-services-dbus-allow-system_dbusd_t-un.patch \
         file://0065-policy-modules-system-systemd-allow-systemd_logind_t.patch \
+        file://0066-policy-modules-kernel-files-add-files_delete_var_chr.patch \
         "
 
 S = "${WORKDIR}/refpolicy"
