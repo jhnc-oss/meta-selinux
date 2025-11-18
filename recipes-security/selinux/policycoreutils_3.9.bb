@@ -171,10 +171,4 @@ do_install:append:class-target() {
         install -d ${D}${sysconfdir}/pam.d/
         install -m 0644 ${UNPACKDIR}/pam.d/* ${D}${sysconfdir}/pam.d/
     fi
-
-    # /var/lib/selinux is involved by seobject.py:
-    #   + dirname = "/var/lib/selinux"
-    # and it's required for running command:
-    #   $ semanage permissive [OPTS]
-    install -d ${D}${localstatedir}/lib/selinux
 }
