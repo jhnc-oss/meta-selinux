@@ -53,6 +53,7 @@ RDEPENDS:${PN}-semanage = "\
         libselinux-python \
         audit-python \
         ${PN} \
+        ${PN}-sepolgen \
 "
 PACKAGECONFIG ??= "sepolicy-generate"
 PACKAGECONFIG[sepolicy-generate] = ",,,"
