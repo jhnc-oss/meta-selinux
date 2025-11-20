@@ -51,9 +51,19 @@ do_install() {
         PYLIBVER='python${PYTHON_BASEVERSION}' \
         PYTHONLIBDIR='${PYTHON_SITEPACKAGES_DIR}'
 
+    dicect_url_json="${D}${PYTHON_SITEPACKAGES_DIR}/selinux-${PV}.dist-info/direct_url.json"
+    oldhash=$(nativepython3 -c "from pip._internal.operations.install.wheel import rehash; hash,len = rehash('$dicect_url_json'); print(f'{hash},{len}')")
+
     # Fix buildpaths issue
     sed -i -e 's,${WORKDIR},,g' \
-        ${D}${PYTHON_SITEPACKAGES_DIR}/selinux-${PV}.dist-info/direct_url.json
+        $dicect_url_json
+
+    newhash=$(nativepython3 -c "from pip._internal.operations.install.wheel import rehash; hash,len = rehash('$dicect_url_json'); print(f'{hash},{len}')")
+
+    # Update hash of direct_url.json in RECORD after build path was removed
+    sed -i -e "s/$oldhash/$newhash/g" \
+        ${D}${PYTHON_SITEPACKAGES_DIR}/selinux-${PV}.dist-info/RECORD
+
 }
 
 BBCLASSEXTEND += "native"
