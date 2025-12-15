@@ -47,7 +47,7 @@ do_install:append() {
         PYTHONLIBDIR='${PYTHON_SITEPACKAGES_DIR}'
 
     # Update "policy-version" for semanage.conf
-    sed -i 's/^#\s*\(policy-version\s*=\).*$/\1 33/' \
+    sed -i 's/^#\s*\(policy-version\s*=\).*$/\1 35/' \
         ${D}/etc/selinux/semanage.conf
 }
 
