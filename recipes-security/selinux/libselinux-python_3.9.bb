@@ -46,6 +46,7 @@ do_compile() {
 
 do_install() {
     oe_runmake install-pywrap \
+        PIP_NO_BUILD_ISOLATION=0 \
         DESTDIR=${D} \
         PREFIX=${prefix}
         PYLIBVER='python${PYTHON_BASEVERSION}' \
