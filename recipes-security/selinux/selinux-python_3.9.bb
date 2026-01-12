@@ -117,6 +117,7 @@ do_install() {
         PREFIX=${prefix} \
         PYLIBVER='python${PYTHON_BASEVERSION}' \
         PYTHONLIBDIR='${PYTHON_SITEPACKAGES_DIR}' \
+        PIP_NO_BUILD_ISOLATION=0 \
         install
 
     # Remove .pyc files
