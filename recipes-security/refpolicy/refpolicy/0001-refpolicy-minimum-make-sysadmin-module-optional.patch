@@ -1,4 +1,4 @@
-From c2203debb7315bdbb0262a29e00477f8acc4e0d1 Mon Sep 17 00:00:00 2001
+From fbf828a2204ae673442f90b17c97db17965578e9 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 5 Apr 2019 11:53:28 -0400
 Subject: [PATCH] refpolicy-minimum: make sysadmin module optional
@@ -22,10 +22,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/policy/modules/system/init.te b/policy/modules/system/init.te
-index c4c1a5323..956c5679d 100644
+index 15bffd9cf..9b20ff8d4 100644
 --- a/policy/modules/system/init.te
 +++ b/policy/modules/system/init.te
-@@ -677,13 +677,15 @@ ifdef(`init_systemd',`
+@@ -680,13 +680,15 @@ ifdef(`init_systemd',`
  		unconfined_write_keys(init_t)
  	')
  ',`
@@ -48,10 +48,10 @@ index c4c1a5323..956c5679d 100644
  	')
  ')
 diff --git a/policy/modules/system/locallogin.te b/policy/modules/system/locallogin.te
-index 75ee52efd..74593c55b 100644
+index 5840ad5a9..02b75e657 100644
 --- a/policy/modules/system/locallogin.te
 +++ b/policy/modules/system/locallogin.te
-@@ -285,7 +285,9 @@ userdom_use_unpriv_users_fds(sulogin_t)
+@@ -287,7 +287,9 @@ userdom_use_unpriv_users_fds(sulogin_t)
  userdom_search_user_home_dirs(sulogin_t)
  userdom_use_user_terminals(sulogin_t)
  

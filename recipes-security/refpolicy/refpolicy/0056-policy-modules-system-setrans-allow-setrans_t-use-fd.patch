@@ -1,4 +1,4 @@
-From 66402eb7ea25179ba0e21267f0dea1b506a6ab26 Mon Sep 17 00:00:00 2001
+From faae5ef0261d41da137b64e0d99adff300316827 Mon Sep 17 00:00:00 2001
 From: Roy Li <rongqing.li@windriver.com>
 Date: Sat, 22 Feb 2014 13:35:38 +0800
 Subject: [PATCH] policy/modules/system/setrans: allow setrans_t use fd at any

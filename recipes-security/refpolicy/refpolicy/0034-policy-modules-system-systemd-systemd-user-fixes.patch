@@ -1,4 +1,4 @@
-From 39b06488ae85aba2442f3eac2eb42b91edf5f285 Mon Sep 17 00:00:00 2001
+From cb2183b13c440bfc03d56b26c4f90868e753e307 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Thu, 4 Feb 2021 10:48:54 +0800
 Subject: [PATCH] policy/modules/system/systemd: systemd --user fixes
@@ -31,7 +31,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 35 insertions(+)
 
 diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
-index db6bd9752..64d83367d 100644
+index 809fde402..1955f5409 100644
 --- a/policy/modules/system/systemd.if
 +++ b/policy/modules/system/systemd.if
 @@ -267,6 +267,37 @@ template(`systemd_role_template',`
@@ -73,10 +73,10 @@ index db6bd9752..64d83367d 100644
  ## <summary>
  ##   Allow the specified domain to be started as a daemon by the
 diff --git a/policy/modules/system/userdomain.if b/policy/modules/system/userdomain.if
-index 0be775e9e..efa65779a 100644
+index 10b085d41..b751f7de0 100644
 --- a/policy/modules/system/userdomain.if
 +++ b/policy/modules/system/userdomain.if
-@@ -1480,6 +1480,10 @@ template(`userdom_admin_user_template',`
+@@ -1479,6 +1479,10 @@ template(`userdom_admin_user_template',`
  	optional_policy(`
  		userhelper_exec($1_t)
  	')

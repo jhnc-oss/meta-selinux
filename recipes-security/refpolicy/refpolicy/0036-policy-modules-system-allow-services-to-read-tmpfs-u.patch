@@ -1,4 +1,4 @@
-From ea19bb6f4c7d130f0b2d2c025b6359a5a7f82c83 Mon Sep 17 00:00:00 2001
+From 75088c2e74893f5ae19f44a15766a91e74a25af2 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 30 Aug 2024 12:39:48 +0800
 Subject: [PATCH] policy/modules/system: allow services to read tmpfs under
@@ -67,7 +67,7 @@ index a900226bf..75b94785b 100644
  mcs_process_set_categories(getty_t)
  
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index 45ed81867..a3afe5525 100644
+index b1d9c20d2..69b3405b3 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -495,6 +495,7 @@ files_read_kernel_symbol_table(syslogd_t)
@@ -79,10 +79,10 @@ index 45ed81867..a3afe5525 100644
  
  mls_file_write_all_levels(syslogd_t) # Need to be able to write to /var/run/ and /var/log directories
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index cbc72d6a9..cbae29894 100644
+index 255b8a3f0..b9af00ec8 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1467,6 +1467,7 @@ files_watch_root_dirs(systemd_networkd_t)
+@@ -1471,6 +1471,7 @@ files_watch_root_dirs(systemd_networkd_t)
  files_list_runtime(systemd_networkd_t)
  
  fs_getattr_all_fs(systemd_networkd_t)

@@ -1,4 +1,4 @@
-From fc37036aa30e58b4d9c75cbb412d6371212765b3 Mon Sep 17 00:00:00 2001
+From 3995b0994210a4e7035169961fe94012afffe544 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] policy/modules/kernel/terminal: don't audit tty_device_t in

@@ -1,4 +1,4 @@
-From f86a3f306eaa24038f9090e4f99b4f46914735d9 Mon Sep 17 00:00:00 2001
+From df5097ba1d8e492c3bd7b019432d9012e943e1d8 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Mon, 28 Jan 2019 14:05:18 +0800
 Subject: [PATCH] policy/modules/roles/sysadm: MLS - sysadm rw to clearance

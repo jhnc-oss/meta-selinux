@@ -1,4 +1,4 @@
-From 2def1a0849bcef3099f50c99c12eb60974dc9c28 Mon Sep 17 00:00:00 2001
+From ea9fd03253df275d10a0b7c42f45975078b89a7b Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Thu, 31 Oct 2019 17:35:59 +0800
 Subject: [PATCH] policy/modules/kernel/kernel: make kernel_t MLS trusted for

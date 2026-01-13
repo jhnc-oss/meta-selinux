@@ -1,0 +1,35 @@
+From 587af51ddbd93aa7c0dfa13f8abb97d676e200c7 Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Fri, 26 Feb 2021 09:13:23 +0800
+Subject: [PATCH] refpolicy-minimum: enable nscd_use_shm
+
+Fixes:
+avc: denied { accept } for pid=336 comm="systemd-logind"
+path="/run/systemd/io.systemd.Login"
+scontext=system_u:system_r:systemd_logind_t:s0
+tcontext=system_u:system_r:systemd_logind_t:s0 tclass=unix_stream_socket
+permissive=0
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/services/nscd.te | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy/modules/services/nscd.te b/policy/modules/services/nscd.te
+index ffc60497c..d226f1145 100644
+--- a/policy/modules/services/nscd.te
++++ b/policy/modules/services/nscd.te
+@@ -15,7 +15,7 @@ gen_require(`
+ ##	can use nscd shared memory.
+ ##	</p>
+ ## </desc>
+-gen_tunable(nscd_use_shm, false)
++gen_tunable(nscd_use_shm, true)
+ 
+ attribute_role nscd_roles;
+ 
+-- 
+2.34.1
+

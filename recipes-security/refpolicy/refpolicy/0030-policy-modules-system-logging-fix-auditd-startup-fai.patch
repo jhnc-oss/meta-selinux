@@ -1,4 +1,4 @@
-From a6cffb4673b5ea372f7aa0679e8d89cd97018d85 Mon Sep 17 00:00:00 2001
+From 403738f594cba99590bdbf01d52d984e55d9e08e Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] policy/modules/system/logging: fix auditd startup failures
@@ -17,7 +17,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index 11a0fad46..a1e4a5b8d 100644
+index d8621f9e1..cbef358c2 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -120,6 +120,7 @@ allow auditctl_t auditd_log_t:file read_file_perms;

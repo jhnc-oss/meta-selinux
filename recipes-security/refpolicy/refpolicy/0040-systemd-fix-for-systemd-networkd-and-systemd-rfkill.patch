@@ -1,4 +1,4 @@
-From 7049caea5b0a37084d144c37212f6da57b16e7df Mon Sep 17 00:00:00 2001
+From df839088b81e67270d856bebcb6c3b7528f6b46c Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 26 Sep 2025 15:15:44 +0800
 Subject: [PATCH] systemd: fix for systemd-networkd and systemd-rfkill
@@ -35,10 +35,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 7e39556b7..adcd931b7 100644
+index e79dec101..b4afcab57 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -1419,7 +1419,7 @@ systemd_log_parse_environment(systemd_modules_load_t)
+@@ -1423,7 +1423,7 @@ systemd_log_parse_environment(systemd_modules_load_t)
  # networkd local policy
  #
  
@@ -47,7 +47,7 @@ index 7e39556b7..adcd931b7 100644
  allow systemd_networkd_t self:netlink_generic_socket create_socket_perms;
  allow systemd_networkd_t self:netlink_kobject_uevent_socket create_socket_perms;
  allow systemd_networkd_t self:netlink_netfilter_socket create_socket_perms;
-@@ -1459,12 +1459,15 @@ corenet_udp_bind_generic_node(systemd_networkd_t)
+@@ -1463,12 +1463,15 @@ corenet_udp_bind_generic_node(systemd_networkd_t)
  dev_read_urand(systemd_networkd_t)
  dev_read_sysfs(systemd_networkd_t)
  dev_write_kmsg(systemd_networkd_t)
@@ -63,7 +63,7 @@ index 7e39556b7..adcd931b7 100644
  
  fs_getattr_all_fs(systemd_networkd_t)
  fs_list_tmpfs(systemd_networkd_t)
-@@ -1893,6 +1896,7 @@ logging_send_syslog_msg(systemd_pstore_t)
+@@ -1899,6 +1902,7 @@ logging_send_syslog_msg(systemd_pstore_t)
  # Rfkill local policy
  #
  

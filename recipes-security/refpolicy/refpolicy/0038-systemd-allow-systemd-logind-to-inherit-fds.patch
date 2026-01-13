@@ -1,4 +1,4 @@
-From ec677f6cd1fd050e5f558aec6101296769d6bcee Mon Sep 17 00:00:00 2001
+From 7ec9f3f6be543977921eed4b2bba4c6e27004883 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 18 Feb 2025 09:54:06 +0800
 Subject: [PATCH] systemd: allow systemd-logind to inherit fds
@@ -35,10 +35,10 @@ index ebb7ef0e0..0398ce6fd 100644
  		allow $3 $1_su_t:process signal;
  
 diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
-index 64d83367d..e6aa112c0 100644
+index 1955f5409..0d9ff59e2 100644
 --- a/policy/modules/system/systemd.if
 +++ b/policy/modules/system/systemd.if
-@@ -1501,6 +1501,24 @@ interface(`systemd_use_logind_fds',`
+@@ -1581,6 +1581,24 @@ interface(`systemd_use_logind_fds',`
  	allow $1 systemd_logind_t:fd use;
  ')
  

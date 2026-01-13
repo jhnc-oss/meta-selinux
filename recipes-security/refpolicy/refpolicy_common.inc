@@ -56,22 +56,24 @@ SRC_URI += " \
         file://0038-systemd-allow-systemd-logind-to-inherit-fds.patch \
         file://0039-systemd-allow-systemd-tmpfiles-to-read-bin_t-symlink.patch \
         file://0040-systemd-fix-for-systemd-networkd-and-systemd-rfkill.patch \
-        file://0041-policy-modules-system-mount-make-mount_t-domain-MLS-.patch \
-        file://0042-policy-modules-roles-sysadm-MLS-sysadm-rw-to-clearan.patch \
-        file://0043-policy-modules-services-rpc-make-nfsd_t-domain-MLS-t.patch \
-        file://0044-policy-modules-admin-dmesg-make-dmesg_t-MLS-trusted-.patch \
-        file://0045-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
-        file://0046-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
-        file://0047-policy-modules-system-systemd-make-systemd-tmpfiles_.patch \
-        file://0048-policy-modules-system-systemd-systemd-make-systemd_-.patch \
-        file://0049-policy-modules-system-logging-add-the-syslogd_t-to-t.patch \
-        file://0050-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
-        file://0051-policy-modules-system-init-all-init_t-to-read-any-le.patch \
-        file://0052-policy-modules-system-logging-allow-auditd_t-to-writ.patch \
-        file://0053-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
-        file://0054-policy-modules-system-setrans-allow-setrans_t-use-fd.patch \
-        file://0055-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
-        file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
+        file://0041-systemd-allow-domain-used-for-login-program-to-conne.patch \
+        file://0042-systemd-add-rules-for-systemd-ssh-issue.patch \
+        file://0043-policy-modules-system-mount-make-mount_t-domain-MLS-.patch \
+        file://0044-policy-modules-roles-sysadm-MLS-sysadm-rw-to-clearan.patch \
+        file://0045-policy-modules-services-rpc-make-nfsd_t-domain-MLS-t.patch \
+        file://0046-policy-modules-admin-dmesg-make-dmesg_t-MLS-trusted-.patch \
+        file://0047-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
+        file://0048-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
+        file://0049-policy-modules-system-systemd-make-systemd-tmpfiles_.patch \
+        file://0050-policy-modules-system-systemd-systemd-make-systemd_-.patch \
+        file://0051-policy-modules-system-logging-add-the-syslogd_t-to-t.patch \
+        file://0052-policy-modules-system-init-make-init_t-MLS-trusted-f.patch \
+        file://0053-policy-modules-system-init-all-init_t-to-read-any-le.patch \
+        file://0054-policy-modules-system-logging-allow-auditd_t-to-writ.patch \
+        file://0055-policy-modules-kernel-kernel-make-kernel_t-MLS-trust.patch \
+        file://0056-policy-modules-system-setrans-allow-setrans_t-use-fd.patch \
+        file://0057-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
+        file://0058-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         "
 
 S = "${UNPACKDIR}/refpolicy"

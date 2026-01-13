@@ -1,4 +1,4 @@
-From 70e8a8c6468a279b8ae38ff4a681255d05439c0a Mon Sep 17 00:00:00 2001
+From edeb47c29f852c8a85bd8d33c2cb472920cf9a28 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Sat, 30 Sep 2023 17:20:29 +0800
 Subject: [PATCH] policy/modules/system/logging: allow systemd-tmpfiles to
@@ -24,7 +24,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index a1e4a5b8d..97b86b2a7 100644
+index cbef358c2..d22a3207c 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -27,6 +27,10 @@ type auditd_log_t;

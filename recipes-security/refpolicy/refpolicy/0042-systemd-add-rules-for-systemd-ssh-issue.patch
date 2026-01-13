@@ -1,0 +1,154 @@
+From 77336cfaff881b80e3f0c1dd4abef78a208b304f Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Mon, 9 Feb 2026 15:42:19 +0800
+Subject: [PATCH] systemd: add rules for systemd-ssh-issue
+
+systemd-ssh-issue was added in systemd v258. It is a small tool that
+generates a /run/issue.d/50-ssh-vsock.issue drop-in file in case
+AF_VSOCK support is available in the kernel and the VM environment.
+
+Add rules for it and allow getty to read files in /run/issue.d.
+
+Fixes:
+avc: denied { getattr } for pid=391 comm="agetty" path="/run/issue.d"
+dev="tmpfs" ino=846 scontext=system_u:system_r:getty_t
+tcontext=system_u:object_r:initrc_runtime_t tclass=dir permissive=1
+
+avc: denied { read } for pid=391 comm="agetty" name="issue.d"
+dev="tmpfs" ino=846 scontext=system_u:system_r:getty_t
+tcontext=system_u:object_r:initrc_runtime_t tclass=dir permissive=1
+
+avc: denied { open } for pid=391 comm="agetty" path="/run/issue.d"
+dev="tmpfs" ino=846 scontext=system_u:system_r:getty_t
+tcontext=system_u:object_r:initrc_runtime_t tclass=dir permissive=1
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/system/getty.te   |  5 +++++
+ policy/modules/system/systemd.fc |  3 +++
+ policy/modules/system/systemd.if | 19 +++++++++++++++++
+ policy/modules/system/systemd.te | 35 ++++++++++++++++++++++++++++++++
+ 4 files changed, 62 insertions(+)
+
+diff --git a/policy/modules/system/getty.te b/policy/modules/system/getty.te
+index 75b94785b..48a29461a 100644
+--- a/policy/modules/system/getty.te
++++ b/policy/modules/system/getty.te
+@@ -100,6 +100,11 @@ logging_send_syslog_msg(getty_t)
+ 
+ miscfiles_read_localization(getty_t)
+ 
++ifdef(`init_systemd',`
++	# access to /run/issue.d/50-ssh-vsock.issue
++	systemd_read_ssh_issue_runtime(getty_t)
++')
++
+ ifdef(`distro_gentoo',`
+ 	# Gentoo default /etc/issue makes agetty
+ 	# do a DNS lookup for the hostname
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index e44d82a88..130c62370 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -49,6 +49,7 @@
+ /usr/lib/systemd/systemd-resolved	--	gen_context(system_u:object_r:systemd_resolved_exec_t,s0)
+ /usr/lib/systemd/systemd-rfkill		--	gen_context(system_u:object_r:systemd_rfkill_exec_t,s0)
+ /usr/lib/systemd/systemd-socket-proxyd	--	gen_context(system_u:object_r:systemd_socket_proxyd_exec_t,s0)
++/usr/lib/systemd/systemd-ssh-issue --  gen_context(system_u:object_r:systemd_ssh_issue_exec_t,s0)
+ /usr/lib/systemd/systemd-sysctl		--	gen_context(system_u:object_r:systemd_sysctl_exec_t,s0)
+ /usr/lib/systemd/systemd-tpm2-setup		--	gen_context(system_u:object_r:systemd_pcrphase_exec_t,s0)
+ /usr/lib/systemd/systemd-update-done	--	gen_context(system_u:object_r:systemd_update_done_exec_t,s0)
+@@ -99,6 +100,8 @@ HOME_ROOT/.+\.home	--	gen_context(system_u:object_r:systemd_homed_storage_t,s0)
+ /var/lib/systemd/pstore(/.*)?	gen_context(system_u:object_r:systemd_pstore_var_lib_t,s0)
+ /var/lib/systemd/rfkill(/.*)?	gen_context(system_u:object_r:systemd_rfkill_var_lib_t,s0)
+ 
++/run/issue.d(/.*)? gen_context(system_u:object_r:systemd_ssh_issue_runtime_t,s0)
++
+ /run/\.nologin[^/]*	--	gen_context(system_u:object_r:systemd_sessions_runtime_t,s0)
+ /run/nologin	--	gen_context(system_u:object_r:systemd_sessions_runtime_t,s0)
+ 
+diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
+index e184b1d77..c9c841a2a 100644
+--- a/policy/modules/system/systemd.if
++++ b/policy/modules/system/systemd.if
+@@ -3211,3 +3211,22 @@ interface(`systemd_use_inherited_machined_ptys', `
+ 	allow $1 systemd_machined_t:fd use;
+ 	allow $1 systemd_machined_devpts_t:chr_file rw_inherited_term_perms;
+ ')
++
++########################################
++## <summary>
++##  Allow domain to read files in /run/issue.d
++## </summary>
++## <param name="domain">
++##  <summary>
++##  Domain allowed access.
++##  </summary>
++## </param>
++#
++interface(`systemd_read_ssh_issue_runtime',`
++	gen_require(`
++		type systemd_ssh_issue_runtime_t;
++	')
++
++	list_dirs_pattern($1, systemd_ssh_issue_runtime_t, systemd_ssh_issue_runtime_t)
++	read_files_pattern($1, systemd_ssh_issue_runtime_t, systemd_ssh_issue_runtime_t)
++')
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index b4afcab57..11a206fd0 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -306,6 +306,14 @@ corenet_port(systemd_socket_proxyd_port_t)
+ type systemd_socket_proxyd_unit_file_t;
+ init_unit_file(systemd_socket_proxyd_unit_file_t)
+ 
++type systemd_ssh_issue_t;
++type systemd_ssh_issue_exec_t;
++init_daemon_domain(systemd_ssh_issue_t, systemd_ssh_issue_exec_t)
++
++type systemd_ssh_issue_runtime_t;
++files_runtime_file(systemd_ssh_issue_runtime_t)
++init_daemon_runtime_file(systemd_ssh_issue_runtime_t, dir, "issue.d")
++
+ type systemd_sysctl_t;
+ type systemd_sysctl_exec_t;
+ init_daemon_domain(systemd_sysctl_t, systemd_sysctl_exec_t)
+@@ -2071,6 +2079,33 @@ fs_getattr_nsfs_files(systemd_sysctl_t)
+ 
+ systemd_log_parse_environment(systemd_sysctl_t)
+ 
++
++#########################################
++#
++# systemd-ssh-issue local policy
++#
++
++allow systemd_ssh_issue_t self:capability net_admin;
++allow systemd_ssh_issue_t self:unix_dgram_socket { connect create getopt setopt };
++allow systemd_ssh_issue_t self:vsock_socket create_socket_perms;
++
++dev_read_sysfs(systemd_ssh_issue_t)
++dev_read_vsock(systemd_ssh_issue_t)
++
++fs_getattr_nsfs_files(systemd_ssh_issue_t)
++
++init_read_state(systemd_ssh_issue_t)
++
++kernel_getattr_proc(systemd_ssh_issue_t)
++kernel_read_kernel_sysctls(systemd_ssh_issue_t)
++kernel_read_system_state(systemd_ssh_issue_t)
++
++logging_send_syslog_msg(systemd_ssh_issue_t)
++
++manage_dirs_pattern(systemd_ssh_issue_t, systemd_ssh_issue_runtime_t, systemd_ssh_issue_runtime_t)
++manage_files_pattern(systemd_ssh_issue_t, systemd_ssh_issue_runtime_t, systemd_ssh_issue_runtime_t)
++files_runtime_filetrans(systemd_ssh_issue_t, systemd_ssh_issue_runtime_t, { dir file })
++
+ #########################################
+ #
+ # Sysusers local policy
+-- 
+2.34.1
+

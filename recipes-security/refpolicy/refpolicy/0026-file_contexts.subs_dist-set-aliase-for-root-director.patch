@@ -1,4 +1,4 @@
-From 709df66b11b654fd15fcaa6c0ac5e39bedadde51 Mon Sep 17 00:00:00 2001
+From 1186572ce9dd51b05c21e1f93e2495a46eb20176 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Sun, 5 Apr 2020 22:03:45 +0800
 Subject: [PATCH] file_contexts.subs_dist: set aliase for /root directory
@@ -14,7 +14,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/config/file_contexts.subs_dist b/config/file_contexts.subs_dist
-index 690007f22..f80499ebf 100644
+index e782151ef..8aaf36858 100644
 --- a/config/file_contexts.subs_dist
 +++ b/config/file_contexts.subs_dist
 @@ -45,3 +45,7 @@

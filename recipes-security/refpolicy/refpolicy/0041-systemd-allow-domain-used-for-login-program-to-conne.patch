@@ -1,0 +1,84 @@
+From 42297b6e559cce0778517bbc4625a44417d7ce0b Mon Sep 17 00:00:00 2001
+From: Yi Zhao <yi.zhao@windriver.com>
+Date: Fri, 6 Feb 2026 22:13:03 +0800
+Subject: [PATCH] systemd: allow domain used for login program to connect to
+ systemd-logind over unix socket
+
+Fix the following AVC denials:
+avc: denied { write } for pid=392 comm="login" name="io.systemd.Login"
+dev="tmpfs" ino=849 scontext=system_u:system_r:local_login_t
+tcontext=system_u:object_r:init_runtime_t tclass=sock_file permissive=1
+
+avc: denied  { connectto } for pid=392 comm="login"
+path="/run/systemd/io.systemd.Login"
+scontext=system_u:system_r:local_login_t
+tcontext=system_u:system_r:systemd_logind_t tclass=unix_stream_socket
+permissive=1
+
+Upstream-Status: Pending
+
+Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
+---
+ policy/modules/system/authlogin.if |  1 +
+ policy/modules/system/systemd.fc   |  1 +
+ policy/modules/system/systemd.if   | 20 ++++++++++++++++++++
+ 3 files changed, 22 insertions(+)
+
+diff --git a/policy/modules/system/authlogin.if b/policy/modules/system/authlogin.if
+index bb282024c..db8fd8e39 100644
+--- a/policy/modules/system/authlogin.if
++++ b/policy/modules/system/authlogin.if
+@@ -227,6 +227,7 @@ interface(`auth_login_pgm_domain',`
+ 		systemd_read_logind_state($1)
+ 		systemd_write_inherited_logind_sessions_pipes($1)
+ 		systemd_use_passwd_agent_fds($1)
++		systemd_connectto_logind_sockets($1)
+ 	')
+ ')
+ 
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index 505a054ff..e44d82a88 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -127,6 +127,7 @@ HOME_ROOT/.+\.home	--	gen_context(system_u:object_r:systemd_homed_storage_t,s0)
+ /run/systemd/netif(/.*)?	gen_context(system_u:object_r:systemd_networkd_runtime_t,s0)
+ /run/systemd/nsresource(/.*)?	gen_context(system_u:object_r:systemd_nsresourced_runtime_t,s0)
+ /run/systemd/io\.systemd\.NamespaceResource	-s	gen_context(system_u:object_r:systemd_nsresourced_runtime_t,s0)
++/run/systemd/io\.systemd\.Login	-s	gen_context(system_u:object_r:systemd_logind_runtime_t,s0)
+ 
+ /run/tmpfiles\.d	-d	gen_context(system_u:object_r:systemd_tmpfiles_conf_t,s0)
+ /run/tmpfiles\.d/.*		<<none>>
+diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
+index da6a30470..e184b1d77 100644
+--- a/policy/modules/system/systemd.if
++++ b/policy/modules/system/systemd.if
+@@ -1600,6 +1600,26 @@ interface(`systemd_inherit_logind_fds',`
+ 	allow systemd_logind_t $1:fd use;
+ ')
+ 
++######################################
++## <summary>
++##  Allow domain to connect to systemd
++##  logind sockets.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`systemd_connectto_logind_sockets',`
++	gen_require(`
++		type systemd_logind_runtime_t, systemd_logind_t;
++	')
++
++	allow $1 systemd_logind_runtime_t:sock_file write;
++	allow $1 systemd_logind_t:unix_stream_socket connectto;
++')
++
+ ######################################
+ ## <summary>
+ ##      Watch logind sessions dirs.
+-- 
+2.34.1
+

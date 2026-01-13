@@ -1,4 +1,4 @@
-From 42dbcc5513da2e2f63ddc9af7b551b01244bdce5 Mon Sep 17 00:00:00 2001
+From 6cfdfb222bb39241c126d71c892c73860ad7198a Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Fri, 13 Oct 2017 07:20:40 +0000
 Subject: [PATCH] policy/modules/kernel/kernel: make kernel_t MLS trusted for

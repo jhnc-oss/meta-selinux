@@ -1,4 +1,4 @@
-From e27062c7d2845b421374b390bb300f60793316b5 Mon Sep 17 00:00:00 2001
+From b666c26dd4c57e90cd0ab7e3bcb52943b72676a2 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 16:14:09 -0400
 Subject: [PATCH] fc/subs/volatile: alias common /var/volatile paths
@@ -15,7 +15,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/config/file_contexts.subs_dist b/config/file_contexts.subs_dist
-index ba22ce7e7..23d4328f7 100644
+index ea643ddbb..6c5aa4b91 100644
 --- a/config/file_contexts.subs_dist
 +++ b/config/file_contexts.subs_dist
 @@ -33,3 +33,9 @@

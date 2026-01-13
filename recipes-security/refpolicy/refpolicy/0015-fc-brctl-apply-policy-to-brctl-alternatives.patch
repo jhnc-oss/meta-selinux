@@ -1,4 +1,4 @@
-From d19a7e3c74f84b482612fc523eeea0d9d9263594 Mon Sep 17 00:00:00 2001
+From d366090f2d89448878cfac371c3d1b9694d67f87 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:19:54 +0800
 Subject: [PATCH] fc/brctl: apply policy to brctl alternatives

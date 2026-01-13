@@ -1,4 +1,4 @@
-From 003ae9b4e2e4049a62745634a83ad3f95d2a7e9e Mon Sep 17 00:00:00 2001
+From 41f947d2985d449c5712e56c4b177a7f1b373867 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Thu, 3 Oct 2024 21:12:33 +0800
 Subject: [PATCH] policy/modules/kernel/domain: allow all domains to connect to

@@ -1,4 +1,4 @@
-From cc5872b91123b4bd66a906bb9f46be5410669634 Mon Sep 17 00:00:00 2001
+From 433b5e7bc3d3e13ef1bb239c5f543ded27a2d142 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Wed, 19 Feb 2025 21:35:02 +0800
 Subject: [PATCH] Revert "users: Move unconfined_u definition to unconfined
@@ -32,7 +32,7 @@ index 7ec2aa471..8f0f6ac2e 100644
  	role secadm_r;
  	role auditadm_r;
 diff --git a/policy/modules/system/unconfined.te b/policy/modules/system/unconfined.te
-index 71e1b15ae..940c98ce6 100644
+index 1c98f5e85..4ef723b85 100644
 --- a/policy/modules/system/unconfined.te
 +++ b/policy/modules/system/unconfined.te
 @@ -8,9 +8,6 @@ policy_module(unconfined)
@@ -45,7 +45,7 @@ index 71e1b15ae..940c98ce6 100644
  userdom_base_user_template(unconfined)
  userdom_manage_home_role(unconfined_r, unconfined_t)
  userdom_manage_tmp_role(unconfined_r, unconfined_t)
-@@ -273,14 +270,3 @@ unconfined_domain_noaudit(unconfined_execmem_t)
+@@ -277,14 +274,3 @@ unconfined_domain_noaudit(unconfined_execmem_t)
  optional_policy(`
  	unconfined_dbus_chat(unconfined_execmem_t)
  ')

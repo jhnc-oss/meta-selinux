@@ -1,4 +1,4 @@
-From 275d9a2e0d59f27797d74e4a9b39ad8e1041b7d0 Mon Sep 17 00:00:00 2001
+From b328cb59c1c6bf8a43b496f50e59d277cfdd7946 Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Mon, 20 Apr 2020 11:50:03 +0800
 Subject: [PATCH] refpolicy-targeted: make unconfined_u the default selinux
@@ -38,7 +38,7 @@ index ce614b41b..c0903d98b 100644
 +root:unconfined_u:s0-mcs_systemhigh
 +__default__:unconfined_u:s0
 diff --git a/policy/modules/system/unconfined.te b/policy/modules/system/unconfined.te
-index 940c98ce6..c8f3f9c3b 100644
+index 4ef723b85..671d38664 100644
 --- a/policy/modules/system/unconfined.te
 +++ b/policy/modules/system/unconfined.te
 @@ -20,6 +20,11 @@ type unconfined_execmem_t alias ada_t;

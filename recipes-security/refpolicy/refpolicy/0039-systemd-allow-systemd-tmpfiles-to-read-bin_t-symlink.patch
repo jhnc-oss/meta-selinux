@@ -1,4 +1,4 @@
-From ed34e4e062a23f11708c023b2daba4b83b74e23e Mon Sep 17 00:00:00 2001
+From 496131601f622dabb953cf3f98c64dd726060d33 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 18 Feb 2025 15:26:19 +0800
 Subject: [PATCH] systemd: allow systemd-tmpfiles to read bin_t symlink
@@ -61,7 +61,7 @@ index 08ed91f19..0fa4cbf7d 100644
 +	read_lnk_files_pattern($1, bin_t, bin_t)
 +')
 diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
-index e6aa112c0..3f3426ebd 100644
+index 0d9ff59e2..da6a30470 100644
 --- a/policy/modules/system/systemd.if
 +++ b/policy/modules/system/systemd.if
 @@ -155,6 +155,7 @@ template(`systemd_role_template',`
@@ -73,10 +73,10 @@ index e6aa112c0..3f3426ebd 100644
  	domtrans_pattern($1_systemd_t, systemd_tmpfiles_exec_t, $1_systemd_tmpfiles_t)
  	read_files_pattern($1_systemd_t, $1_systemd_tmpfiles_t, $1_systemd_tmpfiles_t)
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index cbae29894..7e39556b7 100644
+index b9af00ec8..e79dec101 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -2142,6 +2142,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
+@@ -2148,6 +2148,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
  kernel_read_kernel_sysctls(systemd_tmpfiles_t)
  kernel_read_network_state(systemd_tmpfiles_t)
  

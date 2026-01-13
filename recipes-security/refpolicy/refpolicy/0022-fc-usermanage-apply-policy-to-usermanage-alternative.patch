@@ -1,4 +1,4 @@
-From 94b6c8baa19eb3ac8eda4a9b4151dc3c69e432fc Mon Sep 17 00:00:00 2001
+From 675ef147f22a7c61dc47d4173307d0b4ce703aff Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 11:25:34 +0800
 Subject: [PATCH] fc/usermanage: apply policy to usermanage alternatives
