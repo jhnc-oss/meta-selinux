@@ -15,6 +15,7 @@ password   include      common-password
 session    optional     pam_keyinit.so force revoke
 session    include      common-session
 session    required     pam_loginuid.so
+session    required     pam_env.so
 
 # SELinux needs to intervene at login time to ensure that the process
 # starts in the proper default security context. Only sessions which are
