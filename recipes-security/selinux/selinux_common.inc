@@ -1,7 +1,7 @@
 HOMEPAGE = "https://github.com/SELinuxProject"
 
 SRC_URI = "git://github.com/SELinuxProject/selinux.git;branch=main;protocol=https"
-SRCREV = "919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+SRCREV = "ca10fc4204ed60540d41d2499127c18ad0643f9e"
 
 S = "${UNPACKDIR}/${BP}/${BPN}"
 
