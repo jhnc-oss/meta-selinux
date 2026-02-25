@@ -1,0 +1,55 @@
+From 2d837226bb685e837046e1be1d0d7d6b67957387 Mon Sep 17 00:00:00 2001
+From: Clayton Casciato <ccasciato@21sw.us>
+Date: Wed, 10 Dec 2025 18:32:41 -0700
+Subject: [PATCH] logging: allow syslogd_t syslog_tls_port_t name_connect
+
+rsyslogd[492]: cannot connect to example.home.arpa:6514: Permission
+denied [v8.2402.0 try https://www.rsyslog.com/e/2027 ]
+
+--
+
+type=PROCTITLE proctitle=/usr/sbin/rsyslogd -n -iNONE
+
+type=SOCKADDR saddr={ saddr_fam=inet laddr=1.2.3.4 lport=6514 }
+
+type=SYSCALL arch=aarch64 syscall=connect success=no
+exit=EACCES(Permission denied) a0=0x6 a1=0x7fff38060bc0 a2=0x10 a3=0x0
+items=0 ppid=1 pid=492 auid=unset uid=root gid=root euid=root suid=root
+fsuid=root egid=root sgid=root fsgid=root tty=(none) ses=unset
+comm=rs:main Q:Reg exe=/usr/sbin/rsyslogd
+subj=system_u:system_r:syslogd_t:s0 key=(null)
+
+type=AVC avc:  denied  { name_connect } for  pid=492 comm=rs:main Q:Reg
+dest=6514 scontext=system_u:system_r:syslogd_t:s0
+tcontext=system_u:object_r:syslog_tls_port_t:s0 tclass=tcp_socket
+
+--
+
+Fedora:
+
+https://github.com/fedora-selinux/selinux-policy/commit/42504eb364b73234bd622fe674427bdfb68dc043
+
+$ sesearch -A --source syslogd_t --target syslog_tls_port_t --perm name_connect
+allow syslogd_t syslog_tls_port_t:tcp_socket { name_bind name_connect };
+
+Signed-off-by: Clayton Casciato <ccasciato@21sw.us>
+
+Upstream-Status: Backport [https://github.com/SELinuxProject/refpolicy/commit/7c0a3dff6916b19b9842ace9f6a49123f6f1bbb4]
+
+Signed-off-by: Clayton Casciato <majortomtosourcecontrol@gmail.com>
+---
+ policy/modules/system/logging.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
+index 4de798007..121468ef6 100644
+--- a/policy/modules/system/logging.te
++++ b/policy/modules/system/logging.te
+@@ -627,6 +627,7 @@ tunable_policy(`logging_syslog_can_network',`
+ 	corenet_tcp_connect_rsh_port(syslogd_t)
+ 	# Allow users to define additional syslog ports to connect to
+ 	corenet_tcp_bind_syslogd_port(syslogd_t)
++	corenet_tcp_connect_syslog_tls_port(syslogd_t)
+ 	corenet_tcp_connect_syslogd_port(syslogd_t)
+ 	corenet_tcp_connect_postgresql_port(syslogd_t)
+ 	corenet_tcp_connect_mysqld_port(syslogd_t)
