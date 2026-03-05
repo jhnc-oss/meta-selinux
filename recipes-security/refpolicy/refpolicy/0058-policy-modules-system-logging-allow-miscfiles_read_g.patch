@@ -1,0 +1,58 @@
+From 889a18a54c568fb6ca2eb7238e85eb464ac21416 Mon Sep 17 00:00:00 2001
+From: Clayton Casciato <ccasciato@21sw.us>
+Date: Fri, 12 Dec 2025 11:56:45 -0700
+Subject: [PATCH] logging: allow miscfiles_read_generic_certs(syslogd_t)
+
+rsyslog needs to be able to access certificates to validate encrypted
+communications.
+
+https://docs.redhat.com/de/documentation/red_hat_enterprise_linux/10/html/risk_reduction_and_recovery_operations/configuring-a-remote-logging-solution#configuring-tls-encrypted-remote-logging
+
+--
+
+rsyslogd: error: defaultnetstreamdrivercafile file
+'/etc/pki/ca-trust/source/anchors/ca-cert.pem' could not be accessed:
+Permission denied [v8.2402.0 try https://www.rsyslog.com/e/2039 ]
+
+--
+
+type=PROCTITLE proctitle=/usr/sbin/rsyslogd -n -iNONE
+
+type=SYSCALL arch=aarch64 syscall=openat success=no
+exit=EACCES(Permission denied) a0=AT_FDCWD a1=0x5555d6951ce0
+a2=O_RDONLY|O_CLOEXEC a3=0x0 items=0 ppid=1 pid=258 auid=unset uid=root
+gid=root euid=root suid=root fsuid=root egid=root sgid=root fsgid=root
+tty=(none) ses=unset comm=rs:main Q:Reg exe=/usr/sbin/rsyslogd
+subj=system_u:system_r:syslogd_t:s0 key=(null)
+
+type=AVC avc:  denied  { search } for  pid=258 comm=rs:main Q:Reg
+name=pki dev="vda" ino=234 scontext=system_u:system_r:syslogd_t:s0
+tcontext=system_u:object_r:cert_t:s0 tclass=dir permissive=0
+
+--
+
+Fedora:
+
+https://github.com/fedora-selinux/selinux-policy/commit/66742ce1af1d752fbefe8a512f16c9165634d07f
+
+Signed-off-by: Clayton Casciato <ccasciato@21sw.us>
+
+Upstream-Status: Backport [https://github.com/SELinuxProject/refpolicy/commit/5cd787409c9c3add25da61ea7ad8edf51490df26]
+
+Signed-off-by: Clayton Casciato <majortomtosourcecontrol@gmail.com>
+---
+ policy/modules/system/logging.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
+index 121468ef6..87b4779ff 100644
+--- a/policy/modules/system/logging.te
++++ b/policy/modules/system/logging.te
+@@ -520,6 +520,7 @@ auth_use_nsswitch(syslogd_t)
+ 
+ init_use_fds(syslogd_t)
+ 
++miscfiles_read_generic_certs(syslogd_t)
+ miscfiles_read_localization(syslogd_t)
+ 
+ seutil_read_config(syslogd_t)

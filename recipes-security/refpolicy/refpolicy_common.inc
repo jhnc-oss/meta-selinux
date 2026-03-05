@@ -73,6 +73,7 @@ SRC_URI += " \
         file://0055-policy-modules-system-systemd-make-_systemd_t-MLS-tr.patch \
         file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         file://0057-policy-modules-system-logging-allow-syslogd_t-syslog.patch \
+        file://0058-policy-modules-system-logging-allow-miscfiles_read_g.patch \
         "
 
 S = "${UNPACKDIR}/refpolicy"
