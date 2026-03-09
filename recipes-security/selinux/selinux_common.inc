@@ -20,4 +20,4 @@ do_install() {
         SHLIBDIR="${base_libdir}"
 }
 
-CVE_PRODUCT ?= "kernel:selinux"
+CVE_PRODUCT ?= "selinux_project:selinux"
