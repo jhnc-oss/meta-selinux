@@ -74,6 +74,7 @@ SRC_URI += " \
         file://0056-policy-modules-system-logging-make-syslogd_runtime_t.patch \
         file://0057-policy-modules-system-logging-allow-syslogd_t-syslog.patch \
         file://0058-policy-modules-system-logging-allow-miscfiles_read_g.patch \
+        file://0059-policy-modules-system-authlogin-label-var_lib_lastlo.patch \
         "
 
 S = "${UNPACKDIR}/refpolicy"

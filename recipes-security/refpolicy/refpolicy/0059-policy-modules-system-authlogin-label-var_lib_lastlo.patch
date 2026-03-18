@@ -1,0 +1,29 @@
+From 8f80c6613191400ca0d9d926f4519fc6c264aa66 Mon Sep 17 00:00:00 2001
+From: Clayton Casciato <ccasciato@21sw.us>
+Date: Thu, 15 Jan 2026 16:20:29 -0700
+Subject: [PATCH] authlogin: label /var/lib/lastlog (lastlog2)
+
+https://github.com/fedora-selinux/selinux-policy/commit/bbbaa364c2b93795127a1ffbf0f90b244753d75a
+"Label /var/lib/lastlog with lastlog_t"
+
+Signed-off-by: Clayton Casciato <ccasciato@21sw.us>
+
+Upstream-Status: Backport [https://github.com/SELinuxProject/refpolicy/commit/6aa166162302e2d06f62762d4be5c9054c2d13cd]
+
+Signed-off-by: Clayton Casciato <majortomtosourcecontrol@gmail.com>
+---
+ policy/modules/system/authlogin.fc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/system/authlogin.fc b/policy/modules/system/authlogin.fc
+index b3c2f56b4..6dbb7a499 100644
+--- a/policy/modules/system/authlogin.fc
++++ b/policy/modules/system/authlogin.fc
+@@ -51,6 +51,7 @@ ifdef(`distro_gentoo',`
+ /var/db/shadow.*	--	gen_context(system_u:object_r:shadow_t,s0)
+ 
+ /var/lib/abl(/.*)?		gen_context(system_u:object_r:var_auth_t,s0)
++/var/lib/lastlog(/.*)?		gen_context(system_u:object_r:lastlog_t,s0)
+ /var/lib/pam_ssh(/.*)?		gen_context(system_u:object_r:var_auth_t,s0)
+ /var/lib/wtmpdb(/.*)?		gen_context(system_u:object_r:faillog_t,s0)
+ 
