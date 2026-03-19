@@ -1,0 +1,61 @@
+From 7c65b04395acf164874731a674335e1b543c3a7e Mon Sep 17 00:00:00 2001
+From: Clayton Casciato <ccasciato@21sw.us>
+Date: Thu, 15 Jan 2026 16:26:29 -0700
+Subject: [PATCH] authlogin: add auth_create_lastlog and auth_delete_lastlog
+
+Signed-off-by: Clayton Casciato <ccasciato@21sw.us>
+
+Upstream-Status: Backport [https://github.com/SELinuxProject/refpolicy/commit/1f0dbdbef203295d2c7f968608697121f18af348]
+
+Signed-off-by: Clayton Casciato <majortomtosourcecontrol@gmail.com>
+---
+ policy/modules/system/authlogin.if | 36 ++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/policy/modules/system/authlogin.if b/policy/modules/system/authlogin.if
+index 35e6e7c2f..bb282024c 100644
+--- a/policy/modules/system/authlogin.if
++++ b/policy/modules/system/authlogin.if
+@@ -1073,6 +1073,42 @@ interface(`auth_rw_lastlog',`
+ 	allow $1 lastlog_t:file { lock rw_file_perms setattr };
+ ')
+ 
++#######################################
++## <summary>
++##	Create the last logins log.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`auth_create_lastlog',`
++	gen_require(`
++		type lastlog_t;
++	')
++
++	create_files_pattern($1, lastlog_t, lastlog_t)
++')
++
++#######################################
++## <summary>
++##	Delete the last logins log.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`auth_delete_lastlog',`
++	gen_require(`
++		type lastlog_t;
++	')
++
++	delete_files_pattern($1, lastlog_t, lastlog_t)
++')
++
+ ########################################
+ ## <summary>
+ ##     Manage the last logins log.
