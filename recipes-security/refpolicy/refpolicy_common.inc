@@ -76,6 +76,7 @@ SRC_URI += " \
         file://0058-policy-modules-system-logging-allow-miscfiles_read_g.patch \
         file://0059-policy-modules-system-authlogin-label-var_lib_lastlo.patch \
         file://0060-policy-modules-system-authlogin-add-auth_create_last.patch \
+        file://0061-policy-modules-system-locallogin-allow-local_login_t.patch \
         "
 
 S = "${UNPACKDIR}/refpolicy"
