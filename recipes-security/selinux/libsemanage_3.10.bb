@@ -65,4 +65,8 @@ do_install:append() {
 
 }
 
+# LTO fat objects in static library embed original source paths in .gnu.lto_* IR
+# sections which are not affected by -ffile-prefix-map, causing buildpaths QA failure
+LTO = ""
+
 BBCLASSEXTEND = "native"
