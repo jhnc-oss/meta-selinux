@@ -1,4 +1,4 @@
-From 1960cf45c37cdd9c11a012fe641dd37537b6f6e4 Mon Sep 17 00:00:00 2001
+From 2b90866ebd50527fb3cf099e16a6f5bcd09a9e39 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 28 May 2024 11:21:48 +0800
 Subject: [PATCH] policy/modules/system/logging: grant getpcap capability to
@@ -21,7 +21,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/policy/modules/system/logging.te b/policy/modules/system/logging.te
-index d22a3207c..b1d9c20d2 100644
+index 950aa3f8d..089ffc768 100644
 --- a/policy/modules/system/logging.te
 +++ b/policy/modules/system/logging.te
 @@ -406,6 +406,8 @@ optional_policy(`
@@ -30,7 +30,7 @@ index d22a3207c..b1d9c20d2 100644
  allow syslogd_t self:capability { chown dac_override fsetid setgid setuid sys_admin sys_nice sys_resource sys_tty_config };
 +# Rsyslog configures with --enable-libcap-ng
 +allow syslogd_t self:capability setpcap;
- dontaudit syslogd_t self:capability { sys_ptrace };
+ dontaudit syslogd_t self:capability { sys_ptrace net_admin };
  dontaudit syslogd_t self:cap_userns { kill sys_ptrace };
  # setpgid for metalog
 -- 
