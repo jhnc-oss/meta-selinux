@@ -122,8 +122,11 @@ do_install() {
 
     # Remove .pyc files
     find ${D} -name *.pyc -delete
+    # Remove RECORD file
+    find ${D} -path *.dist-info/RECORD -delete
 
     # Fix buildpaths issue
     sed -i -e 's,${WORKDIR},,g' \
         ${D}${PYTHON_SITEPACKAGES_DIR}/sepolicy-${PV}.dist-info/direct_url.json
+
 }
