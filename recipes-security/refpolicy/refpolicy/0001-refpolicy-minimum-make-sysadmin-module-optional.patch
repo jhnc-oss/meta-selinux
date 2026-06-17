@@ -1,4 +1,4 @@
-From fbf828a2204ae673442f90b17c97db17965578e9 Mon Sep 17 00:00:00 2001
+From a7d979d52785239ca6123c41a54c288b3ffd0efa Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 5 Apr 2019 11:53:28 -0400
 Subject: [PATCH] refpolicy-minimum: make sysadmin module optional
@@ -22,7 +22,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/policy/modules/system/init.te b/policy/modules/system/init.te
-index 15bffd9cf..9b20ff8d4 100644
+index 8188f8aec..1b790ac23 100644
 --- a/policy/modules/system/init.te
 +++ b/policy/modules/system/init.te
 @@ -680,13 +680,15 @@ ifdef(`init_systemd',`

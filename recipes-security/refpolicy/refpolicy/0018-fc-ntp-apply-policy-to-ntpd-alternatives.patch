@@ -1,4 +1,4 @@
-From a358cddc1a278ac8e40c40a58f2fb20bd6e8da5c Mon Sep 17 00:00:00 2001
+From bc7cf91865d4f49a2af1100e1a0b692fead807e8 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 10:45:23 +0800
 Subject: [PATCH] fc/ntp: apply policy to ntpd alternatives
@@ -11,16 +11,16 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/services/ntp.fc b/policy/modules/services/ntp.fc
-index 7b55699ee..b55d5fb86 100644
+index ccea79c30..f24cd7c48 100644
 --- a/policy/modules/services/ntp.fc
 +++ b/policy/modules/services/ntp.fc
-@@ -26,6 +26,7 @@
- /usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:ntpd_exec_t,s0)
+@@ -17,6 +17,7 @@
+ /run/systemd/timesync(/.*)?			gen_context(system_u:object_r:ntpd_pid_t,s0)
  
- /usr/sbin/ntpd				--	gen_context(system_u:object_r:ntpd_exec_t,s0)
-+/usr/sbin/ntpd\.ntp				--	gen_context(system_u:object_r:ntpd_exec_t,s0)
- /usr/sbin/ntpdate			--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
- /usr/sbin/sntp				--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
+ /usr/bin/ntpd				--	gen_context(system_u:object_r:ntpd_exec_t,s0)
++/usr/bin/ntpd\.ntp			--	gen_context(system_u:object_r:ntpd_exec_t,s0)
+ /usr/bin/ntpdate			--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
+ /usr/bin/sntp				--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
  
 -- 
 2.34.1

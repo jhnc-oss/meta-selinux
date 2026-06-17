@@ -1,4 +1,4 @@
-From cd5fe8a285ee8c9911d80f3c6d92166e59a811e4 Mon Sep 17 00:00:00 2001
+From 5028db3655914d148e82237533dc8c07f99be535 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 11:06:13 +0800
 Subject: [PATCH] fc/ldap: apply policy to ldap alternatives
@@ -11,7 +11,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/policy/modules/services/ldap.fc b/policy/modules/services/ldap.fc
-index 0a1d08d0f..65b202962 100644
+index 40c09df5e..cc6c98221 100644
 --- a/policy/modules/services/ldap.fc
 +++ b/policy/modules/services/ldap.fc
 @@ -1,8 +1,10 @@
@@ -25,7 +25,7 @@ index 0a1d08d0f..65b202962 100644
  
  /usr/bin/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
  
-@@ -25,6 +27,9 @@
+@@ -24,6 +26,9 @@
  /var/log/ldap.*	gen_context(system_u:object_r:slapd_log_t,s0)
  /var/log/slapd.*	gen_context(system_u:object_r:slapd_log_t,s0)
  

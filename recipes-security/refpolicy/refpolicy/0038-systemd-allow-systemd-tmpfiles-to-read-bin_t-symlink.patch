@@ -1,4 +1,4 @@
-From 40dae32ff55f82d4e4e9d309bc91c0216d616b51 Mon Sep 17 00:00:00 2001
+From 634dc2988ce5eaff7d1cd27cd5c9eeb32183e637 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 18 Feb 2025 15:26:19 +0800
 Subject: [PATCH] systemd: allow systemd-tmpfiles to read bin_t symlink
@@ -23,10 +23,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  4 files changed, 23 insertions(+)
 
 diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
-index 0da8a2ddb..007341a65 100644
+index 851529abd..1480e1104 100644
 --- a/policy/modules/kernel/corecommands.fc
 +++ b/policy/modules/kernel/corecommands.fc
-@@ -249,6 +249,7 @@ ifdef(`distro_gentoo',`
+@@ -251,6 +251,7 @@ ifdef(`distro_gentoo',`
  /usr/lib/sftp-server		--	gen_context(system_u:object_r:bin_t,s0)
  /usr/lib/ssh(/.*)?			gen_context(system_u:object_r:bin_t,s0)
  /usr/lib/sudo/sesh		--	gen_context(system_u:object_r:shell_exec_t,s0)
@@ -73,10 +73,10 @@ index cc2709551..b67b78a69 100644
  	domtrans_pattern($1_systemd_t, systemd_tmpfiles_exec_t, $1_systemd_tmpfiles_t)
  	read_files_pattern($1_systemd_t, $1_systemd_tmpfiles_t, $1_systemd_tmpfiles_t)
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index 1ae8e3a7d..e1cc0cfde 100644
+index b34125656..c1c873fa5 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -2161,6 +2161,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
+@@ -2169,6 +2169,9 @@ kernel_getattr_proc(systemd_tmpfiles_t)
  kernel_read_kernel_sysctls(systemd_tmpfiles_t)
  kernel_read_network_state(systemd_tmpfiles_t)
  

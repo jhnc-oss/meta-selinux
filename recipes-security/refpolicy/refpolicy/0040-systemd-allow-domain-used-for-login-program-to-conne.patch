@@ -1,4 +1,4 @@
-From 42297b6e559cce0778517bbc4625a44417d7ce0b Mon Sep 17 00:00:00 2001
+From f94cd726509a88f8efd72b175fe3079544e9ef26 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 6 Feb 2026 22:13:03 +0800
 Subject: [PATCH] systemd: allow domain used for login program to connect to
@@ -25,10 +25,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  3 files changed, 22 insertions(+)
 
 diff --git a/policy/modules/system/authlogin.if b/policy/modules/system/authlogin.if
-index bb282024c..db8fd8e39 100644
+index 82d3f6684..db1fcc344 100644
 --- a/policy/modules/system/authlogin.if
 +++ b/policy/modules/system/authlogin.if
-@@ -227,6 +227,7 @@ interface(`auth_login_pgm_domain',`
+@@ -230,6 +230,7 @@ interface(`auth_login_pgm_domain',`
  		systemd_read_logind_state($1)
  		systemd_write_inherited_logind_sessions_pipes($1)
  		systemd_use_passwd_agent_fds($1)
@@ -49,10 +49,10 @@ index 505a054ff..e44d82a88 100644
  /run/tmpfiles\.d	-d	gen_context(system_u:object_r:systemd_tmpfiles_conf_t,s0)
  /run/tmpfiles\.d/.*		<<none>>
 diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
-index da6a30470..e184b1d77 100644
+index b67b78a69..cc57a29f4 100644
 --- a/policy/modules/system/systemd.if
 +++ b/policy/modules/system/systemd.if
-@@ -1600,6 +1600,26 @@ interface(`systemd_inherit_logind_fds',`
+@@ -1601,6 +1601,26 @@ interface(`systemd_inherit_logind_fds',`
  	allow systemd_logind_t $1:fd use;
  ')
  

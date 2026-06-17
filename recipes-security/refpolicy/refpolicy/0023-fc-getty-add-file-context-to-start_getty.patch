@@ -1,4 +1,4 @@
-From 521f56f178d4eb2edb6fb553e7d5a89c34efc502 Mon Sep 17 00:00:00 2001
+From 75ad7b87b85a3fb0f0d00b88831a3171a01e8fa0 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 15 Nov 2019 16:07:30 +0800
 Subject: [PATCH] fc/getty: add file context to start_getty
@@ -11,7 +11,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/getty.fc b/policy/modules/system/getty.fc
-index 116ea6421..53ff6137b 100644
+index c7701c930..8b70b609a 100644
 --- a/policy/modules/system/getty.fc
 +++ b/policy/modules/system/getty.fc
 @@ -4,6 +4,7 @@
@@ -20,8 +20,8 @@ index 116ea6421..53ff6137b 100644
  /usr/bin/.*getty	--	gen_context(system_u:object_r:getty_exec_t,s0)
 +/usr/bin/start_getty	--	gen_context(system_u:object_r:bin_t,s0)
  
- /usr/sbin/.*getty	--	gen_context(system_u:object_r:getty_exec_t,s0)
  
+ /var/log/mgetty\.log.*	--	gen_context(system_u:object_r:getty_log_t,s0)
 -- 
 2.34.1
 

@@ -1,4 +1,4 @@
-From b666c26dd4c57e90cd0ab7e3bcb52943b72676a2 Mon Sep 17 00:00:00 2001
+From 3bed8cf8fb9f6a1651d005619a2b029a838539ea Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 16:14:09 -0400
 Subject: [PATCH] fc/subs/volatile: alias common /var/volatile paths
@@ -15,10 +15,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/config/file_contexts.subs_dist b/config/file_contexts.subs_dist
-index ea643ddbb..6c5aa4b91 100644
+index a6b747fad..d64580e89 100644
 --- a/config/file_contexts.subs_dist
 +++ b/config/file_contexts.subs_dist
-@@ -33,3 +33,9 @@
+@@ -34,3 +34,9 @@
  # not for refpolicy intern, but for /var/run using applications,
  # like systemd tmpfiles or systemd socket configurations
  /var/run /run

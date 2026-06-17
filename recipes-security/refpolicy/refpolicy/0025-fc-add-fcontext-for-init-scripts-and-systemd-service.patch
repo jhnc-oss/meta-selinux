@@ -1,4 +1,4 @@
-From f6c4563a967dee1ca09dd4759503f79bfdbe4fe0 Mon Sep 17 00:00:00 2001
+From 4db66a10c2917fe08f643726b9854d1230090bcc Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 30 Jun 2020 10:45:57 +0800
 Subject: [PATCH] fc: add fcontext for init scripts and systemd service files
@@ -14,7 +14,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  4 files changed, 5 insertions(+)
 
 diff --git a/policy/modules/services/cron.fc b/policy/modules/services/cron.fc
-index e71ad22c1..bb1351732 100644
+index 8c9a749bc..f5a52b406 100644
 --- a/policy/modules/services/cron.fc
 +++ b/policy/modules/services/cron.fc
 @@ -1,4 +1,5 @@
@@ -24,7 +24,7 @@ index e71ad22c1..bb1351732 100644
  /etc/cron\.d(/.*)?	gen_context(system_u:object_r:system_cron_spool_t,s0)
  /etc/crontab	--	gen_context(system_u:object_r:system_cron_spool_t,s0)
 diff --git a/policy/modules/services/rngd.fc b/policy/modules/services/rngd.fc
-index 382c067f9..0ecc5acc4 100644
+index 367592c8d..6b5a5f11e 100644
 --- a/policy/modules/services/rngd.fc
 +++ b/policy/modules/services/rngd.fc
 @@ -1,4 +1,5 @@
@@ -34,7 +34,7 @@ index 382c067f9..0ecc5acc4 100644
  /usr/bin/rngd	--	gen_context(system_u:object_r:rngd_exec_t,s0)
  
 diff --git a/policy/modules/services/rpc.fc b/policy/modules/services/rpc.fc
-index fb579bc9d..12e086b8d 100644
+index b6fe7d990..df70afb7c 100644
 --- a/policy/modules/services/rpc.fc
 +++ b/policy/modules/services/rpc.fc
 @@ -2,7 +2,9 @@
@@ -48,7 +48,7 @@ index fb579bc9d..12e086b8d 100644
  
  /usr/bin/blkmapd	--	gen_context(system_u:object_r:blkmapd_exec_t,s0)
 diff --git a/policy/modules/system/logging.fc b/policy/modules/system/logging.fc
-index 102a89e48..b10ea8acf 100644
+index 0b6698d63..e2a43f305 100644
 --- a/policy/modules/system/logging.fc
 +++ b/policy/modules/system/logging.fc
 @@ -24,6 +24,7 @@

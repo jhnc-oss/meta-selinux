@@ -1,4 +1,4 @@
-From 078961ecb4615082b4c37354cfd10d30feff5030 Mon Sep 17 00:00:00 2001
+From 3ed3519c26ea0146415bf915a78bad55086abbde Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Mon, 27 Jan 2014 03:54:01 -0500
 Subject: [PATCH] fc/fstools: fix real path for fstools
@@ -14,61 +14,68 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 11 insertions(+)
 
 diff --git a/policy/modules/system/fstools.fc b/policy/modules/system/fstools.fc
-index f12c3515b..500acfb23 100644
+index ece09e6b4..aad5a608e 100644
 --- a/policy/modules/system/fstools.fc
 +++ b/policy/modules/system/fstools.fc
-@@ -55,7 +55,9 @@
- /usr/sbin/addpart		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/badblocks		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/blkid			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/blkid\.util-linux			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/blockdev		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/blockdev\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/cfdisk		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/clubufflush		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/delpart		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-@@ -68,23 +70,30 @@
- /usr/sbin/e2mmpstatus		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/fatsort		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/fdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/fdisk\.util-linux			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/findfs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/findfs\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/fstrim		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/fstrim\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/fsck.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/gdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/hdparm		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/hdparm\.hdparm		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/install-mbr		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/jfs_.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/losetup.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/lsraid		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mkdosfs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mke2fs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/mke2fs\.e2fsprogs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mke4fs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mkfs.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mkraid		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/mkswap		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/mkswap\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/parted		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/partprobe		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/partprobe\.parted		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/partx			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/raidautorun		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/raidstart		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-@@ -93,8 +102,10 @@
- /usr/sbin/sfdisk		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/smartctl		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/swapoff		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/swapoff\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/swapon.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/tune2fs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
-+/usr/sbin/tune2fs\.e2fsprogs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/zdb			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/zhack			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
- /usr/sbin/zinject		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+@@ -1,7 +1,9 @@
+ /usr/bin/addpart		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/badblocks		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/blkid			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/blkid\.util-linux			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/blockdev		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/blockdev\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/btrfs			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/cfdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/clubufflush		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+@@ -15,23 +17,29 @@
+ /usr/bin/e2mmpstatus		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/fatsort		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/fdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/fdisk\.util-linux			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/findfs			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/findfs\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/fsck.*			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/gdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/hdparm			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/hdparm\.hdparm		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/install-mbr		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/jfs_.*			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/losetup.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/lsraid			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mkdosfs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mke2fs			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/mke2fs\.e2fsprogs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mke4fs			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mkfs.*			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mkraid			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/mkswap			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/mkswap\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/parted			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/partition_uuid		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/partprobe		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/partprobe\.parted		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/partx			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/raidautorun		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/raidstart		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+@@ -43,8 +51,10 @@
+ /usr/bin/sfdisk			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/smartctl		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/swapoff		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/swapoff\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/swapon.*		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/tune2fs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/tune2fs\.e2fsprogs		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/zdb			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/zhack			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ /usr/bin/zinject		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+@@ -53,6 +63,7 @@
+ /usr/bin/ztest			--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ 
+ /usr/bin/fstrim		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
++/usr/bin/fstrim\.util-linux		--	gen_context(system_u:object_r:fsadm_exec_t,s0)
+ 
+ ifdef(`distro_gentoo',`
+ /var/db/smartmontools(/.*)?		gen_context(system_u:object_r:fsadm_db_t,s0)
 -- 
 2.34.1
 

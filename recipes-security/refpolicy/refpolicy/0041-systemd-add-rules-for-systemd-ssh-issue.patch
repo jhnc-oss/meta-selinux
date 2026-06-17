@@ -1,4 +1,4 @@
-From 77336cfaff881b80e3f0c1dd4abef78a208b304f Mon Sep 17 00:00:00 2001
+From 37f557b73474ed2f746c8bb6c2cd5c5d7de3a7d5 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Mon, 9 Feb 2026 15:42:19 +0800
 Subject: [PATCH] systemd: add rules for systemd-ssh-issue
@@ -70,10 +70,10 @@ index e44d82a88..130c62370 100644
  /run/nologin	--	gen_context(system_u:object_r:systemd_sessions_runtime_t,s0)
  
 diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
-index e184b1d77..c9c841a2a 100644
+index cc57a29f4..3a513a17e 100644
 --- a/policy/modules/system/systemd.if
 +++ b/policy/modules/system/systemd.if
-@@ -3211,3 +3211,22 @@ interface(`systemd_use_inherited_machined_ptys', `
+@@ -3212,3 +3212,22 @@ interface(`systemd_use_inherited_machined_ptys', `
  	allow $1 systemd_machined_t:fd use;
  	allow $1 systemd_machined_devpts_t:chr_file rw_inherited_term_perms;
  ')
@@ -97,10 +97,10 @@ index e184b1d77..c9c841a2a 100644
 +	read_files_pattern($1, systemd_ssh_issue_runtime_t, systemd_ssh_issue_runtime_t)
 +')
 diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
-index b4afcab57..11a206fd0 100644
+index 4a790c5dc..c7dc5570c 100644
 --- a/policy/modules/system/systemd.te
 +++ b/policy/modules/system/systemd.te
-@@ -306,6 +306,14 @@ corenet_port(systemd_socket_proxyd_port_t)
+@@ -309,6 +309,14 @@ corenet_port(systemd_socket_proxyd_port_t)
  type systemd_socket_proxyd_unit_file_t;
  init_unit_file(systemd_socket_proxyd_unit_file_t)
  
@@ -115,7 +115,7 @@ index b4afcab57..11a206fd0 100644
  type systemd_sysctl_t;
  type systemd_sysctl_exec_t;
  init_daemon_domain(systemd_sysctl_t, systemd_sysctl_exec_t)
-@@ -2071,6 +2079,33 @@ fs_getattr_nsfs_files(systemd_sysctl_t)
+@@ -2090,6 +2098,33 @@ fs_getattr_nsfs_files(systemd_sysctl_t)
  
  systemd_log_parse_environment(systemd_sysctl_t)
  

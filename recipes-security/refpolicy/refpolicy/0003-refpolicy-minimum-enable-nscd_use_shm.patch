@@ -1,4 +1,4 @@
-From 587af51ddbd93aa7c0dfa13f8abb97d676e200c7 Mon Sep 17 00:00:00 2001
+From db4bc51b3aa88ad4caeebfbfd2205b6976024136 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Fri, 26 Feb 2021 09:13:23 +0800
 Subject: [PATCH] refpolicy-minimum: enable nscd_use_shm

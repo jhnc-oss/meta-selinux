@@ -1,4 +1,4 @@
-From 3d50a217b3dabfaf8534041aefad3e9a2477d86a Mon Sep 17 00:00:00 2001
+From 4f1a73b96f69d58c077396f7579eba99992a1c15 Mon Sep 17 00:00:00 2001
 From: Wenzong Fan <wenzong.fan@windriver.com>
 Date: Sat, 15 Feb 2014 04:22:47 -0500
 Subject: [PATCH] policy/modules/system/mount: make mount_t domain MLS trusted

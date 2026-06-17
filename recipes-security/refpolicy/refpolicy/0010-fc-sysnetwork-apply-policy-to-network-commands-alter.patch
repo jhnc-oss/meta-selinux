@@ -1,4 +1,4 @@
-From 6ea8be2d788b50a54b52412a473629bbedc99c98 Mon Sep 17 00:00:00 2001
+From 9fa0c7e1c999f0362cc1661366d6cd2767a7019d Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Tue, 9 Jun 2015 21:22:52 +0530
 Subject: [PATCH] fc/sysnetwork: apply policy to network commands alternatives
@@ -10,37 +10,29 @@ Signed-off-by: Shrikant Bobade <Shrikant_Bobade@mentor.com>
 Signed-off-by: Joe MacDonald <joe_macdonald@mentor.com>
 Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
 ---
- policy/modules/system/sysnetwork.fc | 4 ++++
- 1 file changed, 4 insertions(+)
+ policy/modules/system/sysnetwork.fc | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/policy/modules/system/sysnetwork.fc b/policy/modules/system/sysnetwork.fc
-index 5551ef07f..18707c702 100644
+index eab862b3d..4c9dac6f3 100644
 --- a/policy/modules/system/sysnetwork.fc
 +++ b/policy/modules/system/sysnetwork.fc
-@@ -46,6 +46,7 @@ ifdef(`distro_redhat',`
+@@ -46,13 +46,16 @@ ifdef(`distro_redhat',`
  /usr/bin/dhcpcd		        --	gen_context(system_u:object_r:dhcpc_exec_t,s0)
  /usr/bin/ethtool		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ifconfig		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
 +/usr/bin/ifconfig\.net-tools		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ip			        --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
++/usr/bin/ip\.iproute2		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ipx_configure		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  /usr/bin/ipx_interface		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
-@@ -62,13 +63,16 @@ ifdef(`distro_redhat',`
- /usr/sbin/dhcpcd		--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
- /usr/sbin/ethtool		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/ifconfig		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
-+/usr/sbin/ifconfig\.net-tools		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/ip			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
-+/usr/sbin/ip\.iproute2			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/ipx_configure		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/ipx_interface		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/ipx_internal_net	--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/iw			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/iwconfig		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/mii-tool		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
-+/usr/sbin/mii-tool\.net-tools		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
- /usr/sbin/pump			--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
- /usr/sbin/tc			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+ /usr/bin/ipx_internal_net	--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+ /usr/bin/iw			        --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+ /usr/bin/iwconfig		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+ /usr/bin/mii-tool		    --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
++/usr/bin/mii-tool\.net-tools		--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+ /usr/bin/pump			    --	gen_context(system_u:object_r:dhcpc_exec_t,s0)
+ /usr/bin/tc			        --	gen_context(system_u:object_r:ifconfig_exec_t,s0)
  
 -- 
 2.34.1

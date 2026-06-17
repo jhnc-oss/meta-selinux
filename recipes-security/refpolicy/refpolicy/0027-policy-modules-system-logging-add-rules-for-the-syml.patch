@@ -1,4 +1,4 @@
-From 90c97030a68682dd11f5bf968c4705a4524b263d Mon Sep 17 00:00:00 2001
+From 318c45578888ef3d697f095869100dce81247c0d Mon Sep 17 00:00:00 2001
 From: Xin Ouyang <Xin.Ouyang@windriver.com>
 Date: Thu, 22 Aug 2013 13:37:23 +0800
 Subject: [PATCH] policy/modules/system/logging: add rules for the symlink of
@@ -18,10 +18,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  2 files changed, 8 insertions(+)
 
 diff --git a/policy/modules/system/logging.fc b/policy/modules/system/logging.fc
-index b10ea8acf..6aa62b4ba 100644
+index e2a43f305..7bedcdc00 100644
 --- a/policy/modules/system/logging.fc
 +++ b/policy/modules/system/logging.fc
-@@ -53,6 +53,7 @@ ifdef(`distro_suse', `
+@@ -42,6 +42,7 @@ ifdef(`distro_suse', `
  /var/dnscache/log/main(/.*)?	gen_context(system_u:object_r:var_log_t,s0)
  
  /var/log		-d	gen_context(system_u:object_r:var_log_t,s0-mls_systemhigh)
@@ -30,7 +30,7 @@ index b10ea8acf..6aa62b4ba 100644
  /var/log/dmesg		--	gen_context(system_u:object_r:var_log_t,s0)
  /var/log/syslog		--	gen_context(system_u:object_r:var_log_t,s0)
 diff --git a/policy/modules/system/logging.if b/policy/modules/system/logging.if
-index 499da83ba..ac05e206d 100644
+index 3dd2c06c2..7d108709f 100644
 --- a/policy/modules/system/logging.if
 +++ b/policy/modules/system/logging.if
 @@ -1091,10 +1091,12 @@ interface(`logging_append_all_inherited_logs',`

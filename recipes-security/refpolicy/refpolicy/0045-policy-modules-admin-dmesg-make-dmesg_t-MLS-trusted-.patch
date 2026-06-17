@@ -1,4 +1,4 @@
-From 81bee8a2e32c4e5c0c0e321b4ef1a5c2b7a59c93 Mon Sep 17 00:00:00 2001
+From 836b210ce616aed73769bff2c8b2a5904de900fe Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Tue, 30 Jun 2020 10:18:20 +0800
 Subject: [PATCH] policy/modules/admin/dmesg: make dmesg_t MLS trusted reading
@@ -19,10 +19,10 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/policy/modules/admin/dmesg.te b/policy/modules/admin/dmesg.te
-index f1da315a9..89478c38e 100644
+index 2b98b0e7f..9432cc78a 100644
 --- a/policy/modules/admin/dmesg.te
 +++ b/policy/modules/admin/dmesg.te
-@@ -52,6 +52,8 @@ miscfiles_read_localization(dmesg_t)
+@@ -53,6 +53,8 @@ miscfiles_read_localization(dmesg_t)
  userdom_dontaudit_use_unpriv_user_fds(dmesg_t)
  userdom_use_user_terminals(dmesg_t)
  

@@ -1,4 +1,4 @@
-From a572902044b8965a2afbf5436c37d1c910a38dff Mon Sep 17 00:00:00 2001
+From 85a5dda3e1ec15ca867ff459256e987d3fc98718 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Thu, 28 Mar 2019 21:59:18 -0400
 Subject: [PATCH] fc/hwclock: add hwclock alternatives
@@ -12,14 +12,15 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/policy/modules/system/clock.fc b/policy/modules/system/clock.fc
-index 301965892..139485835 100644
+index 4ed95240e..b8e6b801c 100644
 --- a/policy/modules/system/clock.fc
 +++ b/policy/modules/system/clock.fc
-@@ -3,3 +3,4 @@
- /usr/bin/hwclock	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
+@@ -1,4 +1,5 @@
+ /etc/adjtime		--	gen_context(system_u:object_r:adjtime_t,s0)
  
- /usr/sbin/hwclock	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
-+/usr/sbin/hwclock\.util-linux	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
+ /usr/bin/hwclock	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
++/usr/bin/hwclock\.util-linux	--	gen_context(system_u:object_r:hwclock_exec_t,s0)
+ 
 -- 
 2.34.1
 

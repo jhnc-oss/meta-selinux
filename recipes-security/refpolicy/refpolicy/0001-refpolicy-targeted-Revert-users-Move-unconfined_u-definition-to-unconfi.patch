@@ -1,4 +1,4 @@
-From 433b5e7bc3d3e13ef1bb239c5f543ded27a2d142 Mon Sep 17 00:00:00 2001
+From 72c80020c69df0035a39fb1d6db8c75b2a4f7fa8 Mon Sep 17 00:00:00 2001
 From: Yi Zhao <yi.zhao@windriver.com>
 Date: Wed, 19 Feb 2025 21:35:02 +0800
 Subject: [PATCH] Revert "users: Move unconfined_u definition to unconfined
@@ -18,7 +18,7 @@ Signed-off-by: Yi Zhao <yi.zhao@windriver.com>
  3 files changed, 10 insertions(+), 14 deletions(-)
 
 diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
-index 7ec2aa471..8f0f6ac2e 100644
+index 287b0098f..26978623b 100644
 --- a/policy/modules/kernel/kernel.te
 +++ b/policy/modules/kernel/kernel.te
 @@ -37,6 +37,9 @@ role sysadm_r;
