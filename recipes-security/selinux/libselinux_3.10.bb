@@ -28,6 +28,8 @@ def get_policyconfigarch(d):
 EXTRA_OEMAKE = "${@get_policyconfigarch(d)}"
 EXTRA_OEMAKE:append:libc-musl = " FTS_LDLIBS=-lfts"
 
+CFLAGS:append = " -DAGGRESSIVE_FREE_AFTER_REGEX_MATCH"
+
 # LTO fat objects in static library embed original source paths in .gnu.lto_* IR
 # sections which are not affected by -ffile-prefix-map, causing buildpaths QA failure
 LTO = ""
