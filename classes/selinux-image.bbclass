@@ -1,6 +1,7 @@
 selinux_set_labels() {
     if [ -f ${IMAGE_ROOTFS}/${sysconfdir}/selinux/config ]; then
         POL_TYPE=$(sed -n -e "s&^SELINUXTYPE[[:space:]]*=[[:space:]]*\([0-9A-Za-z_]\+\)&\1&p" ${IMAGE_ROOTFS}/${sysconfdir}/selinux/config)
+        bbnote "Running setfiles -m -r ${IMAGE_ROOTFS} ${IMAGE_ROOTFS}/${sysconfdir}/selinux/${POL_TYPE}/contexts/files/file_contexts ${IMAGE_ROOTFS}"
         if ! setfiles -m -r ${IMAGE_ROOTFS} ${IMAGE_ROOTFS}/${sysconfdir}/selinux/${POL_TYPE}/contexts/files/file_contexts ${IMAGE_ROOTFS}
         then
             bbwarn "Failed to set security contexts. Restoring security contexts will run on first boot."
@@ -19,7 +20,7 @@ python selinux_setlabels_handler() {
     if d.getVar('FIRST_BOOT_RELABEL') == '1':
         return
 
-    d.appendVar('IMAGE_PREPROCESS_COMMAND', ' selinux_set_labels; ')
+    d.prependVar('IMAGE_PREPROCESS_COMMAND', ' selinux_set_labels ')
     d.appendVarFlag('do_image', 'depends', ' policycoreutils-native:do_populate_sysroot')
 }
 
