@@ -120,6 +120,10 @@ POLICY_MLS_SENS ?= "16"
 POLICY_MLS_CATS ?= "1024"
 POLICY_MCS_CATS ?= "1024"
 
+# Space-separated policy boolean/tunable settings in name=value format.
+# Values must be either true or false.
+POLICY_BOOLEANS ?= ""
+
 EXTRA_OEMAKE = "NAME=${POLICY_NAME} \
     TYPE=${POLICY_TYPE} \
     DISTRO=${POLICY_DISTRO} \
@@ -156,11 +160,44 @@ disable_policy_modules() {
     done
 }
 
+set_policy_booleans() {
+    for setting in ${POLICY_BOOLEANS}; do
+        name="${setting%%=*}"
+        value="${setting#*=}"
+
+        if [ "${name}" = "${setting}" ]; then
+            bbfatal "Invalid POLICY_BOOLEANS entry: ${setting}"
+        fi
+
+        case "${name}" in
+            ""|*[!A-Za-z0-9_]*)
+                bbfatal "Invalid policy boolean name: ${name}"
+                ;;
+        esac
+
+        case "${value}" in
+            true|false) ;;
+            *)
+                bbfatal "Invalid value for ${name}: ${value}"
+                ;;
+        esac
+
+        if ! grep -q "^${name}[[:space:]]*=" \
+                "${S}/policy/booleans.conf"; then
+            bbfatal "Unknown policy boolean or tunable: ${name}"
+        fi
+
+        sed -i "s/^\(${name}[[:space:]]*=[[:space:]]*\).*/\1${value}/" \
+            "${S}/policy/booleans.conf"
+    done
+}
+
 do_compile() {
     if [ -f "${WORKDIR}/modules.conf" ] ; then
         cp -f ${WORKDIR}/modules.conf ${S}/policy/modules.conf
     fi
     oe_runmake conf
+    set_policy_booleans
     disable_policy_modules
     oe_runmake policy
 }

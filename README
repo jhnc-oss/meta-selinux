@@ -47,6 +47,18 @@ to be tailored for your environment.
 e.g. PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
 
 
+Configuring policy booleans and tunables
+----------------------------------------
+Policy boolean and tunable defaults can be changed at build time with the
+POLICY_BOOLEANS variable.  Entries use a space-separated name=value format,
+and values must be either true or false.  For example:
+
+POLICY_BOOLEANS = "secure_mode=true allow_execmem=false"
+
+The refpolicy build fails if an entry has an invalid format or names a boolean
+or tunable that is not provided by the selected policy.
+
+
 Using different init manager
 ----------------------------
 By default selinux enabled images coming up with "sysvinit" as init manager,
