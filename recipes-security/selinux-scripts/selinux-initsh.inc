@@ -18,8 +18,6 @@ inherit update-rc.d systemd
 
 SYSTEMD_SERVICE:${PN} = "${SELINUX_SCRIPT_SRC}.service"
 
-FILES:${PN} += "/.autorelabel"
-
 do_install () {
 	install -d ${D}${sysconfdir}/init.d/
 	install -m 0755 ${S}/${SELINUX_SCRIPT_SRC}.sh ${D}${sysconfdir}/init.d/${SELINUX_SCRIPT_DST}

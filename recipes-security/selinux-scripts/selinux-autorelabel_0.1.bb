@@ -18,9 +18,3 @@ SRC_URI = "file://${BPN}.sh \
 INITSCRIPT_PARAMS = "start 01 S ."
 
 require selinux-initsh.inc
-
-do_install:append() {
-    if ${@bb.utils.contains('FIRST_BOOT_RELABEL', '1', 'true', 'false', d)}; then
-        echo "# first boot relabelling" > ${D}/.autorelabel
-    fi
-}
