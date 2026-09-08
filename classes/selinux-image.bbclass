@@ -1,5 +1,8 @@
 selinux_set_labels() {
-    if [ -f ${IMAGE_ROOTFS}/${sysconfdir}/selinux/config ]; then
+    if ${@oe.utils.vartrue('FIRST_BOOT_RELABEL', 'true', 'false', d)}; then
+	bbnote "Forcing first boot relabel"
+	echo "# first boot relabelling" > ${IMAGE_ROOTFS}/.autorelabel
+    elif [ -f ${IMAGE_ROOTFS}/${sysconfdir}/selinux/config ]; then
         POL_TYPE=$(sed -n -e "s&^SELINUXTYPE[[:space:]]*=[[:space:]]*\([0-9A-Za-z_]\+\)&\1&p" ${IMAGE_ROOTFS}/${sysconfdir}/selinux/config)
         bbnote "Running setfiles -m -r ${IMAGE_ROOTFS} ${IMAGE_ROOTFS}/${sysconfdir}/selinux/${POL_TYPE}/contexts/files/file_contexts ${IMAGE_ROOTFS}"
         if ! setfiles -m -r ${IMAGE_ROOTFS} ${IMAGE_ROOTFS}/${sysconfdir}/selinux/${POL_TYPE}/contexts/files/file_contexts ${IMAGE_ROOTFS}
@@ -17,11 +20,10 @@ python selinux_setlabels_handler() {
     if not d or 'selinux' not in d.getVar('DISTRO_FEATURES').split():
         return
 
-    if d.getVar('FIRST_BOOT_RELABEL') == '1':
-        return
-
     d.prependVar('IMAGE_PREPROCESS_COMMAND', ' selinux_set_labels ')
-    d.appendVarFlag('do_image', 'depends', ' policycoreutils-native:do_populate_sysroot')
+
+    if not d.getVar('FIRST_BOOT_RELABEL') == '1':
+        d.appendVarFlag('do_image', 'depends', ' policycoreutils-native:do_populate_sysroot')
 }
 
 addhandler selinux_setlabels_handler
