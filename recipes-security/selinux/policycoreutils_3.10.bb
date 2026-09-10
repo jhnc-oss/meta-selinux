@@ -58,7 +58,10 @@ RDEPENDS:${PN}-setsebool = "\
 "
 RDEPENDS:${PN}:class-target = "selinux-python"
 
-PACKAGES =+ "\
+# The purpose of the following settings is to split out each utility
+# into its own package and make the main package, policycoreutils, an
+# empty package that could be used to introuduce all these utilities.
+POLICYCOREUTILS_PACKAGES = "\
     ${PN}-fixfiles \
     ${PN}-genhomedircon \
     ${PN}-hll \
@@ -72,6 +75,10 @@ PACKAGES =+ "\
     ${PN}-setsebool \
     ${PN}-unsetfiles \
 "
+PACKAGES =+ "${POLICYCOREUTILS_PACKAGES}"
+ALLOW_EMPTY:${PN} = "1"
+RDEPENDS:${PN} += "${POLICYCOREUTILS_PACKAGES}"
+
 FILES:${PN}-fixfiles = "${base_sbindir}/fixfiles"
 FILES:${PN}-genhomedircon = "${base_sbindir}/genhomedircon"
 FILES:${PN}-loadpolicy = "\
