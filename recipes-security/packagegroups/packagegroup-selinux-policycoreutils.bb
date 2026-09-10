@@ -9,17 +9,7 @@ PACKAGES = "\
 ALLOW_EMPTY:${PN} = "1"
 
 RDEPENDS:${PN} = "\
-	policycoreutils-fixfiles \
-	policycoreutils-genhomedircon \
-	policycoreutils-loadpolicy \
-	policycoreutils-newrole \
-	policycoreutils-runinit \
-	policycoreutils-secon \
-	policycoreutils-semodule \
-	policycoreutils-sestatus \
-	policycoreutils-setfiles \
-	policycoreutils-setsebool \
-	policycoreutils-hll \
+	policycoreutils \
 	semodule-utils-semodule-expand \
 	semodule-utils-semodule-link \
 	semodule-utils-semodule-package \
