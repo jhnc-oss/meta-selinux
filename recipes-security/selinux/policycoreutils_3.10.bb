@@ -70,6 +70,7 @@ PACKAGES =+ "\
     ${PN}-sestatus \
     ${PN}-setfiles \
     ${PN}-setsebool \
+    ${PN}-unsetfiles \
 "
 FILES:${PN}-fixfiles = "${base_sbindir}/fixfiles"
 FILES:${PN}-genhomedircon = "${base_sbindir}/genhomedircon"
@@ -102,6 +103,9 @@ FILES:${PN}-setfiles = "\
 FILES:${PN}-setsebool = "\
     ${base_sbindir}/setsebool \
     ${datadir}/bash-completion/completions/setsebool \
+"
+FILES:${PN}-unsetfiles = "\
+    ${base_sbindir}/unsetfiles \
 "
 
 export STAGING_INCDIR
