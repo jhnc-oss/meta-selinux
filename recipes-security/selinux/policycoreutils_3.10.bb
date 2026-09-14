@@ -56,7 +56,6 @@ RDEPENDS:${PN}-setsebool = "\
     libselinux \
     libsemanage \
 "
-RDEPENDS:${PN}:class-target = "selinux-python"
 
 # The purpose of the following settings is to split out each utility
 # into its own package and make the main package, policycoreutils, an
