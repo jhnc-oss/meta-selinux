@@ -1,4 +1,4 @@
-From c0675c5dc7e59b345cbd62fd134ef950f3474c22 Mon Sep 17 00:00:00 2001
+From 42d591004563de3ecf8212423932b955c9f4cef8 Mon Sep 17 00:00:00 2001
 From: Joe MacDonald <joe_macdonald@mentor.com>
 Date: Fri, 20 Feb 2015 17:00:19 -0500
 Subject: [PATCH] fixfiles: de-bashify
@@ -14,12 +14,15 @@ Upstream-Status: Inappropriate [embedded specific]
 
 Signed-off-by: Joe MacDonald <joe_macdonald@mentor.com>
 Signed-off-by: Wenzong Fan <wenzong.fan@windriver.com>
+
+[Fix the egrep deprecation issue.]
+Signed-off-by: Chen Qi <chenqi_hycx@cetc.com.cn>
 ---
  policycoreutils/scripts/fixfiles | 23 ++++++++++++++---------
  1 file changed, 14 insertions(+), 9 deletions(-)
 
 diff --git a/policycoreutils/scripts/fixfiles b/policycoreutils/scripts/fixfiles
-index b7cd765c..38497765 100755
+index b7cd765..5dbf3fb 100755
 --- a/policycoreutils/scripts/fixfiles
 +++ b/policycoreutils/scripts/fixfiles
 @@ -1,4 +1,4 @@
@@ -44,8 +47,8 @@ index b7cd765c..38497765 100755
 -	  [[ "${i}" =~ ^[[:blank:]]*# ]] && continue
 -	  [[ ! "${i}" =~ ^/.* ]] && continue
 -	  [[ ! -d "${i}" ]] && continue
-+	  echo "${i}" | egrep -q '^[[:space:]]*#' && continue
-+	  echo "${i}" | egrep -v '^/.*' && continue
++	  echo "${i}" | grep -E -q '^[[:space:]]*#' && continue
++	  echo "${i}" | grep -E -v '^/.*' && continue
 +	  [ ! -d "${i}" ] && continue
 +
  	  exclude_from_relabelling="$exclude_from_relabelling -e $i"
@@ -84,6 +87,3 @@ index b7cd765c..38497765 100755
  	fullrelabel
  	return
      fi
--- 
-2.34.1
-
