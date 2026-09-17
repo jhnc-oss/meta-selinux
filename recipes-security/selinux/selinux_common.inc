@@ -3,6 +3,8 @@ HOMEPAGE = "https://github.com/SELinuxProject"
 SRC_URI = "git://github.com/SELinuxProject/selinux.git;branch=main;protocol=https"
 SRCREV = "ca10fc4204ed60540d41d2499127c18ad0643f9e"
 
+require conf/selinux_refpolicy_common.inc
+
 S = "${UNPACKDIR}/${BP}/${BPN}"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+(\.\d+)+)"

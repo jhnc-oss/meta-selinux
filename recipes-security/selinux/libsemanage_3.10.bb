@@ -52,7 +52,7 @@ do_install:append() {
 
     if [ -f "${conf_file}" ]; then
         # Update "policy-version" for semanage.conf
-        sed -i 's/^#\s*\(policy-version\s*=\).*$/\1 35/' \
+        sed -i 's/^#\s*\(policy-version\s*=\).*$/\1 ${POLICY_VERSION}/' \
             ${D}/etc/selinux/semanage.conf
 
         # Update "store-root" for semanage.conf

@@ -77,6 +77,8 @@ SRC_URI += " \
 
 S = "${UNPACKDIR}/refpolicy"
 
+require conf/selinux_refpolicy_common.inc
+
 CONFFILES:${PN} = "${sysconfdir}/selinux/config"
 
 POLICY_STORE_ROOT ?= "${localstatedir}/lib/selinux"
@@ -208,7 +210,7 @@ path = ${STAGING_DIR_NATIVE}${sbindir_native}/sefcontext_compile
 args = \$@
 [end]
 
-policy-version = 35
+policy-version = ${POLICY_VERSION}
 store-root = "${POLICY_STORE_ROOT}"
 EOF
 
