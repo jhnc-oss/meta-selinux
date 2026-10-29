@@ -3,7 +3,7 @@ DESCRIPTION = "\
 SETools is a collection of graphical tools, command-line tools, and \
 libraries designed to facilitate SELinux policy analysis."
 SECTION = "base"
-LICENSE = "GPL-2.0-only & LGPL-2.1-only"
+LICENSE = "GPL-2.0-only AND LGPL-2.1-only"
 
 SRC_URI = "git://github.com/SELinuxProject/${BPN}.git;branch=4.6;protocol=https \
            file://setools4-fixes-for-cross-compiling.patch \

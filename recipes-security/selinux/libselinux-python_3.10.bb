@@ -3,7 +3,7 @@ DESCRIPTION = "libselinux provides an API for SELinux applications to get and se
 process and file security contexts and to obtain security policy \
 decisions.  Required for any applications that use the SELinux API."
 SECTION = "base"
-LICENSE = "PD"
+LICENSE = "LicenseRef-PD"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=84b4d2c6ef954a2d4081e775a270d0d0"
 
 require selinux_common.inc
